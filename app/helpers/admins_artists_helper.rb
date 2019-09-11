@@ -1,0 +1,2 @@
+module AdminsArtistsHelper
+end

@@ -1,0 +1,2 @@
+class AdminsLabelsController < ApplicationController
+end

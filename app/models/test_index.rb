@@ -1,0 +1,2 @@
+class TestIndex < ApplicationRecord
+end

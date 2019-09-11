@@ -1,0 +1,2 @@
+class AdminsArtistsController < ApplicationController
+end
