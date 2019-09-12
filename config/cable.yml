@@ -1,4 +1,4 @@
-development:
+edevelopment:
   adapter: async
 
 test:

@@ -1,0 +1,14 @@
+<h1>新製品広告</h1>
+<div class="">
+<% @items.each do |item| %>
+	<div class="Profile">
+		<p>曲名</p>
+		<P>いいね</P>
+		<p>アーティスト名</p>
+		<p>💰1200</p>
+		<p>在庫</p>
+		<%= item.item_name %>
+	</div>
+<% end %>
+	<li class= "mainclearfix"><%= paginate @items %></li>
+</div>
