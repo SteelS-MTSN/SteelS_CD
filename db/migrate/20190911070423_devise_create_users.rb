@@ -39,6 +39,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :post_code, null: false
       t.string :address, null: false
       t.string :phone, null: false
+
       t.boolean :is_quit, null: false, default: false
 
 

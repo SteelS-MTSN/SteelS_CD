@@ -1,0 +1,62 @@
+<h1>受注一覧</h1>
+<!-- <%= render %> サイドバー -->
+
+<%= link_to "戻る", admin_user_path(current_user) %>
+<table class="table table-striped">
+	<tr>
+		<th class="list-title">受注番号</th>
+		<th><%= @order_option.id %></th>
+	</tr>
+	<tr>
+		<th class="list-title">受注日時</th>
+		<th><%= @order_option.purchase_date %></th>
+	</tr>
+	<tr>
+		<th class="list-title">決済方法</th>
+		<th><%= @order_option. %></th>
+	</tr>
+	<tr>
+		<th class="list-title">ユーザー名</th>
+		<th><%= @order_option.user_id %></th>
+	</tr>
+	<tr>
+		<th class="list-title">ユーザー電話番号</th>
+		<th><%= @order_option.phone %></th>
+	</tr>
+	<tr>
+		<th class="list-title">ユーザーEmail</th>
+		<th><%= @order_option.email %></th>
+	</tr>
+	<tr>
+		<th class="list-title">宛名</th>
+		<th><%= @order_option.to_name %></th>
+	</tr>
+	<tr>
+		<th class="list-title">お届け先郵便番号</th>
+		<th><%= @order_option.to_post_code %></th>
+	</tr>
+	<tr>
+		<th class="list-title">お届け先住所</th>
+		<th><%= @order_option.to_address %></th>
+	</tr>
+	<tr>
+		<th class="list-title">配達ステータス</th>
+		<th><%= @order_option.delivery_status %></th>
+	</tr>
+	<% @orders.each do |item| %>
+		<tr>
+			<th class="list-title">商品名</th>
+			<th>
+				<%= item.item_name %>
+			</th>
+			<th class="list-title">価格</th>
+			<th>
+				<%= item.past_price %>
+			</th>
+			<th class="list-title">個数</th>
+			<th>
+				<%= item.buy_quantity %>
+			</th>
+		</tr>
+	<% end %>
+</table>
