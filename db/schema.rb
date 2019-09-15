@@ -157,7 +157,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_072705) do
     t.string "post_code", null: false
     t.string "address", null: false
     t.string "phone", null: false
-    t.boolean "is_quit", null: false
+    t.boolean "is_quit", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
