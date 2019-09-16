@@ -1,0 +1,13 @@
+<table border="1">
+	<tr>
+		<th>カート内商品</th>
+	</tr>
+
+	<% @carts.each do |cart| %>
+	<tr>
+		<td><%= attachment_image_tag cart.item_id., :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %></td>
+    	<td><%= link_to cart.item_id.item_name, item_path(item.id) %></td>
+    	<td><%= f.label %></td>
+    	<td><%= f.number_field %></td>
+    	<td></td>
+	</tr>
