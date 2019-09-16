@@ -12,14 +12,19 @@ class UsersController < ApplicationController
 	end
 
   def update
-    if params[:user][:is_quit].present? #値があるかどうか
-	@user= User.find(params[:id])
-	@user.update(is_quit: true)
-    else
+
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_path(current_user)
-    end
+    
+   end
+
+   def is_quit
+
+    params[:user][:is_quit].present? #値があるかどうか
+    @user= User.find(params[:id])
+    @user.update(is_quit: true)
+       
    end
 
 
