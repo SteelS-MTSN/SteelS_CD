@@ -5,6 +5,7 @@ class AdminsOrdersController < ApplicationController
 
 	def show
 		@order_option = OrderOption.find(params[:id])
-		@items = @order.items
+		@user = @order_option.user
+		@items = Order.where(order_option_id: @order_option.id)
 	end
 end
