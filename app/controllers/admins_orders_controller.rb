@@ -1,10 +1,10 @@
 class AdminsOrdersController < ApplicationController
 	def index
-		@order_options = @order_options.page(params[:page])
+		@order_options = OrderOption.all
 	end
 
 	def show
-		@order_option = Order_option.find(params[:id])
-		@orders = @order_option.orders
+		@order_option = OrderOption.find(params[:id])
+		@items = @order.items
 	end
 end
