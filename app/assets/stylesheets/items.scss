@@ -1,3 +1,37 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.Profile{
+
+	margin: 3%;
+	width: 25%;
+	min-height: 100%;
+	float:left;
+	border: 2px solid #000;
+	text-align: center;
+}
+
+.mainclearfix{
+	margin: auto;
+  	clear: both;
+  	text-align:center;
+}
+/*.Profile3{
+	float: right;
+}*/
+/*.Profileclearfix{
+	margin: auto;
+  	clear: both;
+  	text-align:center;
+}*/
+.Profile4{
+	margin: 3%;
+	width: 25%;
+	min-height: 400px;
+	text-align:center;
+	float:left;
+	margin: auto;
+}
+
