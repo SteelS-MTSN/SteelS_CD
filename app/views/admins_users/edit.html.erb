@@ -1,0 +1,30 @@
+<h1>ユーザー編集</h1>
+
+<%= form_for(@user) do |f| %>
+
+     <h4>姓</h4>
+     <%= f.text_field :family_name %>
+     <h4>名</h4>
+     <%= f.text_field :first_name %>
+     <h4>セイ</h4>
+     <%= f.text_field :family_kana %>
+     <h4>メイ</h4>
+     <%= f.text_field :first_kana %>
+     <h4>郵便番号</h4>
+     <%= f.text_field :post_code %>
+     <h4>住所</h4>
+     <%= f.text_field :address %>
+     <h4>電話番号</h4>
+     <%= f.text_field :phone %>
+     <h4>メールアドレス</h4>
+     <%= f.text_field :email %>
+
+     <%= f.submit 'Update AdminUser' %>
+
+
+
+
+
+
+
+<% end %>
