@@ -1,7 +1,6 @@
 <h1>受注一覧</h1>
-<!-- <%= render %> サイドバー -->
 
-<%= link_to "戻る", admin_user_path(current_user) %>
+<%= link_to "戻る", admins_path(current_user) %>
 <table class="table table-striped">
 				<tr>
 					<th class="list-title">受注番号</th>
@@ -9,23 +8,22 @@
 					<th class="list-title">受注日</th>
 					<th class="list-title">配送状況</th>
 				</tr>
-				<% @order_options.each do |order| %>
+				<% @order_options.each do |f| %>
 					<tr>
 						<th class="order-list">
-							<%= order.id %>
+							<%= f.id %>
 						</th>
 						<th class="order-list">
-							<%= link_to  admins_order_path(order) do %>
-								<%= order.user_id %>
+							<%= link_to  admins_order_path(f) do %>
+								<%= f.user_id %>
 							<% end %>
 						</th>
 						<th class="order-list">
-							<%= order.purchase_date %>
+							
 						</th>
 						<th class="order-list">
-							<%= order.delivery_status %>
+							<%= f.delivery_status %>
 						</th>
 					</tr>
 				<% end %>
-				<%= paginate @orders %>
 			</table>

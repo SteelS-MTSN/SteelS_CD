@@ -1,0 +1,48 @@
+[33mcommit 1f1d96b815f28465211eb92bc77d82e2429a6084[m[33m ([m[1;36mHEAD -> [m[1;32msuito[m[33m)[m
+Merge: b65d3a1 20094ca
+Author: obanozin <53143010+obanozin@users.noreply.github.com>
+Date:   Sun Sep 15 13:00:26 2019 +0900
+
+    Merge pull request #3 from SteelS-MTSN/obanozin
+    
+    firstcommit
+
+[33mcommit 20094ca386414dabfbda351908f0acf0c7cfa98a[m
+Merge: a55f072 b65d3a1
+Author: obanozin <53143010+obanozin@users.noreply.github.com>
+Date:   Sun Sep 15 12:59:24 2019 +0900
+
+    Merge branch 'master' into obanozin
+
+[33mcommit a55f072bcc9daaff6217e744d733f5901bf3ac7c[m
+Author: obanozin <obanozin18@gmail.com>
+Date:   Sun Sep 15 03:37:13 2019 +0000
+
+    firstcommit
+
+[33mcommit b65d3a143567c41b76730d32dd74dd5d7730c267[m
+Merge: 955c5c6 fa2178d
+Author: tarabafussy <53524058+tarabafussy@users.noreply.github.com>
+Date:   Thu Sep 12 19:20:50 2019 +0900
+
+    Merge pull request #1 from SteelS-MTSN/suito
+    
+    Suito
+
+[33mcommit fa2178da54d15af4de84ad37bb1a88cee56fd1a9[m[33m ([m[1;31morigin/suito[m[33m)[m
+Author: tarabafussy <sasabinfussy@gmail.com>
+Date:   Thu Sep 12 18:28:25 2019 +0900
+
+    order-index,show create
+
+[33mcommit fa660f5e02fbdf0aa2ec4500d19ca21f2116f385[m
+Author: tarabafussy <sasabinfussy@gmail.com>
+Date:   Wed Sep 11 18:51:48 2019 +0900
+
+    first commit
+
+[33mcommit 955c5c63070ac141c9974699af5c174e7ce8627c[m[33m ([m[1;32mmaster[m[33m)[m
+Author: obanozin <obanozin18@gmail.com>
+Date:   Wed Sep 11 09:19:11 2019 +0000
+
+    first commit
