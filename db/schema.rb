@@ -106,7 +106,6 @@ ActiveRecord::Schema.define(version: 2019_09_15_055104) do
     t.integer "item_id", null: false
     t.integer "past_price", null: false
     t.datetime "purchase_date", null: false
-    t.integer "buy_quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order_option_id"
