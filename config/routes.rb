@@ -8,6 +8,7 @@ devise_for :users, controllers: {
 	sessions: 'users/sessions'
 }
 get 'users/:id/cancel' => 'users#cancel'
+get 'admins_users/:id/userorder' => 'admins_orders#userorder'
 
 
   resources :homes, :items, :users, :orders, :carts, :addresses, :reviews, :admins, :admins_orders, :admins_stocks, :admins_items, :admins_users, :admins_artists, :admins_genre, :admins_labels, :order_options

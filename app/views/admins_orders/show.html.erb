@@ -1,6 +1,6 @@
-<h1>受注一覧</h1>
+<h1>受注詳細</h1>
 
-<%= link_to "戻る", admin_user_path(current_user) %>
+<%= link_to "戻る", admins_orders_path %>
 <table class="table table-striped">
 	<tr>
 		<th class="list-title">受注番号</th>
@@ -8,23 +8,23 @@
 	</tr>
 	<tr>
 		<th class="list-title">受注日時</th>
-		<th><%= @order_option.purchase_date %></th>
+		<th><%= @order_option.created_at %></th>
 	</tr>
 	<tr>
 		<th class="list-title">決済方法</th>
-		<th><%= @order_option. %></th>
+		<th><%= @order_option.payment %></th>
 	</tr>
 	<tr>
 		<th class="list-title">ユーザー名</th>
-		<th><%= @order_option.user_id %></th>
+		<th><%= @user.family_name + @user.first_name %></th>
 	</tr>
 	<tr>
 		<th class="list-title">ユーザー電話番号</th>
-		<th><%= @order_option.phone %></th>
+		<th><%= @user.phone %></th>
 	</tr>
 	<tr>
 		<th class="list-title">ユーザーEmail</th>
-		<th><%= @order_option.email %></th>
+		<th><%= @user.email %></th>
 	</tr>
 	<tr>
 		<th class="list-title">宛名</th>
@@ -42,19 +42,19 @@
 		<th class="list-title">配達ステータス</th>
 		<th><%= @order_option.delivery_status %></th>
 	</tr>
-	<% @orders.each do |item| %>
+	<% @items.each do |f| %>
 		<tr>
 			<th class="list-title">商品名</th>
 			<th>
-				<%= item.item_name %>
+				<%= f.item.item_name %>
 			</th>
 			<th class="list-title">価格</th>
 			<th>
-				<%= item.past_price %>
+				<%= f.past_price %>
 			</th>
 			<th class="list-title">個数</th>
 			<th>
-				<%= item.buy_quantity %>
+				<%= f.buy_quantity %>
 			</th>
 		</tr>
 	<% end %>
