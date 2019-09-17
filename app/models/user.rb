@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
   # def status_enable
   # 	user.where(is_quit: false)
   # end
@@ -25,4 +26,7 @@ class User < ApplicationRecord
 	# def find_for_authentication(warden_conditions)
 	#   active.where(:is_quit => warden_conditions[:is_quit]).first
 	# end
+
+    has_many :order_option
+
 end

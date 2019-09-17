@@ -8,6 +8,9 @@ devise_for :users, controllers: {
 	sessions: 'users/sessions'
 }
 
+get 'users/:id/cancel' => 'users#cancel'
+get 'admins_users/:id/userorder' => 'admins_orders#userorder'
+
 
 get 'users/:id/cancel' => 'users#cancel'
 put 'users/:id/is_quit' => 'users#is_quit'
