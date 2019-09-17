@@ -7,9 +7,13 @@ devise_for :users, controllers: {
 	registrations: 'users/registrations',
 	sessions: 'users/sessions'
 }
+
+
 get 'users/:id/cancel' => 'users#cancel'
+# namespace :admin do
+#     resources :users
+# end
 
-
-  resources :homes, :items, :users, :orders, :carts, :addresses, :reviews, :admins, :admins_orders, :admins_stocks, :admins_items, :admins_users, :admins_artists, :admins_genre, :admins_labels, :order_options
+  resources :homes, :items, :users, :orders, :carts, :addresses, :reviews, :admins, :admins_orders, :admins_stocks, :admins_items, :admins_artists, :admins_genre, :admins_labels, :order_options, :admins_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
