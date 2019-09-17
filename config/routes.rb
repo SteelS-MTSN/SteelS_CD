@@ -10,9 +10,7 @@ devise_for :users, controllers: {
 
 
 get 'users/:id/cancel' => 'users#cancel'
-# namespace :admin do
-#     resources :users
-# end
+put 'users/:id/is_quit' => 'users#is_quit'
 
   resources :homes, :items, :users, :orders, :carts, :addresses, :reviews, :admins, :admins_orders, :admins_stocks, :admins_items, :admins_artists, :admins_genre, :admins_labels, :order_options, :admins_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

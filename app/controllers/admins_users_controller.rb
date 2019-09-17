@@ -1,7 +1,7 @@
 class AdminsUsersController < ApplicationController
-
+PER = 2
 	def index
-        @users = User.all
+        @users = User.page(params[:page]).reverse_order.per(PER)
 
 		
 	end
@@ -20,7 +20,7 @@ class AdminsUsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
 
-    redirect_to admins_users_path
+    redirect_to admins_user_path(@user.id)
  
       
     

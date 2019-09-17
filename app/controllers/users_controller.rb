@@ -9,8 +9,9 @@ class UsersController < ApplicationController
 	  	@user = User.find(params[:id])
 	  if @user.id != current_user.id
 	     redirect_to user_path(current_user)
-	end
 
+  	end
+  end
   def update
 
     @user = User.find(params[:id])
@@ -19,25 +20,22 @@ class UsersController < ApplicationController
     
    end
 
-   def is_quit
-
-    params[:user][:is_quit].present? #値があるかどうか
-    @user= User.find(params[:id])
-    @user.update(is_quit: true)
-       
-   end
+  def is_quit
+    @user = User.find(params[:id])
+    @user.update!(is_quit: true)
+    redirect_to new_user_registration_path
+  end
 
 
 
-    def cancel
-    	
-    end
-  
-end
+  def cancel
+  	@user = current_user
+  end
 
-private 
-def user_params
-    params.require(:user).permit(:family_name, :first_name, :family_kana, :first_kana, :post_code, :address, :phone, :email)
-end
+
+  private 
+  def user_params
+      params.require(:user).permit(:family_name, :first_name, :family_kana, :first_kana, :post_code, :address, :phone, :email ,:is_quit)
+  end
 
 end
