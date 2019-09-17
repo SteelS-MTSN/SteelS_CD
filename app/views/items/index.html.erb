@@ -1,0 +1,38 @@
+<h1>新製品広告</h1>
+	<h1>商品一覧</h1>
+	<%= search_form_for @search ,class:'mb-5' do |f| %>
+	 <!-- # nameカラムに対して部分一致検索ができる -->
+  	<div class="form-group">
+  	<%= f.label :item_name_cont, "商品名を含む",  items_path, class:"btn btn-info col-xs-10 col-xs-offset-1" %>
+   	<%= f.search_field :item_name_cont, class:  "form-control" %>
+    <!-- # 検索ボタン -->
+  <div class="actions"><%= f.submit "検索" %></div>
+<% end %>
+	<div class="">
+		<% @items.each do |item| %>
+		<!-- <div class="Profileclearfix"> -->
+			<div class="Profile">
+				<%= attachment_image_tag @user ,:profile_image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px" %><br>
+				<%= item.item_name %>
+				<table class ="Profile4">
+					<tr>
+					<th>曲名</th>
+					</tr>
+					<tr>
+					<th>いいね</th>
+					</tr>
+					<tr>
+					<th>アーティスト名</th>
+					</tr>
+					<tr>
+					<th>💰1200</th>
+					</tr>
+					<tr>
+					<th>在庫</th>
+					</tr>
+				</table>
+		
+		</div>
+			<% end %>
+
+	</div>
