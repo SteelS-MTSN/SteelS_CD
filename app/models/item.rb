@@ -5,7 +5,9 @@ class Item < ApplicationRecord
 	belongs_to :label
 
 
-
+def self.ransackable_associations(*)
+	%w[artists]
+end
 
 	has_many :review
 	has_many :song

@@ -19,6 +19,10 @@ Artist.create(:artist_name => 'SongJ')
 Label.create(:label_name => '日本レコード')
 Label.create(:label_name => 'JapanSongs')
 Label.create(:label_name => 'EUleco')
+
+40.times do |i|
+ Item.create!(:item_name => "testcd #{i}" ,:artist_id => 1, :genre_id => 1, :label_id => 1, :price => 1000, :items_status => 1, :is_deleted => 0)
+end
 Item.create(:item_name => 'TESTCD', :artist_id => 1, :genre_id => 1, :label_id => 1, :price => 1000, :items_status => 1, :is_deleted => 0)
 Item.create(:item_name => 'TESTCD2', :artist_id => 2, :genre_id => 2, :label_id => 2, :price => 1000, :items_status => 1, :is_deleted => 0)
 Item.create(:item_name => 'TESTCD3', :artist_id => 3, :genre_id => 3, :label_id => 3, :price => 2000, :items_status => 1, :is_deleted => 0)

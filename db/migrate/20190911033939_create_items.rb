@@ -8,10 +8,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
     	t.integer :label_id, null: false
     	t.integer :items_status, null: false
     	t.boolean :is_deleted, null: false
-    	t.integer :artist_id, null: false
-    	t.integer :genre_id, null: false
-    	t.integer :label_id, null: false
-
+        t.string :item_image_id
 
       t.timestamps
     end
