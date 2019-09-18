@@ -1,3 +1,67 @@
-<%= form_for(@order_option)do |f| %>
-	<%= f.radio_button :payment, "代引き(手数料250円)" %>代引き(手数料250円)
-	<%= f.radio_button :payment, "振込" %>振込
+<h3 class = "title">購入予定商品</h3>
+
+<table class = "table table_bordered table">
+	<thead>
+    	<tr>
+    		<th class = "title-1">商品名</th>
+    		<th class = "title-2">画像</th>
+    		<th class = "title-3">数量</th>
+    		<th class = "title-4">小計</th>
+    	</tr>
+    </thead>
+    	<% @carts.each do |cart| %>
+
+    		<tr>
+				<td><%= cart.item.item_name %></td>
+				<td>画像</td>
+    			<td><%= cart.quantity %></td>
+    			<td><%= cart.item.price.to_i * cart.quantity.to_i %>（税込）</td>
+    			<td></td>
+			</tr>
+		<% end %>
+</table>
+
+<%= form_for @order_option, url: carts_confirm_path, method: :post do |f| %>
+	<div class = "contents">
+		<h3>送付先</h3>
+		<div class = "address-content">
+			<%=f.radio_button :to_address, "current_address" %>この住所に送信する<br>
+					郵便番号<br>
+					<%= @user.post_code %><br>
+					住所<br>
+					<%= @user.address %><br>
+					名前<br>
+					<%= @user.family_name + @user.first_name %>様<br>
+					ナマエ<br>
+					<%= @user.family_kana + @user.first_kana %>様<br>
+		</div>
+
+		<% @addresses.each do |address| %>
+			<div class = "address-content">
+				<%=f.radio_button :to_address, address.id %>この住所に送信する<br>
+				郵便番号<br>
+				<%= address.sub_post_code %><br>
+				住所<br>
+				<%= address.sub_address %><br>
+				名前<br>
+				<%= address.sub_family_name + address.sub_first_name %>様<br>
+                ナマエ<br>
+				<%= address.sub_family_kana + address.sub_first_kana %>様<br>
+			</div>
+		<% end %>
+
+		<h3 class = "payment-title">支払い方法</h3>
+		<div class = "payment">
+
+			<%= f.radio_button :payment, "代引き手数料250円" %>代引き(手数料250円)<br>
+			<br>
+			<%= f.radio_button :payment, "振込" %>振込
+	    </div>
+	</div>
+
+	<div class = 'button'>
+		<%= f.submit '購入確認画面へ' %>
+		<%= f.submit '戻る' %>
+	</div>
+
+<% end %>

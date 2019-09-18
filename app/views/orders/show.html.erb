@@ -1,0 +1,22 @@
+<!-- <%= render %> ヘッター -->
+
+<table class="table table-striped">
+				<tr>
+					<th class="list-title">購入商品</th>
+					<th class="list-title">商品価格(税込み)</th>
+				</tr>
+				<% @orders.each do |order| %>
+					<tr>
+						<th class="order-list">
+							<%= order.item_name %>
+						</th>
+						<th class="order-list">
+							<p><%= order.past_price %>円</p>
+						</th>
+					</tr>
+				<% end %>
+			</table>
+
+			<%= link_to "戻る", user_path(current_user) %>
+
+<!-- <%= render %> フッター-->

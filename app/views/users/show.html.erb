@@ -1,0 +1,20 @@
+<h1>マイページ</h1>
+
+
+
+<p>性 : <%= @user.family_name %></p>
+<p>名 :<%= @user.first_name %></p>
+<p>セイ :<%= @user.family_kana %></p>
+<p>メイ :<%= @user.first_kana %></p>
+<p>郵便番号 :<%= @user.post_code %></p>
+<p>住所 :<%= @user.address %></p>
+<p>住所一覧へ</p>
+<p>電話番号 :<%= @user.phone %></p>
+<p>メールアドレス : <%= @user.email %></p>
+
+
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </li>
+
+<%= link_to "編集", edit_user_path %>
+<h3>購入履歴へ</h3>

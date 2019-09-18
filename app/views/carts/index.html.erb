@@ -1,13 +1,35 @@
-<table border="1">
-	<tr>
-		<th>カート内商品</th>
-	</tr>
+<table class = "table table-striped">
+	<thead>
+		<tr>
+			<th></th>
+			<th>カート内商品</th>
+			<th></th>
+		</tr>
+    </thead>
+    	<tr>
+    		<th class = "title_1">商品名</th>
+    		<th class = "title_2">イメージ画像</th>
+    		<th class = "title-3">数量</th>
+    	</tr>
+    <table class = "table table-striped">
 
-	<% @carts.each do |cart| %>
-	<tr>
-		<td><%= attachment_image_tag cart.item_id., :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %></td>
-    	<td><%= link_to cart.item_id.item_name, item_path(item.id) %></td>
-    	<td><%= f.label %></td>
-    	<td><%= f.number_field %></td>
-    	<td></td>
-	</tr>
+	    <% @carts.each do |cart| %>
+				<tr>
+		   			 <%= form_for(cart, url: cart_path(cart.id), method: :patch ) do |f| %>
+
+							<td><%= cart.item.item_name %></td>
+							<td>画像</td>
+				    		<td><%= f.number_field "quantity" %></td>
+				    		<td><%= f.submit "数量変更" %></td>
+					<% end %>
+				</tr>
+
+		<% end %>
+	</table>
+
+
+</table>
+
+<%= link_to "購入", carts_chose_path %>
+<%= link_to "戻る", carts_path %>
+

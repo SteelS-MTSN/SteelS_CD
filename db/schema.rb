@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_11_072705) do
+ActiveRecord::Schema.define(version: 2019_09_15_055104) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "sub_family_name", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_072705) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.string "quantity", null: false
+    t.string "quantity", default: "1", null: false
     t.integer "user_id", null: false
     t.integer "item_id", null: false
     t.datetime "created_at", null: false
@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 2019_09_11_072705) do
     t.string "to_address", null: false
     t.string "to_name", null: false
     t.string "to_kana", null: false
-    t.integer "item_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -107,8 +106,10 @@ ActiveRecord::Schema.define(version: 2019_09_11_072705) do
     t.integer "item_id", null: false
     t.integer "past_price", null: false
     t.datetime "purchase_date", null: false
+    t.integer "buy_quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_option_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -157,7 +158,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_072705) do
     t.string "post_code", null: false
     t.string "address", null: false
     t.string "phone", null: false
-    t.boolean "is_quit", null: false
+    t.boolean "is_quit", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

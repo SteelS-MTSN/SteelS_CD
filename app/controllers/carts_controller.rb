@@ -1,24 +1,72 @@
 class CartsController < ApplicationController
 
 	def create
-		@item = Item.find(params[:item_id])
-		@cart = Cart.new
-		@cart.save
+		@cart = Cart.new(carts_params)
+		current_items = Cart.where(user_id: current_user.id)
+
+		is_exist = false
+
+		current_items.each do |cart|
+			if cart.item.id == @cart.item.id
+				# 被ってる商品がある
+				is_exist = true
+				break
+			end
+		end
+
+		if is_exist
+			item = current_items.find_by(item_id: @cart.item_id)
+			# 個数をふやす処理
+			item.quantity += @cart.item.quantity
+			item.save
+
+		else
+			cart.item_id = params[:item_id]
+			@cart.user_id = current_user.id
+			@cart.save
+	    end
 	end
+
 
 	def index
-		@carts = Cart.where(user_id = current_user.id)
+		@user = current_user
+		@carts = @user.carts
 	end
 
+	def update
+		@cart = Cart.find(params[:id])
+		@cart.update(carts_params)
+		redirect_to carts_path
+    end
+
 	def buy_chose
-		@carts = Cart.where(user_id = current_user.id)
-		@adresses = Adress.where(user_id = current_user.id)
-		@order_option = Order_option.new
+		@user = current_user
+		@carts = @user.carts
+		@addresses = Address.where(user_id: @user.id)
+	    @order_option = OrderOption.new
+	end
+
+	def buy_confirm
+		@user = current_user
+		@carts = @user.carts
+		@to_address = order_option_params[:to_address]
+
+		if @to_address != "current_address"
+			@address = Address.find(order_option_params[:to_address].to_i)
+
+		end
+		@payment = order_option_params[:payment]
+		@order_option = OrderOption.new
+		render :buy_confirm
 	end
 
 	private
 		def carts_params
-			params.require(:cart).permit(:item_id)
+			params.require(:cart).permit(:item_id ,:user_id, :quantity)
 		end
 
-end
+		def order_option_params
+		params.require(:order_option).permit(:payment, :to_address)
+		end
+	end
+

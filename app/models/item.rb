@@ -11,7 +11,7 @@ class Item < ApplicationRecord
 	has_many :song
 	has_many :favorite
 	has_many :carts
-		has_many :users, through: :carts
+	has_many :users, through: :carts
 	has_many :stock
 	has_many :order
 end
