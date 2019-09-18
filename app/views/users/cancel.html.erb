@@ -2,3 +2,14 @@
 
 
 
+
+<%= form_for(@user) do |f| %>
+
+<label><%= f.radio_button :is_quit, "false" %>退会しない<label>
+
+<label><%= f.radio_button :is_quit, "true"  %>退会する<label>
+
+<%= f.submit '決定' %>
+
+<% end %>
+

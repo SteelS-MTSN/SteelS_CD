@@ -1,0 +1,36 @@
+<h1>購入履歴</h1>
+
+<%= link_to "戻る", admins_path(current_user) %>
+
+<h1><%= @user.family_name + @user.first_name %></h1>
+
+<table class="table table-striped">
+				<tr>
+					<th class="list-title">id</th>
+					<th class="list-title">購入日</th>
+					<th class="list-title">配送日</th>
+					<th class="list-title">配送状況</th>
+					<th class="list-title">支払方法</th>
+					<th class="list-title"></th>
+				</tr>
+				<% @order_options.each do |f| %>
+					<tr>
+						<th class="order-list">
+							<%= f.id %>
+						</th>
+						<th class="order-list">
+							<%= f.purchase_date %>
+						</th>
+						<th class="order-list">
+							<%= f.updated_at %>
+						</th>
+						<th class="order-list">
+							<%= f.delivery_status %>
+						</th>
+						<th class="order-list">
+							<%= f.payment %>
+						</th>
+						<th class="order-list"><%= link_to "詳細", admins_order_path(f) %></th>
+					</tr>
+				<% end %>
+			</table>

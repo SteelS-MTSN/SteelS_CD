@@ -6,7 +6,8 @@
         	<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>詳細（リンク）</th>
+						<th>ID</th>
+						<th>詳細</th>
 						<th>名前（姓）</th>
 				        <th>名前（名）</th>
 				        <th>ナマエ（姓）</th>
@@ -22,8 +23,11 @@
 					<% @users.each do |user| %>
 						<tr> 
 							<td>
+								<%= user.id %>
+							</td>
+							<td>
 							    <p>
-							    	ここにリンク
+							    	<th><%= link_to "詳細" , "admins_users/#{user.id}" %></th>
 							    </p>
 							</td>
 							<td>
@@ -58,3 +62,4 @@
 		<div class="col-lg-3"></div>
 	</div>
 </div>
+<%= paginate @users %>
