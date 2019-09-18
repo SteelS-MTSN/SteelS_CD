@@ -11,15 +11,15 @@
 				<% @order_options.each do |f| %>
 					<tr>
 						<th class="order-list">
-							<%= f.id %>
-						</th>
-						<th class="order-list">
 							<%= link_to  admins_order_path(f) do %>
-								<%= f.user_id %>
+								<%= f.id %>
 							<% end %>
 						</th>
 						<th class="order-list">
-							
+							<%= f.user.family_name + f.user.first_name %>
+						</th>
+						<th class="order-list">
+							<%= f.created_at %>
 						</th>
 						<th class="order-list">
 							<%= f.delivery_status %>

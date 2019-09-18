@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2019_09_15_055104) do
     t.integer "label_id", null: false
     t.integer "items_status", null: false
     t.boolean "is_deleted", null: false
+    t.string "item_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_items_on_artist_id"
@@ -98,6 +99,7 @@ ActiveRecord::Schema.define(version: 2019_09_15_055104) do
     t.string "to_name", null: false
     t.string "to_kana", null: false
     t.integer "user_id", null: false
+    t.datetime "purchase_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -105,7 +107,6 @@ ActiveRecord::Schema.define(version: 2019_09_15_055104) do
   create_table "orders", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "past_price", null: false
-    t.datetime "purchase_date", null: false
     t.integer "buy_quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

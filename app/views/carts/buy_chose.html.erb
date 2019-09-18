@@ -19,6 +19,12 @@
     			<td></td>
 			</tr>
 		<% end %>
+
+		sum = 0
+		<% @carts.each do |cart| %>
+		合計品数<%= sum += cart.quantity %>品
+		<% end %>
+
 </table>
 
 <%= form_for @order_option, url: carts_confirm_path, method: :post do |f| %>
