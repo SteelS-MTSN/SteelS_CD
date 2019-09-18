@@ -25,7 +25,7 @@ class AdminsArtistsController < ApplicationController
 		redirect_to admins_artists_path
 		
 	end
-# aaaaaaa
+
 	private
 	def artist_params
 	    params.require(:artist).permit(:artist_name)
