@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_09_15_055104) do
   end
 
   create_table "artists", force: :cascade do |t|
-    t.string "artist_name", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(version: 2019_09_15_055104) do
     t.integer "price", null: false
     t.integer "genre_id", null: false
     t.integer "label_id", null: false
-    t.integer "items_status", null: false
-    t.boolean "is_deleted", null: false
+    t.integer "items_status", default: 0, null: false
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_items_on_artist_id"
