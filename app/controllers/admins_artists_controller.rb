@@ -3,10 +3,7 @@ class AdminsArtistsController < ApplicationController
     PER = 8
 	def index
 		@artist = Artist.new
-
-
 		@search = Artist.ransack(params[:q])
-
 		@results = @search.result
 		@artists = @results.page(params[:page]).per(PER)
 
