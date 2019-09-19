@@ -8,10 +8,33 @@
 	
 
 	<div class="container">
-		<!-- サイドバー -->
+		<!-- Login サイドバー -->
 		<div class="row">
-		<div class="col-sm-2">
-			サイドバー
+		<div class=" col-sm-2">
+			<% @user = User.new %>
+		<%= form_for(@user, url: user_session_path) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <% #if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% #end %>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+  <% end %>
+			<!-- サイドバー終わり -->
 		</div>
 		<!-- サイドバー -->
 		<div class="col-sm-8">
@@ -19,9 +42,11 @@
 		<% @items.each do |item| %>
 		<!-- <div class="Profileclearfix"> -->
 			<div class="Profile">
-				<%= attachment_image_tag @user ,:profile_image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px" %><br>
+				<%= attachment_image_tag @aaa ,:profile_image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px" %><br>
 				<%= item.item_name %>
 				<table class ="Profile4">
+					RANKING
+					<th>ランキング</th>
 					<tr>
 					<th>曲名</th>
 					</tr>
@@ -44,19 +69,44 @@
 		</div>
 
 		</div> <!-- col-sm- 4 -->
+						<!-- ランキング -->
 		<div class="col-sm-2">
 				<table class ="table-red">
 					<tr>
-						<th>アーティスト名</th>
+						<th>RANKING</th>
+					</tr>
+					<tr>
+						<th>ランキング</th>
+					</tr>
+					<tr>
+					<th><%= attachment_image_tag @aaa ,:profile_image,  fallback: "71LcxZ6tyNL._SX355_.jpg", :width => "150px",:height =>"150px" %></th><br>
+					</tr>
+					<tr>
+						<th>アーティスト名1</th>
+					</tr>
+					<tr>
+						<th>曲名	</th>
+					</tr>
+					<tr>
+						<th><%= attachment_image_tag @aaa ,:profile_image,  fallback: "download.jpg", :width => "150px",:height =>"150px" %></th><br></th>
 					</tr>
 					<tr>
 						<th>アーティスト名２</th>
 					</tr>
 					<tr>
+						<th>曲名2</th>
+					</tr>
+					<tr>
+						<th><%= attachment_image_tag @aaa ,:profile_image,  fallback: "download.jpg", :width => "150px",:height =>"150px" %></th><br></th>
+					</tr>
+					<tr>
 						<th>アーティスト名3</th>
 					</tr>
+					<tr>
+						<th>曲名３</th>
+					</tr>
 				</table>
-		<p>ＡＡＡＡＡＡＡＡＡＡＡＡ</p>
+		<p></p>
 			ランキング
 			<% @allitems.each do |item| %>
 			<%= item.item_name %>

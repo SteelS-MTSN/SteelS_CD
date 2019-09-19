@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
 			@items = @result
 			# @all_ranks = Item.find(1).artist.artist_name
 			# binding.pry
-			@allitems = Item.all
+			@allitems = Item.limit(5).order('id DESC')
 
 		else
 	 		@items = Item.all
@@ -19,7 +19,8 @@ class ItemsController < ApplicationController
 	 		ids = Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id)
 	 		# binding.pry
 	 		# @all_ranks = Item.find(ids)
-	 		@allitems = Item.all
+	 		@allitems = Item.limit(5).order('id DESC')
+
 	 	end
 	 	# #違うテーブルで検索
 	 	# @items = @search.result(distinct: true).includes(:artist).joins(:artist).page(params[:page]).per(6)
