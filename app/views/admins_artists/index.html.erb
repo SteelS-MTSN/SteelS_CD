@@ -1,15 +1,33 @@
 <h1>アーティスト一覧</h1>
 
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6">
+			<section class="artist_post">
+				<%= form_for(@artist,url: {controler: "admins_artists", action: "create" })  do |f| %>
 
+				<h4>アーティスト名</h4>
+				<%= f.text_field :artist_name %>
 
-<%= form_for(@artist,url: {controler: "admins_artists", action: "create" })  do |f| %>
+				<%= f.submit 'アーティストを追加' %>
 
-<h4>アーティスト名</h4>
-<%= f.text_field :artist_name %>
+				<% end %>
+			</section>
+		</div>
+        <div class="col-lg-6">
+			<section class="artist_seach">
+			<%= search_form_for @search, url: admins_artists_path do |f| %>
+			 <div class="form-group">
+			   <%= f.label :artist_name, "Name" %>
+			   <%= f.search_field :artist_name_cont, class: "form-control" %>
+			 </div>
+			 <div class="actions"><%= f.submit "Search" %></div>
+			<% end %>
+			</section>
+		</div>
+	</div>
+</div>
 
-<%= f.submit %>
-
-<% end %>
 
 <table class="table table-striped">
 	<thead>
@@ -28,13 +46,22 @@
 					<%= f.artist_name %>
 				</td>
 				<td>
-					編集
+				    <%= link_to "編集", edit_admins_artist_path(f)  %>
 				</td>
 				<td>
-					削除
+					<%= link_to "削除", admins_artist_path(f), method: :delete  %>
 				</td>
 			</tr>
+		<% end %>
+		<% if !@artists.any? %>
+
+		<p>見つかりませんでした。</p>
+
+
 		<% end %>
 	</tbody>
 </table>
 <%= paginate @artists %>
+
+
+<%= link_to 'TOP', admins_path %>

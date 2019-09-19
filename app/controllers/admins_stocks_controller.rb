@@ -1,4 +1,5 @@
 class AdminsStocksController < ApplicationController
+	before_action :authenticate_admin!
 	def index
 		@stocks = Stock.all
 	end
