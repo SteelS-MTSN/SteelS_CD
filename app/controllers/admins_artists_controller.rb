@@ -1,4 +1,5 @@
 class AdminsArtistsController < ApplicationController
+	before_action :authenticate_admin!
     PER = 8
 	def index
 		@artist = Artist.new
