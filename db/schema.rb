@@ -74,14 +74,9 @@ ActiveRecord::Schema.define(version: 2019_09_15_055104) do
     t.integer "price", null: false
     t.integer "genre_id", null: false
     t.integer "label_id", null: false
-<<<<<<< HEAD
     t.integer "items_status", default: 0, null: false
     t.boolean "is_deleted", default: false, null: false
-=======
-    t.integer "items_status", null: false
-    t.boolean "is_deleted", null: false
     t.string "item_image_id"
->>>>>>> 451a40fa915cf68d402dab2c3156916bc33ec26a
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_items_on_artist_id"

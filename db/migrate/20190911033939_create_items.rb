@@ -12,13 +12,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
     	t.integer :artist_id, null: false
     	t.integer :genre_id, null: false
     	t.integer :label_id, null: false
-
-=======
-    	t.integer :items_status, null: false
-    	t.boolean :is_deleted, null: false
         t.string :item_image_id
->>>>>>> 451a40fa915cf68d402dab2c3156916bc33ec26a
-
       t.timestamps
     end
   end
