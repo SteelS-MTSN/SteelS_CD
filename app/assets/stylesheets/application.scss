@@ -1,4 +1,4 @@
-*= require jquery-ui
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -14,12 +14,12 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap";
+ @import "bootstrap-sprockets";  /*ここを追加*/
+
 /*.Profile{
 	width:400px;
 	height:400px;
 	float:left
 }
 */
-
-    @import "bootstrap-sprockets";  /*ここを追加*/
-    @import "bootstrap";            /*ここを追加*/
