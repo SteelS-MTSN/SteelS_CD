@@ -1,0 +1,11 @@
+<h1>レーベル編集</h1>
+
+
+
+
+<%= form_for(@label, url: admins_label_path) do |f|  %>
+
+        <%= f.text_field :label_name %>
+
+        <%= f.submit '決定' %>
+<% end %>
