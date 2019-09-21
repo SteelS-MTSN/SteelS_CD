@@ -25,27 +25,35 @@
 </table>
 
 
-<%= form_for @order_option, url: carts_confirm_path, method: :post do |f| %>
+<%= form_for @order_option, url: order_options_path, method: :post do |f| %>
 	<div class = "contents">
 		<h3>送付先</h3>
 		<div class = "address-content">
 			<% if @to_address == "current_address" %>
-				<%= @user.post_code %>
-				<%= @user.address %>
-				<%= @user.family_name + @user.first_name %>様
-				<%= @user.family_kana + @user.first_kana %>様
+				<%= f.hidden_field :to_post_code, :value => @user.post_code %>
+					<%= @user.post_code %>
+				<%= f.hidden_field :to_address, :value => @user.address %>
+					<%= @user.address %>
+				<%= f.hidden_field :to_name, :value => @user.family_name + @user.first_name %>
+					<%= @user.family_name + @user.first_name %>様
+				<%= f.hidden_field :to_kana, :value => @user.family_kana + @user.first_kana %>
+					<%= @user.family_kana + @user.first_kana %>様
 
 			<% else %>
-							<%= @address.id %>
-				<%= @address.sub_post_code %>
-				<%= @address.sub_address %>
-				<%= @address.sub_family_name + @address.sub_first_name %>様
-				<%= @address.sub_family_kana + @address.sub_first_kana %>様
+				<%= f.hidden_field :to_post_code, :value => @address.sub_post_code %>
+					<%= @address.sub_post_code %>
+				<%= f.hidden_field :to_address, :value => @address.sub_address %>
+					<%= @address.sub_address %>
+				<%= f.hidden_field :to_name, :value => @address.sub_family_name + @address.sub_first_name %>
+					<%= @address.sub_family_name + @address.sub_first_name %>様
+				<%= f.hidden_field :to_kana, :value => @address.sub_family_kana + @address.sub_first_kana %>
+					<%= @address.sub_family_kana + @address.sub_first_kana %>様
 			<% end %>
 		</div>
 
 		<h3 class = "payment-title">支払い方法</h3>
 		<div class = "payment">
+			<%= f.hidden_field :payment, :value => @payment %>
 			<%= @payment %>
 		</div>
 

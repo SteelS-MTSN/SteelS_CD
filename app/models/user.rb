@@ -28,7 +28,7 @@ class User < ApplicationRecord
 	#   active.where(:is_quit => warden_conditions[:is_quit]).first
 	# end
 
-    has_many :order_option
+    has_many :order_options
 
 
 end

@@ -2,33 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.title {
-	text-align :center;
-}
 
 .table {
 	width: 800px;
 }
 
-.title-1 {
-	width: 150px;
+.table>thead {
+	border-bottom: 2px solid #ddd;
 }
 
-.title-2 {
-	width: 150px;
+.table > thead > tr > th{
+	text-align: center;
 }
 
-.title-3 {
-	width: 150x;
-}
-
-.title-4 {
-	width: 200px;
-}
 
 .contents {
 	padding: 20px;
-	text-aligin: center;
 }
 
 

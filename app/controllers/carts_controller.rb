@@ -52,9 +52,9 @@ class CartsController < ApplicationController
 		@to_address = order_option_params[:to_address]
 
 		if @to_address != "current_address"
-			@address = Address.find(order_option_params[:to_address].to_i)
-
+			@address = Address.find(@to_address.to_i)
 		end
+
 		@payment = order_option_params[:payment]
 		@order_option = OrderOption.new
 		render :buy_confirm

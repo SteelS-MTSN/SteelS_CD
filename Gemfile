@@ -72,4 +72,4 @@ gem 'jquery-rails'
 gem 'cocoon'
 
 gem 'ransack'
-gem 'pry-byebug'
+# gem 'pry-byebug'

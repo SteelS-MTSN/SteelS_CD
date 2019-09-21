@@ -1,12 +1,10 @@
-<h3 class = "title">購入予定商品</h3>
+<div class="container">
+	<div class="row">
 
-<table class = "table table_bordered table">
+<table class = "table table_bordered">
 	<thead>
     	<tr>
-    		<th class = "title-1">商品名</th>
-    		<th class = "title-2">画像</th>
-    		<th class = "title-3">数量</th>
-    		<th class = "title-4">小計</th>
+    		<th>購入予定商品</th>
     	</tr>
     </thead>
     	<% @carts.each do |cart| %>
@@ -20,12 +18,32 @@
 			</tr>
 		<% end %>
 
-		sum = 0
-		<% @carts.each do |cart| %>
-		合計品数<%= sum += cart.quantity %>品
-		<% end %>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>合計品数</td>
+				<% sum1 =  0 %>
+				<% @carts.each do |cart| %>
+		    		<% sum1 += cart.quantity.to_i %>
+				<% end %>
+				<td><%= sum1 %>点</td>
+			</tr>
 
+			<tr>
+				<td></td>
+				<td></td>
+				<td>小計（税込）</td>
+				<% sum2 =  0 %>
+				<% @carts.each do |cart| %>
+		    		<% sum2 += cart.item.price.to_i * cart.quantity.to_i  %>
+				<% end %>
+				<td><%= sum2 %>円(税込）</td>
+			</tr>
 </table>
+
+
+
+
 
 <%= form_for @order_option, url: carts_confirm_path, method: :post do |f| %>
 	<div class = "contents">
@@ -34,7 +52,6 @@
 			<%=f.radio_button :to_address, "current_address" %>この住所に送信する<br>
 					郵便番号<br>
 					<%= @user.post_code %><br>
-					住所<br>
 					<%= @user.address %><br>
 					名前<br>
 					<%= @user.family_name + @user.first_name %>様<br>
@@ -59,9 +76,9 @@
 		<h3 class = "payment-title">支払い方法</h3>
 		<div class = "payment">
 
-			<%= f.radio_button :payment, "代引き手数料250円" %>代引き(手数料250円)<br>
+			<%= f.radio_button :payment ,0 %>代引き(手数料250円)<br>
 			<br>
-			<%= f.radio_button :payment, "振込" %>振込
+			<%= f.radio_button :payment ,1 %>振込
 	    </div>
 	</div>
 
@@ -71,3 +88,6 @@
 	</div>
 
 <% end %>
+
+</div>
+</div>
