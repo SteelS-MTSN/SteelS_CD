@@ -4,18 +4,16 @@ class OrderOptionsController < ApplicationController
 		@order_option = OrderOption.new(payment:params[:order_option][:payment].to_i,to_post_code: params[:order_option][:to_post_code],to_address: params[:order_option][:to_address],to_name: params[:order_option][:to_name],to_kana: params[:order_option][:to_kana])
 		@order_option.total_price = cart_total_price(current_user)
 		@order_option.user_id = current_user.id
-		@order_option.postage = 500
 
 		@order_option.save
 
-		@user = current_user
-		@carts = @user.carts
+		@carts = current_user.carts
 		@carts.each do |cart|
 			order = Order.new
 			order.item_id = cart.item_id
-			order.past_price = cart.item.item_price
+			order.past_price = cart.item.price
 			order.buy_quantity = cart.quantity
-			order.order_option_id = @order_option_id
+			order.order_option_id = @order_option.id
 			order.save
 		end
 		redirect_to items_path

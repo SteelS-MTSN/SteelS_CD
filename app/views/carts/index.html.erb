@@ -19,7 +19,7 @@
 
 							<td><%= cart.item.item_name %></td>
 							<td>画像</td>
-				    		<td><%= f.number_field "quantity" %></td>
+				    		<td><%= f.number_field "quantity", min:1,  max:cart.item.count %></td>
 				    		<td><%= f.submit "数量変更" %></td>
 					<% end %>
 				</tr>

@@ -55,7 +55,7 @@ class CartsController < ApplicationController
 			@address = Address.find(@to_address.to_i)
 		end
 
-		@payment = order_option_params[:payment]
+		@payment = OrderOption.convert_payment(order_option_params[:payment])
 		@order_option = OrderOption.new
 		render :buy_confirm
 	end

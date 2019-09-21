@@ -5,5 +5,12 @@ class OrderOption < ApplicationRecord
 
 	enum payment: { cash: 0, bank: 1 }
 	# enum payment: [:代引き手数料250円, :振込]
-	# enum payment: [:発送準備中, :発送済]
+	enum delivery_status: { prepare: 0, finish: 1 }
+
+	def self.convert_payment(payment)
+		I18n.t("enums.order_option.payment." << self.payments.keys[payment.to_i])
+	end
+
 end
+
+

@@ -9,11 +9,23 @@ def self.ransackable_associations(*)
 	%w[artists]
 end
 
-	has_many :review
-	has_many :song
-	has_many :favorite
+def count
+	sum_stock_count = 0
+	sum_order_count = 0
+
+	stocks.each { |stock| sum_stock_count += stock.stock_count }
+	orders.each { |order| sum_order_count += order.buy_quantity }
+
+	sum_stock_count - sum_order_count
+end
+
+
+
+	has_many :reviews
+	has_many :songs
+	has_many :favorites
 	has_many :carts
 	has_many :users, through: :carts
-	has_many :stock
-	has_many :order
+	has_many :stocks
+	has_many :orders
 end
