@@ -1,21 +1,29 @@
 <h1>ジャンル一覧</h1>
 
-<%= form_for @genre, url: admins_genres_path, method: :post do |f| %>
 
-<%= f.text_field :genre_name %>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+			<%= form_for @genre, url: admins_genres_path, method: :post do |f| %>
 
-<%= f.submit '決定'  %>
+			<%= f.text_field :genre_name %>
 
-<% end %>
+			<%= f.submit '決定'  %>
 
-<%= search_form_for @search, url: admins_genres_path do |f| %>
-<div class="form-group">
-	<%= f.label :genre_name, "Name" %>
-	<%= f.search_field :genre_name_cont, class: "form-control" %>
+			<% end %>
+	    </div>
+        <div class="col-lg-4">
+			<%= search_form_for @search, url: admins_genres_path do |f| %>
+			<div class="form-group">
+				<%= f.label :genre_name, "ジャンル名" %>
+				<%= f.search_field :genre_name_cont, class: "form-control" %>
+			</div>
+			<div class="actions"><%= f.submit "Search" %></div>
+			<% end %>
+		</div>
+	</div>
 </div>
-<div class="actions"><%= f.submit "Search" %></div>
-<% end %>
-
 
 
 <table class="table table-striped">
