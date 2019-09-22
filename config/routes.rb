@@ -12,14 +12,26 @@ get 'users/:id/cancel' => 'users#cancel'
 get 'admins_users/:id/userorder' => 'admins_orders#userorder'
 
 
+  get "/" => "homes#top"
+  get "/carts/chose" => "carts#buy_chose"
+  post "/carts/confirm" => "carts#buy_confirm"
+
+  resources :carts, only: [:create, :index, :update]
+  resources :order_options, only: [:create, :show]
+
+
 get 'users/:id/cancel' => 'users#cancel'
 put 'users/:id/is_quit' => 'users#is_quit'
+
 
 resources :admins_items do
 	get :autocomplete_artist_name, :on => :collection
 end
 
-  resources :homes,:items, :favorites, :admins_artists, :users, :orders, :carts, :addresses, :reviews, :admins, :admins_orders, :admins_stocks, :admins_genre, :admins_labels, :order_options, :admins_users
+
+  resources :items,:favorites, :admins_artists, :users, :orders, :addresses, :reviews, :admins, :admins_orders, :admins_stocks, :admins_genres, :admins_labels, :admins_users
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
 end

@@ -13,20 +13,22 @@ class ApplicationController < ActionController::Base
       admins_path
     end
   end
-
   def after_sign_out_path_for(resource)
-    if resource.is_a?(User)
-      new_user_session_path
-    else
-      new_admin_session_path
-    end
-    # case resource
-    # when User
-    # new_user_session_path
-    # when Admin
-    #   new_admin_session_path
-    # end
+  	if resource.is_a?(User)
+  		new_user_session_path
+  	else
+  		new_admin_session_path
+  	end
+	# case resource
+	# when User
+	# new_user_session_path
+	# when Admin
+	# 	new_admin_session_path
+	# end
+
   end
+
+
 
   private
   def current_deluser
