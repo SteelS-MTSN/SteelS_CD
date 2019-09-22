@@ -1,5 +1,6 @@
 class AdminsUsersController < ApplicationController
-PER = 2
+	before_action :authenticate_admin!
+PER = 8
 	def index
         @users = User.page(params[:page]).reverse_order.per(PER)
 

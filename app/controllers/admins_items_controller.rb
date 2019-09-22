@@ -1,4 +1,5 @@
 class AdminsItemsController < ApplicationController
+	before_action :authenticate_admin!
 	autocomplete :artist, :name, :full => true
 
 	def index
