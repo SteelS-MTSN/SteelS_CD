@@ -17,6 +17,7 @@
 					<th class="list-title">在庫数</th>
 					<th class="list-title"></th>
 					<th class="list-title"></th>
+					<th class="list-title"></th>
 				</tr>
 				<% if @items.any? %>
 				<% @items.each do |f| %>
@@ -34,8 +35,10 @@
 							<%= link_to "商品詳細編集", edit_admins_item_path(f) %>
 						</th>
 						<th class="order-list">
-							
-							<%= link_to "入荷情報追加", new_admins_stock_path(f.id) %>
+							<%= link_to "入荷情報追加", edit_admins_stock_path(f) %>
+						</th>
+						<th class="order-list">
+							<%= link_to "収録曲", admins_song_path(f) %>
 						</th>
 					</tr>
 				<% end %>

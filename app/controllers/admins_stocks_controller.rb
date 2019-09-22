@@ -14,6 +14,11 @@ class AdminsStocksController < ApplicationController
 		redirect_to admins_stocks_path
 	end
 
+	def edit
+		@stock = Stock.new
+		session[:item] = params[:id]
+	end
+
 	private
 	def stock_params
 		params.require(:stock).permit(:stock_date, :stock_count, :trader, :trade_price, :item_id)
