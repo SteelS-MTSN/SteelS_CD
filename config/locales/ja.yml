@@ -1,0 +1,9 @@
+ja:
+  enums:
+    order_option:
+      payment:
+        cash: 代引き手数料（250円）
+        bank: 振込
+      delivery_status:
+        prepare: 発送準備中
+        finish: 発送済

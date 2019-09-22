@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-
+  has_many :carts
+  has_many :items, through: :carts
   # def status_enable
   # 	user.where(is_quit: false)
   # end
@@ -27,8 +28,9 @@ class User < ApplicationRecord
 	#   active.where(:is_quit => warden_conditions[:is_quit]).first
 	# end
 
-    has_many :order_option
-    has_many :review
+    has_many :order_options
+    has_many :reviews
     has_many :addresses
+
 
 end

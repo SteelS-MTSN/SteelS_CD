@@ -1,3 +1,64 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.table {
+	border-collapse: collapse;
+  	border: solid 2px #ddd;
+}
+
+.table>thead {
+	border-bottom: 2px solid #ddd;
+}
+
+.table > thead > tr > th{
+	text-align: center;
+}
+
+
+.contents {
+	padding: 20px;
+}
+
+
+.address-content {
+	float: left;
+	width: 200px; height: 250px;
+	border: 2px solid #C0C0C0;
+	padding: 10px;
+	margin: 10px;
+}
+
+.section {
+	border: 1px solid #C0C0C0;
+	padding: 0 5px;
+}
+
+.section-name {
+	width: 150px;
+	border: 1px solid #C0C0C0;
+	padding: 0 5px;
+}
+
+.link-button {
+	float: left;
+	margin: 20px;
+}
+
+.payment-title {
+	clear: both;
+}
+
+.payment {
+	clear: both;
+	border: 2px solid #C0C0C0;
+	width: 200px; height: 80px;
+	padding: 10px;
+	margin: 10px;
+
+}
+
+.button {
+	text-align: center;
+}
