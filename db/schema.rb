@@ -70,10 +70,10 @@ ActiveRecord::Schema.define(version: 2019_09_15_055104) do
 
   create_table "items", force: :cascade do |t|
     t.string "item_name", null: false
-    t.integer "artist_id", null: false
+    t.integer "artist_id"
     t.integer "price", null: false
-    t.integer "genre_id", null: false
-    t.integer "label_id", null: false
+    t.integer "genre_id"
+    t.integer "label_id"
     t.integer "items_status", default: 0, null: false
     t.boolean "is_deleted", default: false, null: false
     t.string "item_image_id"
