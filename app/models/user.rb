@@ -28,5 +28,6 @@ class User < ApplicationRecord
 	# end
 
     has_many :order_option
+    has_many :addresses
 
 end
