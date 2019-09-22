@@ -1,0 +1,19 @@
+<h1>宛先編集</h1>
+
+<%= form_for @address do |f| %>
+
+	<h4>姓</h4>
+	<%= f.text_field :sub_family_name %>
+	<h4>名</h4>
+	<%= f.text_field :sub_first_name %>
+	<h4>セイ</h4>
+	<%= f.text_field :sub_family_kana %>
+	<h4>メイ</h4>
+	<%= f.text_field :sub_first_kana %>
+	<h4>郵便番号</h4>
+	<%= f.text_field :sub_post_code %>
+	<h4>住所</h4>
+	<%= f.text_field :sub_address %>
+	<%= f.submit '編集' %>
+
+<% end %>

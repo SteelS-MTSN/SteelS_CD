@@ -1,0 +1,35 @@
+<h1>宛先一覧</h1>
+
+<%= link_to "新しい住所を追加", new_address_path %>
+
+<div class="container bg-info">
+	<section class="main_address">
+		<h3>宛先</h3>
+		<p>姓 : <%= @user.family_name %></p>
+		<p>名 : <%= @user.first_name %></p>
+		<p>セイ : <%= @user.family_kana %></p>
+		<p>メイ : <%= @user.first_kana %></p>
+		<p>郵便番号 : <%= @user.post_code %></p>
+		<p>住所 : <%= @user.address %></p>
+
+		<%= link_to "編集", edit_user_path(current_user) %>
+	</section>
+</div>
+
+<div class="container bg-info">
+	<% @user.addresses.each do |address| %>
+		<section class="sub_address">
+			<h3>宛先</h3>
+			<p>姓 : <%= address.sub_family_name %></p>
+			<p>名 : <%= address.sub_first_name %></p>
+			<p>セイ : <%= address.sub_family_kana %></p>
+			<p>メイ : <%= address.sub_first_kana %></p>
+			<p>郵便番号 : <%= address.sub_post_code %></p>
+			<p>住所 : <%= address.sub_address %></p>
+
+			<%= link_to "編集", edit_address_path(address) %>
+			<%= link_to "削除", address_path(address) , method: :delete  %>
+		</section>
+	<% end %>
+</div>
+<%= link_to "My Page", user_path(current_user) %>
