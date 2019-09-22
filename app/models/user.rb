@@ -28,5 +28,5 @@ class User < ApplicationRecord
 	# end
 
     has_many :order_option
-
+    has_many :favorites, dependent: :destroy
 end
