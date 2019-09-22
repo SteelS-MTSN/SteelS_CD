@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2019_09_15_055104) do
     t.integer "label_id"
     t.integer "items_status", default: 0, null: false
     t.boolean "is_deleted", default: false, null: false
-    t.string "item_image_id"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_items_on_artist_id"

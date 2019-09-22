@@ -1,4 +1,5 @@
 class AdminsItemsController < ApplicationController
+	before_action :authenticate_admin!
 	autocomplete :artist, :name, :full => true
 
 	def index
@@ -37,6 +38,6 @@ class AdminsItemsController < ApplicationController
 
 	private
   	def item_params
-    	params.require(:item).permit(:artist_id, :item_name, :label_id, :genre_id, :price)
+    	params.require(:item).permit(:artist_id, :item_name, :label_id, :genre_id, :price, :jacket)
   	end
 end

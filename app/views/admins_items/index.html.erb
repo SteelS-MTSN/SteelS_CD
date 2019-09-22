@@ -2,6 +2,8 @@
 
 <%= link_to "戻る", admins_path(current_user) %>
 
+<%= link_to "新規商品追加", new_admins_item_path %>
+
 <%= search_form_for(@q, url: {controller: "admins_items", action: "index"}) do |f| %>
 <div class="form-group">
 	<%= f.label :item_name, "Name" %>

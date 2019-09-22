@@ -1,4 +1,5 @@
 class AdminsStocksController < ApplicationController
+	before_action :authenticate_admin!
 	def index
 		@stocks = Stock.all
 	end
@@ -11,7 +12,7 @@ class AdminsStocksController < ApplicationController
 		@stock = Stock.new(stock_params)
 		@stock.item_id = session[:item]
 		@stock.save!
-		redirect_to admins_stocks_path
+		redirect_to admins_items_path
 	end
 
 	def edit
