@@ -1,13 +1,17 @@
 class AdminsArtistsController < ApplicationController
+	before_action :authenticate_admin!
     PER = 8
 	def index
 		@artist = Artist.new
+		@search = Artist.ransack(params[:q])
+		@results = @search.result
+		@artists = @results.page(params[:page]).per(PER)
 
-		@artists = Artist.page(params[:page]).per(PER)
     end
 	def create
 		@artist = Artist.new(artist_params)
 		@artist.save
+
 
 		redirect_to admins_artists_path
 		
@@ -25,7 +29,14 @@ class AdminsArtistsController < ApplicationController
 		redirect_to admins_artists_path
 		
 	end
-# aaaaaaa
+	def destroy
+		@artist = Artist.find(params[:id])
+		@artist.destroy
+
+		redirect_to admins_artists_path
+		
+	end
+
 	private
 	def artist_params
 	    params.require(:artist).permit(:artist_name)
