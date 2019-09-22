@@ -1,0 +1,43 @@
+<h1>商品一覧</h1>
+
+<%= link_to "戻る", admins_path(current_user) %>
+
+<%= search_form_for(@q, url: {controller: "admins_items", action: "index"}) do |f| %>
+<div class="form-group">
+	<%= f.label :item_name, "Name" %>
+	<%= f.search_field :item_name_cont, class: "form-control" %>
+</div>
+<div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
+<table class="table table-striped">
+				<tr>
+					<th class="list-title">商品番号</th>
+					<th class="list-title">商品名</th>
+					<th class="list-title">在庫数</th>
+					<th class="list-title"></th>
+					<th class="list-title"></th>
+				</tr>
+				<% if @items.any? %>
+				<% @items.each do |f| %>
+					<tr>
+						<th class="order-list">
+							<%= f.id %>
+						</th>
+						<th class="order-list">
+							<%= f.item_name %>
+						</th>
+						<th class="order-list">
+							<%= f.stock.sum(:stock_count) - f.order.sum(:buy_quantity) %>
+						</th>
+						<th class="order-list">
+							<%= link_to "商品詳細編集", edit_admins_item_path(f) %>
+						</th>
+						<th class="order-list">
+							
+							<%= link_to "入荷情報追加", new_admins_stock_path(f.id) %>
+						</th>
+					</tr>
+				<% end %>
+				<% end %>
+			</table>
