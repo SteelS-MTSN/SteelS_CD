@@ -1,6 +1,12 @@
 <div class="container">
 	<div class="row">
 
+<% if flash[:destroy] %>
+	<div class = "shortage-item">
+		<%= flash[:destroy] %>
+	</div>
+<% end %>
+
 <table class = "table table_bordered">
 	<thead>
 		<tr>
@@ -14,7 +20,7 @@
 
 							<td><%= cart.item.item_name %></td>
 							<td>画像</td>
-				    		<td><%= f.number_field "quantity", min:1,  max:cart.item.count %></td>
+				    		<td><%= f.number_field "quantity", min:1,  max:cart.item.stock_count %></td>
 				    		<td><%= f.submit "数量変更" %></td>
 					<% end %>
 				</tr>

@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-
+	before_action :check_stock, only:[:index]
 	def create
 		@cart = Cart.new(carts_params)
 		current_items = Cart.where(user_id: current_user.id)
@@ -31,7 +31,6 @@ class CartsController < ApplicationController
 	def index
 		@user = current_user
 		@carts = @user.carts
-		# @item = Item.find(params[:id])
 	end
 
 	def update
@@ -68,6 +67,15 @@ class CartsController < ApplicationController
 
 		def order_option_params
 		params.require(:order_option).permit(:payment, :to_address)
+		end
+		def check_stock
+
+			current_user.carts.each do |cart|
+				if cart.item.stock_count <= 0
+					flash[:destroy] = "在庫がなくなった商品は削除されました。"
+					cart.destroy
+				end
+			end
 		end
 	end
 

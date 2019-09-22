@@ -51,7 +51,7 @@
 	<div class = "contents">
 		<h5>送付先</h5>
 		<div class = "address-content">
-			<%=f.radio_button :to_address, "current_address" %>この住所に送信する<br><br>
+			<%=f.radio_button :to_address, "current_address", :checked => true %>この住所に送信する<br><br>
 					郵便番号<br>
 					<div class="section">
 					<%= @user.post_code %><br>
@@ -92,16 +92,10 @@
 			</div>
 		<% end %>
 
-		<div class ="link-button">
-		<%= link_to ("/addresses/new") do %>
-		<span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="font-size: 200px"></span>
-		<% end %>
-	    </div>
-
 		<h5 class = "payment-title">支払い方法</h5>
 		<div class = "payment">
 
-			<%= f.radio_button :payment ,0 %>代引き(手数料250円)<br>
+			<%= f.radio_button :payment ,0 , :checked => true %>代引き(手数料250円)<br>
 			<br>
 			<%= f.radio_button :payment ,1 %>振込
 	    </div>

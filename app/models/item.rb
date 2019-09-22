@@ -9,14 +9,14 @@ def self.ransackable_associations(*)
 	%w[artists]
 end
 
-def count
+def stock_count
 	sum_stock_count = 0
 	sum_order_count = 0
 
 	stocks.each { |stock| sum_stock_count += stock.stock_count }
 	orders.each { |order| sum_order_count += order.buy_quantity }
 
-	sum_stock_count - sum_order_count
+	return sum_stock_count - sum_order_count
 end
 
 

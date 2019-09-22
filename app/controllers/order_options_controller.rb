@@ -15,8 +15,12 @@ class OrderOptionsController < ApplicationController
 			order.buy_quantity = cart.quantity
 			order.order_option_id = @order_option.id
 			order.save
+			cart.destroy
 		end
-		redirect_to items_path
+		redirect_to order_option_path(@order_option.id)
+	end
+
+	def show
 	end
 
 
