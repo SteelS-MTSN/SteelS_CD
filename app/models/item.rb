@@ -21,6 +21,7 @@ end
 
 
 
+
 	has_many :reviews
 	has_many :songs
 	has_many :favorites

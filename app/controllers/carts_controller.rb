@@ -31,6 +31,7 @@ class CartsController < ApplicationController
 	def index
 		@user = current_user
 		@carts = @user.carts
+		# @item = Item.find(params[:id])
 	end
 
 	def update

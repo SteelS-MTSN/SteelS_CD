@@ -1,12 +1,13 @@
 <div class="container">
 	<div class="row">
 
-<table class = "table table_bordered">
+<table class = "table table_bordered" >
 	<thead>
     	<tr>
-    		<th>購入予定商品</th>
+    		<th colspan="4">購入予定商品</th>
     	</tr>
     </thead>
+    <tbody>
     	<% @carts.each do |cart| %>
 
     		<tr>
@@ -39,6 +40,7 @@
 				<% end %>
 				<td><%= sum2 %>円(税込）</td>
 			</tr>
+	</tbody>
 </table>
 
 
@@ -47,33 +49,56 @@
 
 <%= form_for @order_option, url: carts_confirm_path, method: :post do |f| %>
 	<div class = "contents">
-		<h3>送付先</h3>
+		<h5>送付先</h5>
 		<div class = "address-content">
-			<%=f.radio_button :to_address, "current_address" %>この住所に送信する<br>
+			<%=f.radio_button :to_address, "current_address" %>この住所に送信する<br><br>
 					郵便番号<br>
+					<div class="section">
 					<%= @user.post_code %><br>
+				    </div>
+				    住所<br>
+				    <div class="section">
 					<%= @user.address %><br>
+				    </div>
 					名前<br>
+					<div class="section">
 					<%= @user.family_name + @user.first_name %>様<br>
+				    </div>
 					ナマエ<br>
+					<div class="section">
 					<%= @user.family_kana + @user.first_kana %>様<br>
+					</div>
 		</div>
 
 		<% @addresses.each do |address| %>
 			<div class = "address-content">
-				<%=f.radio_button :to_address, address.id %>この住所に送信する<br>
+				<%=f.radio_button :to_address, address.id %>この住所に送信する<br><br>
 				郵便番号<br>
+				<div class="section">
 				<%= address.sub_post_code %><br>
+				</div>
 				住所<br>
+				<div class="section">
 				<%= address.sub_address %><br>
+				</div>
 				名前<br>
+				<div class="section">
 				<%= address.sub_family_name + address.sub_first_name %>様<br>
+			    </div>
                 ナマエ<br>
+                <div class="section">
 				<%= address.sub_family_kana + address.sub_first_kana %>様<br>
+			    </div>
 			</div>
 		<% end %>
 
-		<h3 class = "payment-title">支払い方法</h3>
+		<div class ="link-button">
+		<%= link_to ("/addresses/new") do %>
+		<span class="glyphicon glyphicon-plus-sign" aria-hidden="true" style="font-size: 200px"></span>
+		<% end %>
+	    </div>
+
+		<h5 class = "payment-title">支払い方法</h5>
 		<div class = "payment">
 
 			<%= f.radio_button :payment ,0 %>代引き(手数料250円)<br>
@@ -83,8 +108,8 @@
 	</div>
 
 	<div class = 'button'>
-		<%= f.submit '購入確認画面へ' %>
-		<%= f.submit '戻る' %>
+		<%= f.submit '購入確認画面へ', class:"btn btn-primary" %>
+		<%= link_to '戻る', carts_path, class:"btn btn-danger" %>
 	</div>
 
 <% end %>

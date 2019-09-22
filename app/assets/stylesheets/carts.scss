@@ -4,7 +4,8 @@
 
 
 .table {
-	width: 800px;
+	border-collapse: collapse;
+  	border: solid 2px #ddd;
 }
 
 .table>thead {
@@ -23,10 +24,26 @@
 
 .address-content {
 	float: left;
-	width: 200px; height: 200px;
-	border: 1px solid #C0C0C0;
+	width: 200px; height: 250px;
+	border: 2px solid #C0C0C0;
 	padding: 10px;
 	margin: 10px;
+}
+
+.section {
+	border: 1px solid #C0C0C0;
+	padding: 0 5px;
+}
+
+.section-name {
+	width: 150px;
+	border: 1px solid #C0C0C0;
+	padding: 0 5px;
+}
+
+.link-button {
+	float: left;
+	margin: 20px;
 }
 
 .payment-title {
@@ -35,7 +52,7 @@
 
 .payment {
 	clear: both;
-	border: 1px solid #C0C0C0;
+	border: 2px solid #C0C0C0;
 	width: 200px; height: 80px;
 	padding: 10px;
 	margin: 10px;
