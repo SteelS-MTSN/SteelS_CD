@@ -2,6 +2,8 @@
 
 <%= link_to "戻る", admins_path(current_user) %>
 
+<%= link_to "新規商品追加", new_admins_item_path %>
+
 <%= search_form_for(@q, url: {controller: "admins_items", action: "index"}) do |f| %>
 <div class="form-group">
 	<%= f.label :item_name, "Name" %>
@@ -15,6 +17,7 @@
 					<th class="list-title">商品番号</th>
 					<th class="list-title">商品名</th>
 					<th class="list-title">在庫数</th>
+					<th class="list-title"></th>
 					<th class="list-title"></th>
 					<th class="list-title"></th>
 				</tr>
@@ -34,8 +37,10 @@
 							<%= link_to "商品詳細編集", edit_admins_item_path(f) %>
 						</th>
 						<th class="order-list">
-							
-							<%= link_to "入荷情報追加", new_admins_stock_path(f.id) %>
+							<%= link_to "入荷情報追加", edit_admins_stock_path(f) %>
+						</th>
+						<th class="order-list">
+							<%= link_to "収録曲", admins_song_path(f) %>
 						</th>
 					</tr>
 				<% end %>

@@ -1,0 +1,30 @@
+<h1>曲一覧</h1>
+
+<%= link_to "戻る", admins_items_path %>
+
+<table class="table table-striped">
+	<tr>
+		<th class="list-title">曲名</th>
+		<th class="list-title">ディスクナンバー</th>
+		<th class="list-title">トラックナンバー</th>
+		<th class="list-title"></th>
+	</tr>
+	<% @songs.each do |f| %>
+	<tr>
+		<th class="order-list">
+			<%= f.song_name %>
+		</th>
+		<th class="order-list">
+			<%= f.disc_number %>
+		</th>
+		<th class="order-list">
+			<%= f.track_number %>
+		</th>
+		<th class="order-list">
+			<%= link_to "削除", admins_song_path(f), method: :DELETE %>
+		</th>
+	</tr>
+	<% end %>
+</table>
+
+<%= link_to "曲追加", new_admins_song_path %>
