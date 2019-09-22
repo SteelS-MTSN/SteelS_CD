@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 	Per = 6
 	def index
+		
 		# 検索
 		if params[:keyword].present?
 			keyword =params[:keyword]
@@ -15,12 +16,15 @@ class ItemsController < ApplicationController
 
 		else
 	 		@items = Item.all
-	 		@items = Item.page(3).per(10)
-	 		ids = Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id)
+	 		@items = Item.page(3).per(9)
+	 		# ids = Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id)
 	 		# binding.pry
-	 		# @all_ranks = Item.find(ids)
 	 		@allitems = Item.limit(5).order('id DESC')
-
+	 		# @all_ranks = Item.find(ids)
+	 		# binding.pry
+	 		@item_favorites_count = Item.joins(:favorites).group(:id).count
+	 		@item_favorites_ids = Hash[@item_favorites_count.sort_by{|_, v| -v }].keys
+	 		@items = Item.where(id: @item_favorites_ids).page(params[:page]).per(9)
 	 	end
 	 	# #違うテーブルで検索
 	 	# @items = @search.result(distinct: true).includes(:artist).joins(:artist).page(params[:page]).per(6)

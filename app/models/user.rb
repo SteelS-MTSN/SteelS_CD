@@ -28,6 +28,9 @@ class User < ApplicationRecord
 	#   active.where(:is_quit => warden_conditions[:is_quit]).first
 	# end
 
+
+    
+    has_many :favorites, dependent: :destroy
     has_many :order_options
     has_many :reviews
     has_many :addresses

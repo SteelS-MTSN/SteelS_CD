@@ -43,74 +43,79 @@
 		<!-- <div class="Profileclearfix"> -->
 			<div class="Profile">
 				<%= attachment_image_tag @aaa ,:profile_image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px" %><br>
-				<%= item.item_name %>
 				<table class ="Profile4">
-					RANKING
-					<th>ランキング</th>
 					<tr>
-					<th>曲名</th>
+					<th></th>
+					<td><%= item.item_name %></td>
 					</tr>
 					<tr>
-					<th>いいね</th>
+					<th>
+									<!-- いいね機能 -->
+						<li><% if item.favorited_by?(current_user) %>
+						<%= link_to favorite_path(id: item), method: :delete do %>
+						<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+						<%= item.favorites.count %> いいね
+						<% end %>
+						<li>
+							<% else%>
+							<li>
+    					<%= link_to favorites_path(id: item), method: :post do %>
+      					<i class="fa fa-heart-o" aria-hidden="true"></i>
+      					<%= item.favorites.count %> いいね
+    				<% end %>
+  					</li>
+						<% end %>		<!--いいね機能終わり  -->
+					</th>
 					</tr>
 					<tr>
-					<th>アーティスト名</th>
-					<td><%= item.artist.name %> </td>
+					<th></th>
+					<td><%= item.artist.artist_name %> </td>
+
 					</tr>
 					<tr>
-					<th>💰1200</th>
+					<th><%= item.price %></th>
 					</tr>
 					<tr>
-					<th>在庫</th>
+					<th><%= item.items_status %></th>
 					</tr>
 				</table>
 			</div>
 		<% end %>
+		<div class ="Profile5"><%= paginate @items %></div>
 		</div>
 
 		</div> <!-- col-sm- 4 -->
 						<!-- ランキング -->
 		<div class="col-sm-2">
+				RANKING
+
+			<% @allitems.each do |item| %>
+
 				<table class ="table-red">
 					<tr>
-						<th>RANKING</th>
 					</tr>
 					<tr>
-						<th>ランキング</th>
+
 					</tr>
+				</table>
+					<table class ="">
 					<tr>
-					<th><%= attachment_image_tag @aaa ,:profile_image,  fallback: "71LcxZ6tyNL._SX355_.jpg", :width => "150px",:height =>"150px" %></th><br>
+						<th>アーティスト名</th>
 					</tr>
-					<tr>
-						<th>アーティスト名1</th>
-					</tr>
+				    </table>
+				<table class ="">
+					<%= item.artist.artist_name %>
+				</table>
+				<table class = "">
 					<tr>
 						<th>曲名	</th>
 					</tr>
-					<tr>
-						<th><%= attachment_image_tag @aaa ,:profile_image,  fallback: "download.jpg", :width => "150px",:height =>"150px" %></th><br></th>
-					</tr>
-					<tr>
-						<th>アーティスト名２</th>
-					</tr>
-					<tr>
-						<th>曲名2</th>
-					</tr>
-					<tr>
-						<th><%= attachment_image_tag @aaa ,:profile_image,  fallback: "download.jpg", :width => "150px",:height =>"150px" %></th><br></th>
-					</tr>
-					<tr>
-						<th>アーティスト名3</th>
-					</tr>
-					<tr>
-						<th>曲名３</th>
-					</tr>
 				</table>
-		<p></p>
-			ランキング
-			<% @allitems.each do |item| %>
-			<%= item.item_name %>
-			<%= item.artist.name %>
+				<table class = "">
+					<%= item.item_name %>
+				</table>
+				<p></p>
+
 			<% end %>
 		</div>	<!-- col-sm-4 -->
 		</div> <!-- row -->
