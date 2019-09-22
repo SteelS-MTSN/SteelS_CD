@@ -22,13 +22,6 @@ Label.create(:label_name => '日本レコード')
 Label.create(:label_name => 'JapanSongs')
 Label.create(:label_name => 'EUleco')
 
-40.times do |i|
- Item.create!(:item_name => "testcd #{i}" ,:artist_id => 1, :genre_id => 1, :label_id => 1, :price => 1000, :items_status => 1, :is_deleted => 0)
-end
-Item.create(:item_name => 'TESTCD', :artist_id => 1, :genre_id => 1, :label_id => 1, :price => 1000, :items_status => 1, :is_deleted => 0)
-Item.create(:item_name => 'TESTCD2', :artist_id => 2, :genre_id => 2, :label_id => 2, :price => 1000, :items_status => 1, :is_deleted => 0)
-Item.create(:item_name => 'TESTCD3', :artist_id => 3, :genre_id => 3, :label_id => 3, :price => 2000, :items_status => 1, :is_deleted => 0)
-
 
 Cart.create(:item_id => 1, :user_id => 1, :quantity => 2)
 Cart.create(:item_id => 2, :user_id => 2, :quantity => 3)
@@ -40,6 +33,10 @@ Address.create(:user_id => 1, :sub_family_name => '鈴木', :sub_first_name => '
 Address.create(:user_id => 1, :sub_family_name => '山田', :sub_first_name => '花子', :sub_family_kana => 'ヤマダ', :sub_first_kana => 'ハナコ', :sub_post_code => "1234567", :sub_address => '東京都渋谷区')
 
 
+Item.create(:item_name => 'TESTCD', :artist_id => 1, :genre_id => 1, :label_id => 1, :price => 1000, :items_status => 1, :is_deleted => false)
+Item.create(:item_name => 'TESTCD2', :artist_id => 2, :genre_id => 2, :label_id => 2, :price => 1000, :items_status => 1, :is_deleted => false)
+Item.create(:item_name => 'TESTCD3', :artist_id => 3, :genre_id => 3, :label_id => 3, :price => 2000, :items_status => 1, :is_deleted => false)
+
 OrderOption.create(:user_id => 1, :payment => 1, :delivery_status => 1, :purchase_date => Time.current, :postage => 500, :total_price => 4000, :to_post_code => '111-2222', :to_address => '東京都渋谷区', :to_name => '山田太郎', :to_kana => 'ヤマダタロウ')
 Order.create(:item_id => 1, :order_option_id => 1, :past_price => 1000, :buy_quantity => 1)
 Order.create(:item_id => 2, :order_option_id => 1, :past_price => 1000, :buy_quantity => 1)
@@ -48,3 +45,6 @@ Stock.create(:item_id => 1, :stock_date => Date.current, :stock_count => 5, :tra
 Stock.create(:item_id => 2, :stock_date => Date.current, :stock_count => 5, :trader => '西山商事', :trade_price => 500)
 Stock.create(:item_id => 3, :stock_date => Date.current, :stock_count => 5, :trader => '西山商事', :trade_price => 1000)
 
+40.times do |i|
+ Item.create!(:item_name => "testcd #{i}" ,:artist_id => 1, :genre_id => 1, :label_id => 1, :price => 1000, :items_status => 1, :is_deleted => false)
+end

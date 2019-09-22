@@ -2,7 +2,8 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-lg-6">
+		<div class="4"></div>
+		<div class="col-lg-4">
 			<section class="artist_post">
 				<%= form_for(@artist,url: {controler: "admins_artists", action: "create" })  do |f| %>
 
@@ -14,7 +15,7 @@
 				<% end %>
 			</section>
 		</div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
 			<section class="artist_seach">
 			<%= search_form_for @search, url: admins_artists_path do |f| %>
 			 <div class="form-group">

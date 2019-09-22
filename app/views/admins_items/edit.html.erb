@@ -1,6 +1,6 @@
-<h1>新規商品情報入力</h1>
+<h1>商品情報編集</h1>
 
-<%= form_for(@item, url: {controller: "admins_items", action: "create"}) do |f| %>
+<%= form_for(@item, url: {controller: "admins_items", action: "update"}) do |f| %>
 	<div class="form-group">
 		<%= f.label "商品名" %>
 		<br>
@@ -32,6 +32,6 @@
 		<%= f.attachment_field :image %>
 	</div>
 	<div class="form-group">
-		<%= f.submit "次へ" %>
+		<%= f.submit "確定" %>
 	</div>
 <% end %>

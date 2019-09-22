@@ -1,0 +1,12 @@
+<h1>コメント編集</h1>
+
+<%= form_for(@review, url: {controller: "reviews", action: "update"}) do |f| %>
+	<div class="form-group">
+		<%= f.label "コメント" %>
+		<br>
+		<%= f.text_field :review_text %>
+	</div>
+	<div class="form-group">
+		<%= f.submit "完了" %>
+	</div>
+<% end %>

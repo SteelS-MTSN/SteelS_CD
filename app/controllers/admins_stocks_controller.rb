@@ -12,7 +12,12 @@ class AdminsStocksController < ApplicationController
 		@stock = Stock.new(stock_params)
 		@stock.item_id = session[:item]
 		@stock.save!
-		redirect_to admins_stocks_path
+		redirect_to admins_items_path
+	end
+
+	def edit
+		@stock = Stock.new
+		session[:item] = params[:id]
 	end
 
 	private
