@@ -1,0 +1,114 @@
+<div class="container">
+	<div class="row">
+
+<table class = "table table_bordered table">
+
+	<thead>
+    	<tr>
+    		<th colspan="4">購入予定商品</th>
+    	</tr>
+
+    </thead>
+
+    	<% @carts.each do |cart| %>
+
+    		<tr>
+				<td><%= cart.item.item_name %></td>
+				<td>画像</td>
+	    		<td><%= cart.quantity %>点</td>
+	    		<td><%= cart.item.price.to_i * cart.quantity.to_i %>円（税込）</td>
+	    		<td></td>
+			</tr>
+		<% end %>
+
+			<tr>
+				<td></td>
+				<td></td>
+				<td>合計品数</td>
+				<% sum1 =  0 %>
+				<% @carts.each do |cart| %>
+		    		<% sum1 += cart.quantity.to_i %>
+				<% end %>
+				<td><%= sum1 %>点</td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td></td>
+				<td>小計（税込）</td>
+				<% sum2 =  0 %>
+				<% @carts.each do |cart| %>
+		    		<% sum2 += cart.item.price.to_i * cart.quantity.to_i  %>
+				<% end %>
+				<td><%= sum2 %>円(税込）</td>
+			</tr>
+
+
+</table>
+
+
+<%= form_for @order_option, url: order_options_path, method: :post do |f| %>
+	<div class = "contents">
+		<h5>送付先</h5>
+		<div class = "address-content">
+			<% if @to_address == "current_address" %>
+				<%= f.hidden_field :to_post_code, :value => @user.post_code %>
+				　　	郵便番号<br>
+				<div class="section">
+					<%= @user.post_code %><br>
+				</div>
+				<%= f.hidden_field :to_address, :value => @user.address %>
+					住所<br>
+				<div class="section">
+					<%= @user.address %><br>
+				</div>
+				<%= f.hidden_field :to_name, :value => @user.family_name + @user.first_name %>
+					名前<br>
+				<div class="section">
+					<%= @user.family_name + @user.first_name %>様<br>
+				</div>
+				<%= f.hidden_field :to_kana, :value => @user.family_kana + @user.first_kana %>
+					ナマエ<br>
+				<div class="section">
+					<%= @user.family_kana + @user.first_kana %>様
+				</div>
+
+			<% else %>
+				<%= f.hidden_field :to_post_code, :value => @address.sub_post_code %>
+					郵便番号<br>
+				<div class="section">
+					<%= @address.sub_post_code %><br>
+				</div>
+				<%= f.hidden_field :to_address, :value => @address.sub_address %>
+					住所<br>
+				<div class="section">
+					<%= @address.sub_address %><br>
+				</div>
+				<%= f.hidden_field :to_name, :value => @address.sub_family_name + @address.sub_first_name %>
+					名前<br>
+				<div class="section">
+					<%= @address.sub_family_name + @address.sub_first_name %>様<br>
+				</div>
+				<%= f.hidden_field :to_kana, :value => @address.sub_family_kana + @address.sub_first_kana %>
+					ナマエ<br>
+				<div class="section">
+					<%= @address.sub_family_kana + @address.sub_first_kana %>様
+				</div>
+			<% end %>
+		</div>
+
+		<h5 class = "payment-title">支払い方法</h5>
+		<div class = "payment">
+			<%= f.hidden_field :payment, :value => @payment %>
+			<%= @payment %>
+		</div>
+
+    	<div class = "button">
+			<%= f.submit '購入確定',class:"btn btn-primary" %>
+			<%= link_to '戻る', carts_chose_path, class:"btn btn-danger" %>
+    	</div>
+    </div>
+<% end %>
+
+</div>
+</div>

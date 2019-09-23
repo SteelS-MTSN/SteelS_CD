@@ -31,7 +31,7 @@
 							<%= f.item_name %>
 						</th>
 						<th class="order-list">
-							<%= f.stock.sum(:stock_count) - f.order.sum(:buy_quantity) %>
+							<%= f.stocks.sum(:stock_count) - f.orders.sum(:buy_quantity) %>
 						</th>
 						<th class="order-list">
 							<%= link_to "商品詳細編集", edit_admins_item_path(f) %>

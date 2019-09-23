@@ -1,3 +1,43 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.top-wrapper {
+	background-image: image-url("top.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 80%;
+}
+
+.title {
+	text-align: center;
+	color: white;
+	font-size: 150px;
+	font-family: 'Permanent Marker', cursive;
+}
+
+.image {
+	width: 200px;
+	height: 280px;
+	margin: 20px 20px 40px 150px;
+	border: 2px solid white;
+}
+
+.message-title {
+	font-family: 'Homemade Apple', cursive;
+
+}
+
+.message {
+	width: 600px;
+	color: white;
+	margin: 20px 150px 20px 20px;
+	float: right;
+}
+
+.message-end {
+	font-family: 'Homemade Apple', cursive;
+	text-align: right;
+}
+

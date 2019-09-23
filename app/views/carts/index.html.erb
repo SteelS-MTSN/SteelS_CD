@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row">
+
+<% if flash[:destroy] %>
+	<div class = "shortage-item">
+		<%= flash[:destroy] %>
+	</div>
+<% end %>
+
+<table class = "table table_bordered">
+	<thead>
+		<tr>
+			<th colspan="4">カート内商品</th>
+		</tr>
+    </thead>
+
+	    <% @carts.each do |cart| %>
+				<tr>
+		   			 <%= form_for(cart, url: cart_path(cart.id), method: :patch ) do |f| %>
+
+							<td><%= cart.item.item_name %></td>
+							<td>画像</td>
+				    		<td><%= f.number_field "quantity", min:1,  max:cart.item.stock_count %></td>
+				    		<td><%= f.submit "数量変更" %></td>
+					<% end %>
+				</tr>
+
+		<% end %>
+	</table>
+
+
+</table>
+
+<div class="button">
+<%= link_to "購入", carts_chose_path, class:"btn btn-primary" %>
+<%= link_to "戻る", items_path, class:"btn btn-danger" %>
+</div>
+
+</div>
+</div>

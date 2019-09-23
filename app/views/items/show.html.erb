@@ -1,7 +1,11 @@
 <%= attachment_image_tag @item, :image, :fill, 100, 100 %>
 
 <h1><%= @item.item_name %></h1>
-<p><%= @item.price %>円(税込み)</p>
+<h2><%= @item.price %>円(税込み)</h2>
+
+<%= link_to carts_path(@item.id), method: :POST do %>
+	<button type="button" class="btn btn-success">カートの追加</button>
+<% end %>
 
 <table class="table table-striped">
 <tr>
@@ -43,7 +47,7 @@
 <% end %>
 </table>
 
-<% session[:item] = @item.id %>
+<% session[:review] = @item.id %>
 <%= link_to "レビューを書く", new_review_path %>
 <br>
 <table class="table table-striped">
