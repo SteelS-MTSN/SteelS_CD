@@ -13,6 +13,8 @@ User.create(:family_name => '山田', :first_name => '太郎', :family_kana => '
 Genre.create(:genre_name => 'ロック')
 Genre.create(:genre_name => '演歌')
 
+Admin.create(:email => 'aaa@aaa', :password => 'aaaaaa')
+
 Genre.create(:genre_name => 'POPs')
 Artist.create(:name => '歌歌子')
 Artist.create(:name => '歌うま子')

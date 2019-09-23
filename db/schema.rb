@@ -42,13 +42,13 @@ ActiveRecord::Schema.define(version: 2019_09_19_121218) do
   end
 
   create_table "artists", force: :cascade do |t|
-    t.string "artist_name", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "carts", force: :cascade do |t|
-    t.string "quantity", null: false
+    t.string "quantity", default: "1", null: false
     t.integer "user_id", null: false
     t.integer "item_id", null: false
     t.datetime "created_at", null: false
@@ -70,12 +70,13 @@ ActiveRecord::Schema.define(version: 2019_09_19_121218) do
 
   create_table "items", force: :cascade do |t|
     t.string "item_name", null: false
-    t.integer "artist_id", null: false
+    t.integer "artist_id"
     t.integer "price", null: false
-    t.integer "genre_id", null: false
-    t.integer "label_id", null: false
-    t.integer "items_status", null: false
-    t.boolean "is_deleted", null: false
+    t.integer "genre_id"
+    t.integer "label_id"
+    t.integer "items_status", default: 0, null: false
+    t.boolean "is_deleted", default: false, null: false
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_items_on_artist_id"
@@ -91,13 +92,14 @@ ActiveRecord::Schema.define(version: 2019_09_19_121218) do
   create_table "order_options", force: :cascade do |t|
     t.integer "payment", null: false
     t.integer "delivery_status", default: 0, null: false
-    t.integer "postage", null: false
+    t.integer "postage", default: 500, null: false
     t.integer "total_price", null: false
     t.string "to_post_code", null: false
     t.string "to_address", null: false
     t.string "to_name", null: false
     t.string "to_kana", null: false
     t.integer "user_id", null: false
+    t.datetime "purchase_date", default: "2019-09-23 03:55:53", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -105,7 +107,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_121218) do
   create_table "orders", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "past_price", null: false
-    t.datetime "purchase_date", null: false
+    t.integer "buy_quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order_option_id"
