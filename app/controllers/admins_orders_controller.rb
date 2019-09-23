@@ -1,7 +1,10 @@
 class AdminsOrdersController < ApplicationController
 	before_action :authenticate_admin!
+	PER = 10
+
 	def index
-		@order_options = OrderOption.all
+		@order_options = OrderOption.page(params[:page]).per(PER)
+		@order_options = @order_options.order('id DESC')
 	end
 
 	def show
@@ -18,7 +21,9 @@ class AdminsOrdersController < ApplicationController
 
 	def userorder
 		@user = User.find(params[:id])
-		@order_options = @user.order_option
+		@order_options = @user.order_options
+		@order_options = @user.order_options.page(params[:page]).per(PER)
+		@order_options = @order_options.order('id DESC')
 	end
 
 	private

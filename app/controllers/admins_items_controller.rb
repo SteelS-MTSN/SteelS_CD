@@ -1,10 +1,15 @@
 class AdminsItemsController < ApplicationController
 	before_action :authenticate_admin!
 	autocomplete :artist, :name, :full => true
+	PER = 10
+	Item.order('id DESC')
 
 	def index
 		@q = Item.ransack(params[:q])
 		@items = @q.result(distinct: true)
+		@items = @q.result.page(params[:page]).per(PER)
+		@items = @items.order('id DESC')
+
 	end
 
 	def edit
