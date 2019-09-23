@@ -27,6 +27,10 @@ class ItemsController < ApplicationController
 	 	# # 検索結果
 	    # @items = @search.result
 	end
+
 	def show
+		@item = Item.find(params[:id])
+		@songs = Song.where(item_id: @item.id)
+		@reviews = Review.where(item_id: @item.id)
 	end
 end

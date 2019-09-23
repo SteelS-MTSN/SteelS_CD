@@ -20,4 +20,9 @@ class ReviewsController < ApplicationController
 		@review.update!(review_params)
 		redirect_to item_path(@review.item_id)
 	end
+
+	private
+  	def review_params
+    	params.require(:review).permit(:review_text, :user_id, :item_id)
+  	end
 end

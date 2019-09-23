@@ -1,1 +1,70 @@
-show.html.erb
+<%= attachment_image_tag @item, :image, :fill, 100, 100 %>
+
+<h1><%= @item.item_name %></h1>
+<p><%= @item.price %>円(税込み)</p>
+
+<table class="table table-striped">
+<tr>
+	<th>基本情報</th>
+	<th></th>
+</tr>
+<tr>
+	<th>アーティスト</th>
+	<th><%= @item.artist.name %></th>
+</tr>
+<tr>
+	<th>ジャンル</th>
+	<th><%= @item.genre.genre_name %></th>
+</tr>
+<tr>
+	<th>レーベル</th>
+	<th><%= @item.label.label_name %></th>
+</tr>
+</table>
+
+<table class="table table-striped">
+<% @songs.each do |f| %>
+	<tr>
+		<th>曲名</th>
+		<th class="order-list">
+			<%= f.song_name %>
+		</th>
+	</tr>
+	<tr>
+		<th>ディスクナンバー</th>
+		<th class="order-list">
+			<%= f.disc_number %>
+		</th>
+		<th>トラックナンバー</th>
+		<th class="order-list">
+			<%= f.track_number %>
+		</th>
+	</tr>
+<% end %>
+</table>
+
+<% session[:item] = @item.id %>
+<%= link_to "レビューを書く", new_review_path %>
+<br>
+<table class="table table-striped">
+	<tr>レビュー</tr>
+	<% @reviews.each do |f| %>
+	<tr>
+		<th><%= f.user_id %></th>
+		<th><%= f.review_text %></th>
+		<% if f.user_id == current_user.id %>
+			<th class="list-edit">
+				<%= link_to edit_review_path(f.id) do %>
+					<button type="button" class="btn btn-success">編集</button>
+				<% end %>
+			</th>
+			<th class="list-destroy">
+				<%= link_to review_path(f), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+					<button type="button" class="btn btn-danger">削除</button>
+				<% end %>
+			</th>
+		<% end %>
+	</tr>
+	<% end %>
+</table>
+

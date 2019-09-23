@@ -55,7 +55,7 @@
 					</tr>
 					<tr>
 					<th>アーティスト名</th>
-					<td><%= item.artist.artist_name %> </td>
+					<td><%= item.artist.name %> </td>
 					</tr>
 					<tr>
 					<th>💰1200</th>
@@ -110,7 +110,7 @@
 			ランキング
 			<% @allitems.each do |item| %>
 			<%= item.item_name %>
-			<%= item.artist.artist_name %>
+			<%= item.artist.name %>
 			<% end %>
 		</div>	<!-- col-sm-4 -->
 		</div> <!-- row -->
