@@ -6,20 +6,20 @@ class AdminsSongsController < ApplicationController
 
 	def show
 		@songs = Song.where(item_id: params[:id])
-		session[:item] = params[:id]
+		session[:song] = params[:id]
 	end
 
 	def create
 		@song = Song.new(song_params)
-		@song.item_id = session[:item]
+		@song.item_id = session[:song]
 		@song.save!
-		redirect_to admins_song_path(session[:item])
+		redirect_to admins_song_path(session[:song])
 	end
 
 	def destroy
 		@song = Song.find(params[:id])
 		@song.destroy
-		redirect_to admins_song_path(session[:item])
+		redirect_to admins_song_path(session[:song])
 	end
 
 	private

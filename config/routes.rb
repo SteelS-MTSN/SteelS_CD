@@ -29,7 +29,7 @@ resources :admins_items do
 end
 
 
-  resources :items,:favorites, :admins_artists, :users, :orders, :addresses, :reviews, :admins, :admins_orders, :admins_stocks, :admins_genres, :admins_labels, :admins_users
+  resources :items,:favorites, :admins_artists, :users, :orders, :addresses, :reviews, :admins, :admins_orders, :admins_stocks, :admins_genres, :admins_labels, :admins_users, :admins_songs
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

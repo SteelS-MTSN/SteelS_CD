@@ -12,6 +12,7 @@ class AdminsStocksController < ApplicationController
 		@stock = Stock.new(stock_params)
 		@stock.item_id = session[:item]
 		@stock.save!
+		session[:item] = nil
 		redirect_to admins_items_path
 	end
 

@@ -9,6 +9,8 @@ class AdminsItemsController < ApplicationController
 
 	def edit
 		@item = Item.find(params[:id])
+		@artist = Artist.find(@item.artist_id)
+		@item.artist_id = @artist.name
 	end
 
 	def update
@@ -19,6 +21,7 @@ class AdminsItemsController < ApplicationController
 		@item.genre_id = item_params[:genre_id]
 		@item.item_name = item_params[:item_name]
 		@item.price = item_params[:price]
+		@item.image = item_params[:image]
 		@item.save!
 		redirect_to admins_items_path
 	end

@@ -9,11 +9,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+Admin.create(:email => 'First@gmail.com', :password => 'testpass' )
 User.create(:family_name => '山田', :first_name => '太郎', :family_kana => 'ヤマダ', :first_kana => 'タロウ', :post_code => '111-2222', :address => '東京都渋谷区', :phone => '000-0000', :email => 'test@gmail.com', :password => 'testtest')
 Genre.create(:genre_name => 'ロック')
 Genre.create(:genre_name => '演歌')
 
 Admin.create(:email => 'aaa@aaa', :password => 'aaaaaa')
+
+
 
 Genre.create(:genre_name => 'POPs')
 Artist.create(:name => '歌歌子')
