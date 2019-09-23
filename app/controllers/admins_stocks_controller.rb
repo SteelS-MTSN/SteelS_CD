@@ -1,7 +1,10 @@
 class AdminsStocksController < ApplicationController
 	before_action :authenticate_admin!
+	PER = 10
+
 	def index
-		@stocks = Stock.all
+		@stocks = Stock.page(params[:page]).per(PER)
+		@stocks = @stocks.order('id DESC')
 	end
 
 	def new

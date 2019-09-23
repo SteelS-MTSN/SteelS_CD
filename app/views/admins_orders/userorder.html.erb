@@ -33,4 +33,5 @@
 						<th class="order-list"><%= link_to "詳細", admins_order_path(f) %></th>
 					</tr>
 				<% end %>
+				<%= paginate @order_options %>
 			</table>
