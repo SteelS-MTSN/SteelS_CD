@@ -1,3 +1,6 @@
+<div class="container">
+	
+	<div class="row">
 
 		<%= search_form_for @search, url: items_path do |f| %>
 			<div class="form-group">
@@ -8,12 +11,9 @@
 			<% end %>
 
 
-
-
-
 <div class="container">
+	<div class="row">
 		<div class="col-md-offset-1 col-md-8">
-			<table>
 				<% @item.each do |item| %>
 				 
 					<tr>
@@ -48,26 +48,20 @@
 			 </table>
 		</div>
 		<div class="col-md-2">
-			<% @item_side.each do |item| %>
-					<tr>
-						<th>
-						    <%= attachment_image_tag item, :image,  fallback: "no_image.jpg", :width => "30px",:height =>"30px" %>
-				       </th>
-				    </tr>
-					<tr>
-						<th>
-							<%= item.item_name %>
-						</th>
-					</tr>
-					<tr>
-						<th>
-							<%= item.artist.name %>
-						</th>
-					</tr>
+			<h3>ランキング</h3>
+			<% @item_side.each_with_index do |item, i| %>
+					<div class="col-md-12">
+						<p><%= "#{i+1}" %>位</p>
+					    <%= attachment_image_tag item, :image,  fallback: "no_image.jpg", :width => "75px",:height =>"75px" %><br>
+						<%= item.item_name %><br>
+						<%= item.artist.name %><br>
+						<br>
+					</div>
 			<% end %>
 
 		</div>
-		<div class="<col-1-lg>"></div>
+		<div class="col-lg-1"></div>
+	</div>
 	
 </div>
 
