@@ -10,7 +10,7 @@
 <table class = "table table_bordered">
 	<thead>
 		<tr>
-			<th colspan="4">カート内商品</th>
+			<th colspan="5">カート内商品</th>
 		</tr>
     </thead>
 
@@ -19,9 +19,10 @@
 		   			 <%= form_for(cart, url: cart_path(cart.id), method: :patch ) do |f| %>
 
 							<td><%= cart.item.item_name %></td>
-							<td>画像</td>
+							<td><%= attachment_image_tag cart.item,:image,  fallback: "Unknown.png", size: "40x40" %></td>
 				    		<td><%= f.number_field "quantity", min:1,  max:cart.item.stock_count %></td>
-				    		<td><%= f.submit "数量変更" %></td>
+				    		<td><%= f.submit "数量変更", class: 'btn btn-default' %></td>
+				    		<td><%= link_to "削除", cart_path(cart.id), method: :delete, class: "btn btn-primary" %></td>
 					<% end %>
 				</tr>
 

@@ -16,7 +16,7 @@ get 'admins_users/:id/userorder' => 'admins_orders#userorder'
   get "/carts/chose" => "carts#buy_chose"
   post "/carts/confirm" => "carts#buy_confirm"
 
-  resources :carts, only: [:create, :index, :update]
+  resources :carts, only: [:create, :index, :update, :destroy]
   resources :order_options, only: [:create, :show]
 
 

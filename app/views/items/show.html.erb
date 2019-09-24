@@ -1,52 +1,61 @@
-<%= attachment_image_tag @item, :image, :fill, 100, 100 %>
 
-<h1><%= @item.item_name %></h1>
-<h2><%= @item.price %>円(税込み)</h2>
+<div class="first-container">
 
-<%= link_to carts_path(@item.id), method: :POST do %>
-	<button type="button" class="btn btn-success">カートの追加</button>
-<% end %>
 
-<table class="table table-striped">
-<tr>
-	<th>基本情報</th>
-	<th></th>
-</tr>
-<tr>
-	<th>アーティスト</th>
-	<th><%= @item.artist.name %></th>
-</tr>
-<tr>
-	<th>ジャンル</th>
-	<th><%= @item.genre.genre_name %></th>
-</tr>
-<tr>
-	<th>レーベル</th>
-	<th><%= @item.label.label_name %></th>
-</tr>
-</table>
+	<div class="first-container-item">
+		<%= attachment_image_tag @item, :image, :fill, 350, 350 %>
+	</div>
 
-<table class="table table-striped">
-<% @songs.each do |f| %>
-	<tr>
-		<th>曲名</th>
-		<th class="order-list">
-			<%= f.song_name %>
-		</th>
-	</tr>
-	<tr>
-		<th>ディスクナンバー</th>
-		<th class="order-list">
-			<%= f.disc_number %>
-		</th>
-		<th>トラックナンバー</th>
-		<th class="order-list">
-			<%= f.track_number %>
-		</th>
-	</tr>
-<% end %>
-</table>
+	<div class="first-container-item">
+		<h1><%= @item.item_name %></h1>
+		<h2><%= @item.price %>円(税込み)</h2><br>
 
+
+		<%= form_with model: Cart.new, local: true do |f| %>
+			<%= f.hidden_field :item_id, :value => @item.id %>
+		<%= f.submit "カートの追加", class: "btn btn-success" %>
+		<% end %>
+    </div>
+
+</div>
+
+<div class="info-container">
+
+<div class="info-container-item">
+		<table border="1" rules="groups">
+		<caption align="top">商品情報</caption>
+
+			<tr>
+				<td>アーティスト</td>
+				<td><%= @item.artist.name %></td>
+				<td>ジャンル</td>
+				<td><%= @item.genre.genre_name %></td>
+				<td>レーベル</td>
+				<td><%= @item.label.label_name %></td>
+			</tr>
+			</table>
+</div>
+</div>
+
+					<% @songs.each do |f| %>
+				<%=  "no." + f.disc_number + f.song_name  %>
+
+			<% end %>
+
+
+</div>
+
+	<table>
+
+	<div class="song-information">
+		<div class ="song-information-title">曲名</div><br>
+			<% @songs.each do |f| %>
+				<%=  "no." + f.disc_number + f.song_name  %>
+			<% end %>
+	</div>
+
+
+<div class="review-content">
 <% session[:review] = @item.id %>
 <%= link_to "レビューを書く", new_review_path %>
 <br>
@@ -71,4 +80,6 @@
 	</tr>
 	<% end %>
 </table>
+
+</div>
 

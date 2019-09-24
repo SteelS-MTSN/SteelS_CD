@@ -41,7 +41,7 @@
 	<tr>
 		<th class="list-title">配達ステータス</th>
 		<%= form_for(@order_option, url: {controller: "admins_orders", action: "update"}) do |f| %>
-		<th><%= f.select :delivery_status, [['発送準備中', '発送準備中'], ['発送済み', '発送済み']] %></th>
+		<th><%= f.select :delivery_status, {"準備中": "prepare", "発送済み": "finish"} %></th>
 		<%= f.submit "更新" %>
 		<% end %>
 	</tr>

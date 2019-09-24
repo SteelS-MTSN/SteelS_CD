@@ -4,7 +4,7 @@
 <table class = "table table_bordered" >
 	<thead>
     	<tr>
-    		<th colspan="4">購入予定商品</th>
+    		<th colspan="5">購入予定商品</th>
     	</tr>
     </thead>
     <tbody>
@@ -28,6 +28,7 @@
 		    		<% sum1 += cart.quantity.to_i %>
 				<% end %>
 				<td><%= sum1 %>点</td>
+				<td></td>
 			</tr>
 
 			<tr>
@@ -39,6 +40,7 @@
 		    		<% sum2 += cart.item.price.to_i * cart.quantity.to_i  %>
 				<% end %>
 				<td><%= sum2 %>円(税込）</td>
+				<td></td>
 			</tr>
 	</tbody>
 </table>
