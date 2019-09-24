@@ -9,10 +9,13 @@
 
 
 
+
+
 <div class="container">
 		<div class="col-md-offset-1 col-md-8">
 			<table>
 				<% @item.each do |item| %>
+				 
 					<tr>
 						<th>
 
@@ -42,7 +45,7 @@
 
 				<% end %>
 			    <%= paginate @item %>
-			</table>
+			 </table>
 		</div>
 		<div class="col-md-2">
 			<% @item_side.each do |item| %>

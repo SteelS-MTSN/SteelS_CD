@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_121218) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.string "quantity", default: "1", null: false
+    t.integer "quantity", default: 1, null: false
     t.integer "user_id", null: false
     t.integer "item_id", null: false
     t.datetime "created_at", null: false
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_121218) do
     t.string "to_name", null: false
     t.string "to_kana", null: false
     t.integer "user_id", null: false
-    t.datetime "purchase_date", default: "2019-09-23 03:55:53", null: false
+    t.datetime "purchase_date", default: "2019-09-24 06:08:34", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
