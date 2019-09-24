@@ -1,27 +1,41 @@
-<h1>商品一覧</h1>
+<div class="container">
+	<div class="col-md-2">
+		<%= render 'admins/side' %>
+	</div>
+	<div class="col-md-8">
+		<h1>商品一覧</h1>
+		<div class="container">
+			<div class="col-md-4">
+				<section class="artist_post">
+					<br>
+					<br>
+					<%= link_to "新規商品追加", new_admins_item_path %>
+				</section>
+			</div>
+			<div class="col-md-4">
+				<section class="artist_post">
+					<%= search_form_for(@q, url: {controller: "admins_items", action: "index"}) do |f| %>
+						<div class="form-group">
+							<%= f.label :item_name, "商品名" %>
+							<%= f.search_field :item_name_cont, class: "form-control" %>
+						</div>
+						<div class="actions"><%= f.submit "Search" %></div>
+					<% end %>
+				</section>
+			</div>
+		</div>
+		<%= paginate @items %>
 
-<%= link_to "戻る", admins_path(current_user) %>
-
-<%= link_to "新規商品追加", new_admins_item_path %>
-
-<%= search_form_for(@q, url: {controller: "admins_items", action: "index"}) do |f| %>
-<div class="form-group">
-	<%= f.label :item_name, "Name" %>
-	<%= f.search_field :item_name_cont, class: "form-control" %>
-</div>
-<div class="actions"><%= f.submit "Search" %></div>
-<% end %>
-
-<table class="table table-striped">
-				<tr>
-					<th class="list-title">商品番号</th>
-					<th class="list-title">商品名</th>
-					<th class="list-title">在庫数</th>
-					<th class="list-title"></th>
-					<th class="list-title"></th>
-					<th class="list-title"></th>
-				</tr>
-				<% if @items.any? %>
+		<table class="table table-striped">
+			<tr>
+				<th class="list-title">商品番号</th>
+				<th class="list-title">商品名</th>
+				<th class="list-title">在庫数</th>
+				<th class="list-title"></th>
+				<th class="list-title"></th>
+				<th class="list-title"></th>
+			</tr>
+			<% if @items.any? %>
 				<% @items.each do |f| %>
 					<tr>
 						<th class="order-list">
@@ -44,6 +58,8 @@
 						</th>
 					</tr>
 				<% end %>
-				<% end %>
-				<%= paginate @items %>
-			</table>
+			<% end %>
+		</table>
+		<%= link_to "戻る", admins_path %>
+	</div>
+</div>

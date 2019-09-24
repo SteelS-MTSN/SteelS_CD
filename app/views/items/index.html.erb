@@ -1,6 +1,9 @@
+
+<%= render 'admins/header' %>
 <div class="container">
 	
 	<div class="row">
+
 
 		<%= search_form_for @search, url: items_path do |f| %>
 			<div class="form-group">
@@ -60,10 +63,13 @@
 			<% end %>
 
 		</div>
+
 		<div class="col-lg-1"></div>
 	</div>
 	
 </div>
+
+<%= render 'admins/fotter' %>
 
 
 
