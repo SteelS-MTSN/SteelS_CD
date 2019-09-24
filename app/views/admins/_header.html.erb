@@ -1,0 +1,47 @@
+<nav class="navbar navbar-inverse">
+			<div class="navbar-header">
+				<ul class="nav navbar-nav">
+					<li>
+						<%= link_to  items_path do %>
+							<h4>SteelS CD</h4>
+						<% end %>
+					</li>
+				</ul>
+			</div>
+			<div class="navbar-right">
+				<div class="collapse navbar-collapse" id="nav-menu">
+					<ul class="nav navbar-nav navbar-right">
+						<% if user_signed_in? %>
+							<li>
+								<%= link_to "マイページ", user_path(current_user) %>
+							</li>
+							<li>
+								<%= link_to  items_path do %>
+								<p> 商品一覧</p>
+								<% end %>
+							</li>
+							<li>
+								<%= link_to  carts_path do %>
+								<p> カートに移動</p>
+								<% end %>
+							</li>
+							<li>
+								<%= link_to  destroy_user_session_path, method: :delete do %>
+								<p> ログアウト</p>
+								<% end %>
+							</li>
+						<% else %>
+							<li>
+								<a href="/items"><span></span> 商品一覧</a>
+							</li>
+							<li>
+								<a href="/users/sign_up"><span></span> 新規登録</a>
+							</li>
+							<li>
+								<a href="/users/sign_in"><span></span> ログイン</a>
+							</li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+</nav>

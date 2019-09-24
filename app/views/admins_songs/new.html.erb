@@ -1,22 +1,29 @@
-<h1>新規曲追加</h1>
+<div class="container">
+	<div class="col-md-2">
+		<%= render 'admins/side' %>
+	</div>
+	<div class="col-md-8">
+		<h1>新規曲追加</h1>
 
-<%= form_for(@song, url: {controller: "admins_songs", action: "create"}) do |f| %>
-	<div class="form-group">
-		<%= f.label "曲名" %>
-		<br>
-		<%= f.text_field :song_name %>
+		<%= form_for(@song, url: {controller: "admins_songs", action: "create"}) do |f| %>
+			<div class="form-group">
+				<%= f.label "曲名" %>
+				<br>
+				<%= f.text_field :song_name %>
+			</div>
+			<div class="form-group">
+				<%= f.label "ディスクナンバー" %>
+				<br>
+				<%= f.number_field :disc_number %>
+			</div>
+			<div class="form-group">
+				<%= f.label "トラックナンバー" %>
+				<br>
+				<%= f.number_field :track_number %>
+			</div>
+			<div class="form-group">
+				<%= f.submit "完了" %>
+			</div>
+		<% end %>
 	</div>
-	<div class="form-group">
-		<%= f.label "ディスクナンバー" %>
-		<br>
-		<%= f.number_field :disc_number %>
-	</div>
-	<div class="form-group">
-		<%= f.label "トラックナンバー" %>
-		<br>
-		<%= f.number_field :track_number %>
-	</div>
-	<div class="form-group">
-		<%= f.submit "完了" %>
-	</div>
-<% end %>
+</div>

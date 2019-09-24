@@ -1,19 +1,33 @@
-<h1>アーティスト一覧</h1>
-
 <div class="container">
-	<div class="row">
-		<div class="4"></div>
-		<div class="col-lg-4">
-			<section class="artist_post">
-				<%= form_for(@artist,url: {controler: "admins_artists", action: "create" })  do |f| %>
+	<div class="col-md-2">
+		<%= render 'admins/side' %>
+	</div>
+	<div class="col-md-8">
+		<h1>アーティスト一覧</h1>
+		<div class="container">
+			<div class="col-lg-4">
+				<section class="artist_post">
+					<%= form_for(@artist,url: {controler: "admins_artists", action: "create" })  do |f| %>
+						<h4>アーティスト名</h4>
+						<%= f.text_field :name %>
 
-				<h4>アーティスト名</h4>
-				<%= f.text_field :name %>
+						<%= f.submit 'アーティストを追加' %>
 
-				<%= f.submit 'アーティストを追加' %>
+					<% end %>
+				</section>
+			</div>
 
-				<% end %>
-			</section>
+		    <div class="col-lg-4">
+				<section class="artist_seach">
+					<%= search_form_for @search, url: admins_artists_path do |f| %>
+						<div class="form-group">
+							<%= f.label :name, "アーティスト名" %>
+							<%= f.search_field :name_cont, class: "form-control" %>
+						</div>
+						<div class="actions"><%= f.submit "Search" %></div>
+					<% end %>
+				</section>
+			</div>
 		</div>
         <div class="col-lg-4">
 			<section class="artist_seach">
@@ -30,39 +44,41 @@
 </div>
 
 
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>
-				アーティスト名
-			</th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-	    <% @artists.each do |f| %>
-			<tr>
-				<td>
-					<%= f.name %>
-				</td>
-				<td>
-				    <%= link_to "編集", edit_admins_artist_path(f)  %>
-				</td>
-				<td>
-					<%= link_to "削除", admins_artist_path(f), method: :delete  %>
-				</td>
-			</tr>
-		<% end %>
-		<% if !@artists.any? %>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>
+						アーティスト名
+					</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			    <% @artists.each do |f| %>
+					<tr>
+						<td>
+							<%= f.name %>
+						</td>
+						<td>
+						    <%= link_to "編集", edit_admins_artist_path(f)  %>
+						</td>
+						<td>
+							<%= link_to "削除", admins_artist_path(f), method: :delete  %>
+						</td>
+					</tr>
+				<% end %>
+				<% if !@artists.any? %>
 
-		<p>見つかりませんでした。</p>
-
-
-		<% end %>
-	</tbody>
-</table>
-<%= paginate @artists %>
+				<p>見つかりませんでした。</p>
 
 
-<%= link_to 'TOP', admins_path %>
+				<% end %>
+			</tbody>
+		</table>
+		<%= paginate @artists %>
+
+
+		<%= link_to 'TOP', admins_path %>
+	</div>
+</div>
