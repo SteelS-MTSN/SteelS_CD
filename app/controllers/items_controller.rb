@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
         @search = Item.ransack(params[:q])
         @results = @search.result
         @item = @results.page(params[:page]).per(PER)
+        @item = @item.order('id DESC')
 		
 
 			# @all_ranks = Item.find(1).artist.artist_name
