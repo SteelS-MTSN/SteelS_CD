@@ -1,54 +1,61 @@
-<h1>入荷一覧</h1>
-
-<%= link_to "戻る", admins_path(current_user) %>
-<table class="table table-striped">
+<div class="container">
+	<div class="col-md-2">
+		<%= render 'admins/side' %>
+	</div>
+	<div class="col-md-8">
+		<h1>入荷一覧</h1>
+		<%= link_to "戻る", admins_path(current_user) %>
+		<table class="table table-striped">
+			<tr>
+			</tr>
+			<% @stocks.each do |f| %>
 				<tr>
-				</tr>
-				<% @stocks.each do |f| %>
-					<tr>
-						<th class="list-title">入荷日</th>
-						<th class="order-list">
+					<th class="list-title">入荷日</th>
+					<th class="order-list">
 							<%= f.stock_date %>
-						</th>
-					</tr>
-					<tr>
-						<th class="list-title">入荷番号</th>
-						<th class="order-list">
-							<%= f.id %>
-						</th>
-					</tr>
-					<tr>
-						<th class="order-list">
-							<%= f.item.item_name  %>
-						</th>
-					</tr>
-					<tr>
-						<th class="list-title">入荷元</th>
-						<th class="order-list">
-							<%= f.trader %>
-						</th>
-					</tr>
-					<tr>
-						<th class="list-title">原価</th>
-						<th class="order-list">
-							<%= f.trade_price %>
-						</th>
-					</tr>
-					<tr>
-						<th class="list-title">個数</th>
-						<th class="order-list">
-							<%= f.stock_count %>
-						</th>
-					</tr>
-					<tr>
-						<th class="list-title">計</th>
-						<th class="order-list">
-							<p><%= f.trade_price * f.stock_count %>円</p>
-						</th>
-					</tr>
-				<% end %>
-				<%= paginate @stocks %>
-			</table>
+					</th>
+					<th class="list-title">入荷番号</th>
+					<th class="order-list">
+						<%= f.id %>
+					</th>
+				</tr>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th class="order-list">
+						<%= f.item.item_name  %>
+					</th>
+				</tr>
+				<tr>
+					<th class="list-title">入荷元</th>
+					<th class="order-list">
+						<%= f.trader %>
+					</th>
+				</tr>
+				<tr>
+					<th class="list-title">原価</th>
+					<th class="order-list">
+						<%= f.trade_price %>
+					</th>
+				</tr>
+				<tr>
+					<th class="list-title">個数</th>
+					<th class="order-list">
+						<%= f.stock_count %>
+					</th>
+				</tr>
+				<tr>
+					<th class="list-title">計</th>
+					<th class="order-list">
+						<p><%= f.trade_price * f.stock_count %>円</p>
+					</th>
+				</tr>
+			<% end %>
+			<%= paginate @stocks %>
+		</table>
+	</div>
+</div>
 
 
 

@@ -28,8 +28,11 @@ resources :admins_items do
 	get :autocomplete_artist_name, :on => :collection
 end
 
+resources :items do
+  resource :favorites
+end
 
-  resources :items,:favorites, :admins_artists, :users, :orders, :addresses, :reviews, :admins, :admins_orders, :admins_stocks, :admins_genres, :admins_labels, :admins_users, :admins_songs
+  resources :admins_artists, :users, :orders, :addresses, :reviews, :admins, :admins_orders, :admins_stocks, :admins_genres, :admins_labels, :admins_users, :admins_songs
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
