@@ -1,30 +1,37 @@
-<h1>受注一覧</h1>
+<div class="container">
+	<div class="col-md-2">
+		<%= render 'admins/side' %>
+	</div>
+	<div class="col-md-8">
+		<h1>受注一覧</h1>
 
-<%= link_to "戻る", admins_path(current_user) %>
-<table class="table table-striped">
+		<table class="table table-striped">
+			<tr>
+				<th class="list-title">受注番号</th>
+				<th class="list-title">ユーザー名</th>
+				<th class="list-title">受注日</th>
+				<th class="list-title">配送状況</th>
+			</tr>
+			<% @order_options.each do |f| %>
 				<tr>
-					<th class="list-title">受注番号</th>
-					<th class="list-title">ユーザー名</th>
-					<th class="list-title">受注日</th>
-					<th class="list-title">配送状況</th>
+					<th class="order-list">
+						<%= link_to  admins_order_path(f) do %>
+							<%= f.id %>
+						<% end %>
+					</th>
+					<th class="order-list">
+						<%= f.user.family_name + f.user.first_name %>
+					</th>
+					<th class="order-list">
+						<%= f.created_at %>
+					</th>
+					<th class="order-list">
+						<%= f.delivery_status %>
+					</th>
 				</tr>
-				<% @order_options.each do |f| %>
-					<tr>
-						<th class="order-list">
-							<%= link_to  admins_order_path(f) do %>
-								<%= f.id %>
-							<% end %>
-						</th>
-						<th class="order-list">
-							<%= f.user.family_name + f.user.first_name %>
-						</th>
-						<th class="order-list">
-							<%= f.created_at %>
-						</th>
-						<th class="order-list">
-							<%= f.delivery_status %>
-						</th>
-					</tr>
-				<% end %>
-				<%= paginate @order_options %>
-			</table>
+			<% end %>
+			<%= paginate @order_options %>
+		</table>
+		<%= link_to "戻る", admins_path(current_user) %>
+	</div>
+</div>
