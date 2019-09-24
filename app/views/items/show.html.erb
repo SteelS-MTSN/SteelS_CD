@@ -1,104 +1,110 @@
+<head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+</head>
+
+<div class="container">
+<div class="row">
 
 
-<div class="first-container">
+		    <div class="col-6">
+			<div class="first-container-item">
+				<%= attachment_image_tag @item, :image, :fill, 300, 300 %>
+			</div>
+			</div>
 
-<h1><%= @item.item_name %></h1>
-<% if @item.favorited_by?(current_user) %>
-  <li>
-    <%= link_to "/items/#{@item.id}/favorites", method: :delete do %>
-      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-      <%= @item.favorites.count %> いいね
-    <% end %>
-  </li>
-<% else %>
-  <li>
-    <%= link_to "/items/#{@item.id}/favorites", method: :post do %>
-      <i class="fa fa-heart-o" aria-hidden="true"></i>
-      <%= @item.favorites.count %> いいね
-    <% end %>
-  </li>
-<% end %>
-<h2><%= @item.price %>円(税込み)</h2>
+		    <div class="col-6">
+			<div class="first-container-item">
+				<h1><%= @item.item_name %></h1>
+				<h3 class="name-box"><%= @item.artist.name %></h3>
 
-
-	<div class="first-container-item">
-		<%= attachment_image_tag @item, :image, :fill, 350, 350 %>
-	</div>
-
-	<div class="first-container-item">
-		<h1><%= @item.item_name %></h1>
-		<h2><%= @item.price %>円(税込み)</h2><br>
+				<% if @item.favorited_by?(current_user) %>
+				  <!-- <li> -->
+				    <%= link_to "/items/#{@item.id}/favorites", method: :delete do %>
+				      <i class="fa fa-heart" aria-hidden="true" style="color: black;"></i>
+				      <%= @item.favorites.count %>いいね
+				    <% end %>
+				  <!-- </li> -->
+				<% else %>
+				  <!-- <li> -->
+				    <%= link_to "/items/#{@item.id}/favorites", method: :post do %>
+				      <i class="fas fa-heart" aria-hidden="true"></i>
+				      <%= @item.favorites.count %>いいね
+				    <% end %>
+				  <!-- </li> -->
+				<% end %>
 
 
-		<%= form_with model: Cart.new, local: true do |f| %>
-			<%= f.hidden_field :item_id, :value => @item.id %>
-		<%= f.submit "カートの追加", class: "btn btn-success" %>
-		<% end %>
-    </div>
+				<h3>価格：<%= @item.price %>円(税込み)</h3>
+				<h3>配送料：全国一律500円</h3>
 
-</div>
 
-<div class="info-container">
+				<%= form_with model: Cart.new, local: true do |f| %>
+					<%= f.hidden_field :item_id, :value => @item.id %>
+				<%= f.submit "カートの追加", class: "btn-black btn-block" %>
+				<% end %>
+		    </div>
+		    </div>
 
-<div class="info-container-item">
-		<table border="1" rules="groups">
-		<caption align="top">商品情報</caption>
 
-			<tr>
-				<td>アーティスト</td>
-				<td><%= @item.artist.name %></td>
-				<td>ジャンル</td>
-				<td><%= @item.genre.genre_name %></td>
-				<td>レーベル</td>
-				<td><%= @item.label.label_name %></td>
-			</tr>
+		    <div class="col-12">
+			<div class="info-container-item">
+					<table class="table">
+					<caption align="top">商品情報</caption>
+
+						<tr>
+							<td>アーティスト</td>
+							<td><%= @item.artist.name %></td>
+							<td>ジャンル</td>
+							<td><%= @item.genre.genre_name %></td>
+							<td>レーベル</td>
+							<td><%= @item.label.label_name %></td>
+						</tr>
+					</table>
+
+			</div>
+		    </div>
+
+			<p class="info-song-title">曲名一覧</p>
+			<div class="song-information">
+
+
+						<% @songs.each do |f| %>
+						<p style="display:inline;"><%= f.track_number %> .  <%= f.song_name %> ,   </p>
+						<% end %>
+			</div>
+
+
+			<% session[:review] = @item.id %>
+			<br><%= link_to "レビューを書く", new_review_path, class: "btn-black" %>
+			<br><br>
+
+
+			<table class="table">
+			<caption align="top">レビュー一覧</caption>
+
+				<% @reviews.each do |f| %>
+				<tr>
+					<td><%= f.user_id %></td>
+					<td><%= f.review_text %></td>
+					<% if f.user_id == current_user.id %>
+						<td class="list-edit">
+							<%= link_to edit_review_path(f.id) do %>
+								<button type="button" class="btn-black btn-xs">編集</button>
+							<% end %>
+						</td>
+						<td class="list-destroy">
+							<%= link_to review_path(f), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+								<button type="button" class="btn-white btn-xs">削除</button>
+							<% end %>
+						</td>
+					<% end %>
+				</tr>
+				<% end %>
 			</table>
-</div>
-</div>
-
-					<% @songs.each do |f| %>
-				<%=  "no." + f.disc_number + f.song_name  %>
-
-			<% end %>
 
 
 </div>
-
-	<table>
-
-	<div class="song-information">
-		<div class ="song-information-title">曲名</div><br>
-			<% @songs.each do |f| %>
-				<%=  "no." + f.disc_number + f.song_name  %>
-			<% end %>
-	</div>
-
-
-<div class="review-content">
-<% session[:review] = @item.id %>
-<%= link_to "レビューを書く", new_review_path %>
-<br>
-<table class="table table-striped">
-	<tr>レビュー</tr>
-	<% @reviews.each do |f| %>
-	<tr>
-		<th><%= f.user_id %></th>
-		<th><%= f.review_text %></th>
-		<% if f.user_id == current_user.id %>
-			<th class="list-edit">
-				<%= link_to edit_review_path(f.id) do %>
-					<button type="button" class="btn btn-success">編集</button>
-				<% end %>
-			</th>
-			<th class="list-destroy">
-				<%= link_to review_path(f), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-					<button type="button" class="btn btn-danger">削除</button>
-				<% end %>
-			</th>
-		<% end %>
-	</tr>
-	<% end %>
-</table>
-
 </div>
+
 

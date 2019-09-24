@@ -44,20 +44,49 @@
 	text-align:center;
 }
 
-.first-container {
-	text-align: center;
-}
-
 .first-container-item {
-	display:inline-block;
-	text-align: left;
+	float:left;
+	margin: 3%;
 }
 
-.info-container {
-	text-align: center;
+.name-box{
+	border-bottom: 2px solid black;
+	border-top: 2px solid black;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .info-container-item {
-	display:inline-block;
-	text-align: left;
+	clear: both;
+}
+
+.song-information {
+	border: 1px solid #CCCCCC;
+	padding: 3%;
+}
+
+.info-song-title {
+	color: #808080;
+}
+
+.btn-black {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: black;/*色*/
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.btn-white {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px black;
+  border-radius: 3px;
+  transition: .4s;
 }

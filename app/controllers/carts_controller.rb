@@ -1,5 +1,8 @@
 class CartsController < ApplicationController
-	before_action :check_stock, only:[:index]
+
+	before_action :authenticate_user!
+	before_action :check_stock, only:[:index, :update, :buy_chose, :buy_confirm]
+
 
 	def create
 		@cart = Cart.new(carts_params)
@@ -72,6 +75,7 @@ class CartsController < ApplicationController
 	end
 
 	private
+
 		def carts_params
 			params.require(:cart).permit(:item_id)
 		end
@@ -79,6 +83,7 @@ class CartsController < ApplicationController
 		def order_option_params
 		params.require(:order_option).permit(:payment, :to_address)
 		end
+
 		def check_stock
 
 			current_user.carts.each do |cart|
@@ -88,5 +93,6 @@ class CartsController < ApplicationController
 				end
 			end
 		end
+
 	end
 
