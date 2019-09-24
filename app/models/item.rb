@@ -35,8 +35,8 @@ end
   has_many :users, through: :carts
 	has_many :stocks
 	has_many :orders
-	def favorited_by?(user)
-   		favorites.where(user_id: user.id).exists?
-    end
+	 def favorited_by?(user)
+    		favorites.where(user_id: user.id).exists?
+     end
 
 end

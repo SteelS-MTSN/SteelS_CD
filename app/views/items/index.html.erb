@@ -1,122 +1,83 @@
-<h1>新製品広告</h1>
-	<h1>商品一覧</h1>
-	<%= form_tag(items_path,method: :get, class:"btn btn-info col-xs-10 col-xs-offset-1") do %>
-	<%= text_field_tag :keyword %>
-	<%= submit_tag :"検索" %>
-	<% end %>
-	<!-- 商品一覧 -->
 
 
-	<div class="container">
-		<!-- Login サイドバー -->
-		<div class="row">
-		<div class=" col-sm-2">
-			<% @user = User.new %>
-		<%= form_for(@user, url: user_session_path) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% #if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% #end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-  <% end %>
-			<!-- サイドバー終わり -->
-		</div>
-		<!-- サイドバー -->
-		<div class="col-sm-8">
-		<div class="">
-		<% @items.each do |item| %>
-		<!-- <div class="Profileclearfix"> -->
-			<div class="Profile">
-				<%= attachment_image_tag @aaa ,:profile_image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px" %><br>
-				<table class ="Profile4">
-					<tr>
-					<th></th>
-					<td><%= item.item_name %></td>
-					</tr>
-					<tr>
-					<th>
-									<!-- いいね機能 -->
-						<li><% if item.favorited_by?(current_user) %>
-						<%= link_to favorite_path(id: item), method: :delete do %>
-						<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-						<%= item.favorites.count %> いいね
-						<% end %>
-						<li>
-							<% else%>
-							<li>
-    					<%= link_to favorites_path(id: item), method: :post do %>
-      					<i class="fa fa-heart-o" aria-hidden="true"></i>
-      					<%= item.favorites.count %> いいね
-    				<% end %>
-  					</li>
-						<% end %>		<!--いいね機能終わり  -->
-					</th>
-					</tr>
-					<tr>
-					<th></th>
-					<td><%= item.artist.artist_name %> </td>
-
-					</tr>
-					<tr>
-					<th><%= item.price %></th>
-					</tr>
-					<tr>
-					<th><%= item.items_status %></th>
-					</tr>
-				</table>
+		<%= search_form_for @search, url: items_path do |f| %>
+			<div class="form-group">
+				<%= f.label :item_name, "ジャンル名" %>
+				<%= f.search_field :item_name_cont, class: "form-control" %>
 			</div>
-		<% end %>
-		<div class ="Profile5"><%= paginate @items %></div>
+			<div class="actions"><%= f.submit "Search" %></div>
+			<% end %>
+
+
+
+<div class="container">
+		<div class="col-md-offset-1 col-md-8">
+			<table>
+				<% @item.each do |item| %>
+					<tr>
+						<th>
+
+						<%= attachment_image_tag item, :image,  fallback: "no_image.jpg", :width => "50px",:height =>"50px" %>
+				       </th>
+				    </tr>
+					<tr>
+						<th>
+							<%= item.item_name %>
+						</th>
+					</tr>
+					<tr>
+						<th>
+							      いいね<%= item.favorites.count %> 
+						</th>
+					</tr>
+					<tr>
+						<th>
+							<%= item.artist.name %>
+						</th>
+					</tr>
+					<tr>
+						<th>
+							<p><%= item.price %>円</p>
+						</th>
+					</tr>
+
+				<% end %>
+			    <%= paginate @item %>
+			</table>
 		</div>
-
-		</div> <!-- col-sm- 4 -->
-						<!-- ランキング -->
-		<div class="col-sm-2">
-				RANKING
-
-			<% @allitems.each do |item| %>
-
-				<table class ="table-red">
+		<div class="col-md-2">
+			<% @item_side.each do |item| %>
 					<tr>
-					</tr>
+						<th>
+						    <%= attachment_image_tag item, :image,  fallback: "no_image.jpg", :width => "30px",:height =>"30px" %>
+				       </th>
+				    </tr>
 					<tr>
+						<th>
+							<%= item.item_name %>
+						</th>
+					</tr>
 
-					</tr>
-				</table>
-					<table class ="">
-					<tr>
-						<th>アーティスト名</th>
-					</tr>
 				    </table>
 				<table class ="">
 					<%= item.artist.name %>
 				</table>
 				<table class = "">
-					<tr>
-						<th>曲名	</th>
-					</tr>
-				</table>
-				<table class = "">
-					<%= item.item_name %>
-				</table>
-				<p></p>
 
+					<tr>
+						<th>
+							<%= item.artist.name %>
+						</th>
+					</tr>
 			<% end %>
-		</div>	<!-- col-sm-4 -->
-		</div> <!-- row -->
-	</div> <!-- container -->
+
+		</div>
+		<div class="<col-1-lg>"></div>
+	
+</div>
+
+
+
+
+
+
