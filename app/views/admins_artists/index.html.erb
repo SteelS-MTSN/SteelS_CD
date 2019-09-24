@@ -8,7 +8,7 @@
 				<%= form_for(@artist,url: {controler: "admins_artists", action: "create" })  do |f| %>
 
 				<h4>アーティスト名</h4>
-				<%= f.text_field :artist_name %>
+				<%= f.text_field :name %>
 
 				<%= f.submit 'アーティストを追加' %>
 
@@ -19,8 +19,8 @@
 			<section class="artist_seach">
 			<%= search_form_for @search, url: admins_artists_path do |f| %>
 			 <div class="form-group">
-			   <%= f.label :artist_name, "Name" %>
-			   <%= f.search_field :artist_name_cont, class: "form-control" %>
+			   <%= f.label :name, "Name" %>
+			   <%= f.search_field :name_cont, class: "form-control" %>
 			 </div>
 			 <div class="actions"><%= f.submit "Search" %></div>
 			<% end %>
@@ -44,7 +44,7 @@
 	    <% @artists.each do |f| %>
 			<tr>
 				<td>
-					<%= f.artist_name %>
+					<%= f.name %>
 				</td>
 				<td>
 				    <%= link_to "編集", edit_admins_artist_path(f)  %>
