@@ -1,6 +1,6 @@
 class AdminsStocksController < ApplicationController
 	before_action :authenticate_admin!
-	PER = 10
+	PER = 5
 
 	def index
 		@stocks = Stock.page(params[:page]).per(PER)

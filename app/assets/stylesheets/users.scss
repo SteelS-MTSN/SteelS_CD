@@ -1,3 +1,114 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html{
+	background-color: #e8e8e8;
+}
+
+.body-sign{
+	background-color: #e8e8e8;
+}
+
+.in_box{
+	border: solid white;
+	width: 400px;
+	height: 600px;
+	margin:  auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background-color: white;
+	box-shadow:0px 0px 10px;
+	border-radius:10px;
+}
+.in_box_text{
+	text-align: center;
+}
+
+.logo{
+	background-image: url(LOGO/logo2.png);
+	width: 160px;
+	height: 73px;
+	margin: auto;
+	margin-top: 50px;
+}
+
+
+.email-box{
+	margin-top: 40px;
+	color: #666666;
+}
+.email_field{
+	width: 250px;
+}
+.password-box{
+	margin-top: 40px;
+	color: #666666;
+}
+.pass_field{
+	width: 250px;
+}
+.remem-field{
+	margin-top: 40px;
+	color: #666666;
+}
+
+.btn-orig{
+	margin-top: 40px;
+	margin-bottom: 40px;
+	background: black;
+	color: white;
+	width: 200px;
+	border: solid black;
+	border-radius: 3px;
+}
+.link-up-field{
+	color: black;
+	margin-bottom: 30px;
+}
+.link-up-field-text{
+	color: #666666;
+}
+
+/*sign-up from here*/
+
+.up-box{
+	margin:auto;
+	padding-top: 50px;
+	margin-top: 50px;
+	padding-bottom: 50px;
+	width: 400px;
+	height: 600px;
+	background-color: white;
+    box-shadow:0px 0px 10px;
+	border-radius:10px;
+}
+.logo-up{
+	background-image: url(LOGO/logo2.png);
+	width: 160px;
+	height: 73px;
+	margin: auto;
+}
+
+.family_name_field{
+	display: inline-block;
+	text-align:center;
+	width: 50%;
+	color: #666666;
+}
+.first_name_field{
+	width: 50%;
+	float: right;
+	text-align:center;
+	color: #666666;
+}
+
+
+.family_kana_field{
+	display: inline-block;
+	width: 50%;
+	text-align: center;
+	color: #666666;
+}
+
+.first_kana

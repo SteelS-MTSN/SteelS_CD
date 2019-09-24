@@ -1,65 +1,66 @@
-<h1>ジャンル一覧</h1>
-
-
 <div class="container">
-	<div class="row">
-		<div class="col-lg-4"></div>
-		<div class="col-lg-4">
-			<%= form_for @genre, url: admins_genres_path, method: :post do |f| %>
-
-			<%= f.text_field :genre_name %>
-
-			<%= f.submit '決定'  %>
-
-			<% end %>
-	    </div>
-        <div class="col-lg-4">
-			<%= search_form_for @search, url: admins_genres_path do |f| %>
-			<div class="form-group">
-				<%= f.label :genre_name, "ジャンル名" %>
-				<%= f.search_field :genre_name_cont, class: "form-control" %>
+	<div class="col-md-2">
+		<%= render 'admins/side' %>
+	</div>
+	<div class="col-md-8">
+		<h1>ジャンル一覧</h1>
+		<div class="container">
+			<div class="col-lg-4">
+				<section class="artist_post">
+					<%= form_for @genre, url: admins_genres_path, method: :post do |f| %>
+						<h4>ジャンル名</h4>
+						<%= f.text_field :genre_name %>
+						<%= f.submit 'ジャンルを追加'  %>
+					<% end %>
+				</section>
 			</div>
-			<div class="actions"><%= f.submit "Search" %></div>
-			<% end %>
+			<div class="col-lg-4">
+				<section class="artist_post">
+					<%= search_form_for @search, url: admins_genres_path do |f| %>
+						<div class="form-group">
+							<%= f.label :genre_name, "ジャンル名" %>
+							<%= f.search_field :genre_name_cont, class: "form-control" %>
+						</div>
+						<div class="actions"><%= f.submit "Search" %></div>
+					<% end %>
+				</section>
+			</div>
 		</div>
+		<br>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ジャンル一覧</th>
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @genres.each do |f| %>
+					<tr>
+						<td>
+							<%= f.genre_name %>
+						</td>
+						<td>
+							<%= link_to '編集', edit_admins_genre_path(f)  %>
+						</td>
+						<td>
+							<%= link_to "削除", admins_genre_path(f), method: :delete  %>
+						</td>
+					</tr>
+				<% end %>
+
+				<% if !@genres.any? %>
+
+					<p>見つかりませんでした。</p>
+
+				<% end %>
+			</tbody>
+		</table>
+
+		<%= paginate @genres %>
+
+		<%= link_to 'TOP', admins_path %>
 	</div>
 </div>
-
-
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>ジャンル一覧</th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<% @genres.each do |f| %>
-			<td>
-				<%= f.genre_name %>
-			</td>
-			<td>
-				<%= link_to '編集', edit_admins_genre_path(f)  %>
-			</td>
-			<td>
-				<%= link_to "削除", admins_genre_path(f), method: :delete  %>
-			</td>
-		</tr>
-		<% end %>
-	　　　
-
-	　　<% if !@genres.any? %>
-
-		<p>見つかりませんでした。</p>
-
-
-		<% end %>
-	</tbody>
-</table>
-
-<%= paginate @genres %>
-
-
-<%= link_to 'TOP', admins_path %>
