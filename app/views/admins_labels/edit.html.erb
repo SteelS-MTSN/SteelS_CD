@@ -1,11 +1,18 @@
-<h1>レーベル編集</h1>
+<div class="container">
+	<div class="col-md-2">
+		<%= render 'admins/side' %>
+	</div>
+	<div class="col-md-8">
+		<h1>レーベル編集</h1>
+		<br>
 
+		<%= form_for(@label, url: admins_label_path) do |f|  %>
 
+		        <%= f.text_field :label_name %>
 
-
-<%= form_for(@label, url: admins_label_path) do |f|  %>
-
-        <%= f.text_field :label_name %>
-
-        <%= f.submit '決定' %>
-<% end %>
+		        <%= f.submit '決定' %>
+		<% end %>
+		<br>
+		<%= link_to "戻る", admins_labels_path %>
+	</div>
+</div>
