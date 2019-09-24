@@ -1,37 +1,51 @@
+<%= render 'admins/header' %>
+
 <head>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 
 </head>
 
 <div class="container">
 <div class="row">
 
+		<div class="col-lg-3">
+			<h1>STEELS CD</h1>
+			  <p class="tagline">
+			    <span class="tagline-skill"><span class="tagline-skill_inner">STEELS_CD</span></span>
+			    <span class="tagline-skill"><span class="tagline-skill_inner">PRODUCT DETAIL</span></span>
+			  </p>
 
-		    <div class="col-6">
+			  <div class="steels-logo">logo</div>
+
+		</div>
+
+		<div class="col-lg-9">
+
+
 			<div class="first-container-item">
-				<%= attachment_image_tag @item, :image, :fill, 300, 300 %>
-			</div>
+				<%= attachment_image_tag @item, :image, fallback: "Unknown.png", size: "300x300" %>
 			</div>
 
-		    <div class="col-6">
+
 			<div class="first-container-item">
 				<h1><%= @item.item_name %></h1>
 				<h3 class="name-box"><%= @item.artist.name %></h3>
 
 				<% if @item.favorited_by?(current_user) %>
-				  <!-- <li> -->
+
 				    <%= link_to "/items/#{@item.id}/favorites", method: :delete do %>
 				      <i class="fa fa-heart" aria-hidden="true" style="color: black;"></i>
 				      <%= @item.favorites.count %>いいね
 				    <% end %>
-				  <!-- </li> -->
+
 				<% else %>
-				  <!-- <li> -->
+
 				    <%= link_to "/items/#{@item.id}/favorites", method: :post do %>
 				      <i class="fas fa-heart" aria-hidden="true"></i>
 				      <%= @item.favorites.count %>いいね
 				    <% end %>
-				  <!-- </li> -->
+
 				<% end %>
 
 
@@ -41,13 +55,18 @@
 
 				<%= form_with model: Cart.new, local: true do |f| %>
 					<%= f.hidden_field :item_id, :value => @item.id %>
-				<%= f.submit "カートの追加", class: "btn-black btn-block" %>
+
+					<% if @item.stock_count >= 1 %>
+
+						<%= f.submit "カートの追加", class: "btn-black btn-block" %>
+					<% else %>
+
+						<h4>※この商品は売り切れました</h4>
+					<% end %>
+
 				<% end %>
 		    </div>
-		    </div>
 
-
-		    <div class="col-12">
 			<div class="info-container-item">
 					<table class="table">
 					<caption align="top">商品情報</caption>
@@ -63,7 +82,6 @@
 					</table>
 
 			</div>
-		    </div>
 
 			<p class="info-song-title">曲名一覧</p>
 			<div class="song-information">
@@ -103,8 +121,11 @@
 				<% end %>
 			</table>
 
+		</div>
+
 
 </div>
 </div>
 
+<%= render 'admins/fotter' %>
 
