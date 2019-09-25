@@ -3,3 +3,190 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.Profile{
+
+	margin: 3%;
+	width: 25%;
+	min-height: 100%;
+	float:left;
+	border: 2px solid #000;
+	text-align: center;
+	display: flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+}
+
+.mainclearfix{
+	margin: auto;
+  	clear: both;
+  	text-align:center;
+}
+/*.Profile3{
+	float: right;
+}*/
+/*.Profileclearfix{
+	margin: auto;
+  	clear: both;
+  	text-align:center;
+}*/
+.Profile4{
+	margin: 3%;
+	min-height: 400px;
+	text-align:center;
+	float:left;
+}
+.col-sm-2{
+	border: 3px solid #000;
+}
+.Profile5{
+	text-align:center;
+}
+
+
+.first-container-item {
+	float:left;
+	margin: 2%;
+}
+
+.name-box{
+	border-bottom: 2px solid black;
+	border-top: 2px solid black;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.tagline,
+.tagline-skill {
+  height: 200px;
+}
+
+.tagline {
+  font-family: "Fira Mono", monospace;
+  overflow: hidden;
+  background-color: #2a2a28;
+  color: white;
+}
+
+.tagline-skill {
+  position: relative;
+  font-size: 1.5em;
+  padding-top: .75em;
+  animation: animatetotop 6s steps(3) infinite;
+}
+
+.tagline-skill_inner,
+.tagline-skill-overlay {
+  display: inline-block;
+}
+
+.tagline-skill_inner {
+  position: relative;
+  line-height: 1;
+}
+
+.tagline-skill_inner:after {
+  content: "";
+  position: absolute;
+  top:-1px;right:0;bottom:-2px;left:0;
+  border-left: 1px solid #fff;
+  background-color: #2a2a28;
+  animation: animatetoright 1s steps(10) infinite alternate;
+}
+
+@keyframes animatetoright {
+  0% {
+    left: 0;
+    margin-right: auto;
+  }
+  100% {
+    left: 100%;
+    margin-left: .6em;
+    margin-right: -.6em;
+  }
+}
+
+@keyframes animatetotop {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -240px;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+.item-table {
+  border:1px solid black;
+}
+
+.item-table th {
+  background:linear-gradient(#111111,#666666);
+  text-shadow:1px 1px 2px rgba(255,255,255,0.7);
+  text-shadow:-1px -1px 2px rgba(0,0,0,0.7);
+}
+
+.item-table > tbody > tr > td{
+    border-width: 1px 0px;
+    border-color: black;
+    border-style: solid;
+}
+
+
+Resources
+
+
+.info-container-item {
+	clear: both;
+}
+
+.song-information {
+	border: 1px solid black;
+	padding: 3%;
+}
+
+.info-song-title {
+	color: black;
+}
+
+.btn-review {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: white;
+  border-left: solid 6px black;
+  color: black;
+  font-weight: bold;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+}
+.btn-review:active {
+  box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+  transform: translateY(2px);
+}
+
+.btn-black {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  border: solid 3px #333333;
+  color: #FFF;
+  background: #333333;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.btn-white {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px black;
+  border-radius: 3px;
+  transition: .4s;
+}

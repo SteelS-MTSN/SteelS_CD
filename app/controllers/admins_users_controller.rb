@@ -2,7 +2,9 @@ class AdminsUsersController < ApplicationController
 	before_action :authenticate_admin!
 PER = 8
 	def index
-        @users = User.page(params[:page]).reverse_order.per(PER)
+		@search = User.ransack(params[:q])
+		@results = @search.result
+		@users = @results.page(params[:page]).reverse_order.per(PER)
 	end
 
 	def show

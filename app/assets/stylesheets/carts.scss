@@ -2,3 +2,223 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+item-detail h1,
+.tagline,
+.tagline-skill {
+  width: 200px;
+  display: block;
+  font-weight: 400;
+}
+
+item-detail h1 {
+  font-family: "Fira Sans", sans-serif;
+  font-size: 1.75em;
+  height: 150px;
+  padding: .5em;
+  background-color: #808080;
+}
+
+.tagline,
+.tagline-skill {
+  height: 200px;
+}
+
+.tagline {
+  font-family: "Fira Mono", monospace;
+  overflow: hidden;
+  background-color: #2a2a28;
+  color: white;
+}
+
+.tagline-skill {
+  position: relative;
+  font-size: 1.5em;
+  padding-top: .75em;
+  animation: animatetotop 6s steps(3) infinite;
+}
+
+.tagline-skill_inner,
+.tagline-skill-overlay {
+  display: inline-block;
+}
+
+.tagline-skill_inner {
+  position: relative;
+  line-height: 1;
+}
+
+.tagline-skill_inner:after {
+  content: "";
+  position: absolute;
+  top:-1px;right:0;bottom:-2px;left:0;
+  border-left: 1px solid #fff;
+  background-color: #2a2a28;
+  animation: animatetoright 1s steps(10) infinite alternate;
+}
+
+@keyframes animatetoright {
+  0% {
+    left: 0;
+    margin-right: auto;
+  }
+  100% {
+    left: 100%;
+    margin-left: .6em;
+    margin-right: -.6em;
+  }
+}
+
+@keyframes animatetotop {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -240px;
+  }
+}
+
+
+.cart-table {
+	border:1px solid black;
+}
+
+.cart-table th {
+  background:linear-gradient(#111111,#666666);
+  text-shadow:1px 1px 2px rgba(255,255,255,0.7);
+  text-shadow:-1px -1px 2px rgba(0,0,0,0.7);
+}
+
+.cart-table td{
+    border-width: 1px 0px;
+    border-color: black;
+    border-style: solid;
+    vertical-align:middle;
+}
+
+.address-content {
+	float: left;
+	width: 250px; height: 300px;
+	border: 1px solid black;
+	padding: 10px;
+	margin: 10px;
+}
+
+.section {
+	border: 1px solid #C0C0C0;
+	padding: 0 5px;
+  margin: 2px;
+}
+
+.section-name {
+	width: 150px;
+	border: 1px solid #C0C0C0;
+	padding: 0 5px;
+}
+
+.section-address {
+  height: 60px;
+  border: 1px solid #C0C0C0;
+  padding: 0 5px;
+  font-size: 13px;
+}
+
+.link-button {
+	float: left;
+	margin: 20px;
+}
+
+.payment-title {
+	clear: both;
+}
+
+.payment-title-box {
+  clear: both;
+}
+
+.payment {
+	clear: both;
+	border: 1px solid black;
+	width: 200px; height: 80px;
+	padding: 10px;
+	margin: 10px;
+
+}
+
+.cart-button {
+	text-align: center;
+}
+
+.btn-black {
+  position: relative;
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #FFF;
+  background: black;/*色*/
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.btn-white {
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: black;
+  border: solid 2px black;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.btn-cart-circle {
+  display: inline-block;
+  text-decoration: none;
+  background: black;
+  color: #FFF;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px brack;
+  transition: .4s;
+  margin: 0px 15px 0px 0px;
+}
+
+.btn-cart-circle:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+}
+
+.btn-cart-circle-w {
+  display: inline-block;
+  text-decoration: none;
+  background: white;
+  color: black;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px brack;
+  border: solid 2px black;
+  transition: .4s;
+}
+
+.btn-cart-circle-w:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+}
+
