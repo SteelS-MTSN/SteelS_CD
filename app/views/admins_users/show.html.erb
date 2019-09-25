@@ -15,6 +15,6 @@
 		<p>email : <%= @user.email %></p>
 
 		<%= link_to "ユーザー情報編集" , edit_admins_user_path %>
-		<p>購入履歴（リンク）</p>
+		<%= link_to "購入履歴" , "/admins_users/:id/userorder" %>
 	</div>
 </div>
