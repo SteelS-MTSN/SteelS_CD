@@ -114,17 +114,19 @@
 				<tr>
 					<td><%= f.user_id %></td>
 					<td><%= f.review_text %></td>
-					<% if f.user_id == current_user.id %>
-						<td class="list-edit">
-							<%= link_to edit_review_path(f.id) do %>
-								<button type="button" class="btn-black btn-xs">編集</button>
-							<% end %>
-						</td>
-						<td class="list-destroy">
-							<%= link_to review_path(f), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-								<button type="button" class="btn-white btn-xs">削除</button>
-							<% end %>
-						</td>
+					<% if user_signed_in? %>
+						<% if f.user_id == current_user.id %>
+							<td class="list-edit">
+								<%= link_to edit_review_path(f.id) do %>
+									<button type="button" class="btn-black btn-xs">編集</button>
+								<% end %>
+							</td>
+							<td class="list-destroy">
+								<%= link_to review_path(f), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+									<button type="button" class="btn-white btn-xs">削除</button>
+								<% end %>
+							</td>
+						<% end %>
 					<% end %>
 				</tr>
 				<% end %>
