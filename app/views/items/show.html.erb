@@ -1,21 +1,28 @@
 <%= attachment_image_tag @item, :image, :fill, 100, 100 %>
 
 <h1><%= @item.item_name %></h1>
-<% if @item.favorited_by?(current_user) %>
-  <li>
-    <%= link_to "/items/#{@item.id}/favorites", method: :delete do %>
-      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-      <%= @item.favorites.count %> いいね
-    <% end %>
-  </li>
+<% if user_signed_in? %>
+
+	<% if @item.favorited_by?(current_user) %>
+	  <li>
+	    <%= link_to "/items/#{@item.id}/favorites", method: :delete do %>
+	      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+	      <%= @item.favorites.count %> いいね
+	    <% end %>
+	  </li>
+	<% else %>
+	  <li>
+	    <%= link_to "/items/#{@item.id}/favorites", method: :post do %>
+	      <i class="fa fa-heart-o" aria-hidden="true"></i>
+	      <%= @item.favorites.count %> いいね
+	    <% end %>
+	  </li>
+	<% end %>
+	
 <% else %>
-  <li>
-    <%= link_to "/items/#{@item.id}/favorites", method: :post do %>
-      <i class="fa fa-heart-o" aria-hidden="true"></i>
-      <%= @item.favorites.count %> いいね
-    <% end %>
-  </li>
+	<%= @item.favorites.count %> いいね
 <% end %>
+
 <h2><%= @item.price %>円(税込み)</h2>
 
 <%= link_to carts_path(@item.id), method: :POST do %>
@@ -62,8 +69,10 @@
 <% end %>
 </table>
 
-<% session[:review] = @item.id %>
-<%= link_to "レビューを書く", new_review_path %>
+<% if user_signed_in? %>
+	<% session[:review] = @item.id %>
+	<%= link_to "レビューを書く", new_review_path %>
+<% end %>
 <br>
 <table class="table table-striped">
 	<tr>レビュー</tr>
@@ -71,17 +80,19 @@
 	<tr>
 		<th><%= f.user_id %></th>
 		<th><%= f.review_text %></th>
-		<% if f.user_id == current_user.id %>
-			<th class="list-edit">
-				<%= link_to edit_review_path(f.id) do %>
-					<button type="button" class="btn btn-success">編集</button>
-				<% end %>
-			</th>
-			<th class="list-destroy">
-				<%= link_to review_path(f), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-					<button type="button" class="btn btn-danger">削除</button>
-				<% end %>
-			</th>
+		<% if user_signed_in? %>
+			<% if f.user_id == current_user.id %>
+				<th class="list-edit">
+					<%= link_to edit_review_path(f.id) do %>
+						<button type="button" class="btn btn-success">編集</button>
+					<% end %>
+				</th>
+				<th class="list-destroy">
+					<%= link_to review_path(f), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+						<button type="button" class="btn btn-danger">削除</button>
+					<% end %>
+				</th>
+			<% end %>
 		<% end %>
 	</tr>
 	<% end %>
