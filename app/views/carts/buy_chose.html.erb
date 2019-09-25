@@ -1,7 +1,13 @@
 <%= render 'admins/header' %>
 
-<div class="container">
-	<div class="row">
+
+<head>
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+
+</head>
 
 <% if flash[:destroy] %>
 	<div class = "shortage-item">
@@ -9,116 +15,129 @@
 	</div>
 <% end %>
 
+<div class="container">
+	<div class="row">
 
-<table class = "table table_bordered" >
-	<thead>
-    	<tr>
-    		<th colspan="5">購入予定商品</th>
-    	</tr>
-    </thead>
-    <tbody>
-    	<% @carts.each do |cart| %>
 
-    		<tr>
-				<td><%= cart.item.item_name %></td>
-				<td>画像</td>
-    			<td><%= cart.quantity %></td>
-    			<td><%= cart.item.price.to_i * cart.quantity.to_i %>（税込）</td>
-    			<td></td>
-			</tr>
-		<% end %>
+			<div class="col-lg-3">
+			<h1 class="item-detail">STEELS CD</h1>
+			  <p class="tagline">
+			    <span class="tagline-skill"><span class="tagline-skill_inner">STEELS_CD</span></span>
+			    <span class="tagline-skill"><span class="tagline-skill_inner">PURCHASE</span></span>
+			  </p>
 
-			<tr>
-				<td></td>
-				<td></td>
-				<td>合計品数</td>
-				<% sum1 =  0 %>
-				<% @carts.each do |cart| %>
-		    		<% sum1 += cart.quantity.to_i %>
+	</div>
+
+
+<div class ="col-lg-9">
+
+		<table class = "table table_bordered cart-table">
+			<thead>
+		    	<tr>
+		    		<th style= "font-size: 13pt; color:white" bgcolor="#222222" colspan="4">購入予定商品</th>
+		    	</tr>
+		    </thead>
+		    <tbody>
+		    	<% @carts.each do |cart| %>
+
+		    		<tr>
+						<td style= "font-size: 13pt;"><%= cart.item.item_name %></td>
+						<td><%= attachment_image_tag cart.item,:image,  fallback: "Unknown.png", size: "30x30" %></td>
+		    			<td style= "font-size: 13pt;"><%= cart.quantity %></td>
+		    			<td style= "font-size: 13pt;"><%= cart.item.price.to_i * cart.quantity.to_i %>円（税込）</td>
+					</tr>
 				<% end %>
-				<td><%= sum1 %>点</td>
-				<td></td>
-			</tr>
 
-			<tr>
-				<td></td>
-				<td></td>
-				<td>小計（税込）</td>
-				<% sum2 =  0 %>
-				<% @carts.each do |cart| %>
-		    		<% sum2 += cart.item.price.to_i * cart.quantity.to_i  %>
-				<% end %>
-				<td><%= sum2 %>円(税込）</td>
-				<td></td>
-			</tr>
-	</tbody>
-</table>
+					<tr>
+						<td></td>
+						<td></td>
+						<td style= "font-size: 13pt;">合計品数</td>
+						<% sum1 =  0 %>
+						<% @carts.each do |cart| %>
+				    		<% sum1 += cart.quantity.to_i %>
+						<% end %>
+						<td style= "font-size: 13pt;"><%= sum1 %>点</td>
+					</tr>
+
+					<tr>
+						<td></td>
+						<td></td>
+						<td style= "font-size: 13pt;">小計（税込）</td>
+						<% sum2 =  0 %>
+						<% @carts.each do |cart| %>
+				    		<% sum2 += cart.item.price.to_i * cart.quantity.to_i  %>
+						<% end %>
+						<td style= "font-size: 13pt;"><%= sum2 %>円(税込）</td>
+					</tr>
+			</tbody>
+		</table>
 
 
 
 
 
-<%= form_for @order_option, url: carts_confirm_path, method: :post do |f| %>
-	<div class = "contents">
-		<h5>送付先</h5>
-		<div class = "address-content">
-			<%=f.radio_button :to_address, "current_address", :checked => true %>この住所に送信する<br><br>
+	<%= form_for @order_option, url: carts_confirm_path, method: :post do |f| %>
+		<div class = "contents">
+			<h5 style= "font-size: 15pt;">送付先 <i class="far fa-address-book"></i></h5>
+			<div class = "address-content">
+				<%=f.radio_button :to_address, "current_address", :checked => true %> この住所に送信する<br><br>
+						郵便番号<br>
+						<div class="section">
+						<%= @user.post_code %><br>
+					    </div>
+					    住所<br>
+					    <div class="section-address">
+						<%= @user.address %><br>
+					    </div>
+						名前<br>
+						<div class="section">
+						<%= @user.family_name + @user.first_name %>様<br>
+					    </div>
+						ナマエ<br>
+						<div class="section">
+						<%= @user.family_kana + @user.first_kana %>様<br>
+						</div>
+			</div>
+
+			<% @addresses.each do |address| %>
+				<div class = "address-content">
+					<%=f.radio_button :to_address, address.id %> この住所に送信する<br><br>
 					郵便番号<br>
 					<div class="section">
-					<%= @user.post_code %><br>
-				    </div>
-				    住所<br>
-				    <div class="section">
-					<%= @user.address %><br>
-				    </div>
+					<%= address.sub_post_code %><br>
+					</div>
+					住所<br>
+					<div class="section-address">
+					<%= address.sub_address %><br>
+					</div>
 					名前<br>
 					<div class="section">
-					<%= @user.family_name + @user.first_name %>様<br>
+					<%= address.sub_family_name + address.sub_first_name %>様<br>
 				    </div>
-					ナマエ<br>
-					<div class="section">
-					<%= @user.family_kana + @user.first_kana %>様<br>
-					</div>
+	                ナマエ<br>
+	                <div class="section">
+					<%= address.sub_family_kana + address.sub_first_kana %>様<br>
+				    </div>
+				</div>
+			<% end %>
+
+			<p class="payment-title-box"></p><h5 class = "payment-title" style= "font-size: 15pt;">支払い方法 <i class="fas fa-coins"></i></h5>
+			<div class = "payment">
+
+				<%= f.radio_button :payment ,0 , :checked => true %> 代引き(手数料250円)<br>
+				<br>
+				<%= f.radio_button :payment ,1 %> 振込
+		    </div>
 		</div>
 
-		<% @addresses.each do |address| %>
-			<div class = "address-content">
-				<%=f.radio_button :to_address, address.id %>この住所に送信する<br><br>
-				郵便番号<br>
-				<div class="section">
-				<%= address.sub_post_code %><br>
-				</div>
-				住所<br>
-				<div class="section">
-				<%= address.sub_address %><br>
-				</div>
-				名前<br>
-				<div class="section">
-				<%= address.sub_family_name + address.sub_first_name %>様<br>
-			    </div>
-                ナマエ<br>
-                <div class="section">
-				<%= address.sub_family_kana + address.sub_first_kana %>様<br>
-			    </div>
-			</div>
-		<% end %>
+		<div class = 'cart-button'>
+			<%= f.submit '確認画面へ', class:"btn-black" %>
+			<%= link_to '戻る', carts_path, class:"btn-white" %>
+		</div>
 
-		<h5 class = "payment-title">支払い方法</h5>
-		<div class = "payment">
+	<% end %>
 
-			<%= f.radio_button :payment ,0 , :checked => true %>代引き(手数料250円)<br>
-			<br>
-			<%= f.radio_button :payment ,1 %>振込
-	    </div>
-	</div>
-
-	<div class = 'button'>
-		<%= f.submit '購入確認画面へ', class:"btn btn-primary" %>
-		<%= link_to '戻る', carts_path, class:"btn btn-danger" %>
-	</div>
-
-<% end %>
-
+</div>
 </div>
 </div>
 
