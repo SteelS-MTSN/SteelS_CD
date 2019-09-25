@@ -1,13 +1,17 @@
 class CartsController < ApplicationController
-	before_action :check_stock, only:[:index]
+
+	before_action :authenticate_user!
+	before_action :check_stock, only:[:index, :update, :buy_chose, :buy_confirm]
+
+
 	def create
 		@cart = Cart.new(carts_params)
-		current_items = Cart.where(user_id: current_user.id)
+		current_carts = Cart.where(user_id: current_user.id)
 
 		is_exist = false
 
-		current_items.each do |cart|
-			if cart.item.id == @cart.item.id
+		current_carts.each do |cart|
+			if cart.item_id == @cart.item_id
 				# 被ってる商品がある
 				is_exist = true
 				break
@@ -15,15 +19,18 @@ class CartsController < ApplicationController
 		end
 
 		if is_exist
-			item = current_items.find_by(item_id: @cart.item_id)
+			cart = current_carts.find_by(item_id: @cart.item_id)
 			# 個数をふやす処理
-			item.quantity += @cart.item.quantity
-			item.save
+			cart.quantity += 1
+			cart.save
+			# item.quantity += @cart.item.quantity
+			# item.save
+			redirect_to carts_path
 
 		else
-			cart.item_id = params[:item_id]
 			@cart.user_id = current_user.id
 			@cart.save
+			redirect_to carts_path
 	    end
 	end
 
@@ -37,6 +44,13 @@ class CartsController < ApplicationController
 		@cart = Cart.find(params[:id])
 		@cart.update(carts_params)
 		redirect_to carts_path
+    end
+
+    def destroy
+    	cart = Cart.find(params[:id])
+    	if cart.destroy
+    		redirect_to carts_path
+    	end
     end
 
 	def buy_chose
@@ -61,13 +75,15 @@ class CartsController < ApplicationController
 	end
 
 	private
+
 		def carts_params
-			params.require(:cart).permit(:item_id ,:user_id, :quantity)
+			params.require(:cart).permit(:item_id)
 		end
 
 		def order_option_params
 		params.require(:order_option).permit(:payment, :to_address)
 		end
+
 		def check_stock
 
 			current_user.carts.each do |cart|
@@ -77,5 +93,6 @@ class CartsController < ApplicationController
 				end
 			end
 		end
+
 	end
 
