@@ -16,22 +16,20 @@
           <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
         </div>
       </div>
-
-
-
       <div class="family_kana_field">
         <div class="field">
           <%= f.label :family_kana, "せい" %><br />
           <%= f.text_field :family_kana, autofocus: true, autocomplete: "family_kana" %>
         </div>
       </div>
-
       <div class="first_kana_field">
         <div class="field">
           <%= f.label :first_kana, "めい" %><br />
           <%= f.text_field :first_kana, autofocus: true, autocomplete: "first_kana" %>
         </div>
       </div>
+      
+
 
       <div class="post_code_field">
         <div class="field">
@@ -78,12 +76,13 @@
       </div>
 
       <div>
-        <div class="actions">
-          <%= f.submit "Sign up" %>
+        <div class="actions_up">
+          <%= f.submit "Sign up",class: "btn-orig-up"  %>
         </div>
       </div>
     <% end %>
+    <p class="link-up-field-text">
+        IDをお持ちですか？</p>  <%= link_to 'Sign in',new_admin_session_path,class: "link-up-field"  %>
 
-    <%= render "devise/shared/links" %>
  </div>
 </div>

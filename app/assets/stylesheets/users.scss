@@ -10,7 +10,7 @@
 .in_box{
 	border: solid white;
 	width: 400px;
-	height: 600px;
+	height: auto;
 	margin:  auto;
 	margin-top: 50px;
 	margin-bottom: 50px;
@@ -20,6 +20,7 @@
 }
 .in_box_text{
 	text-align: center;
+	margin-bottom: 40px;
 }
 
 .logo{
@@ -37,6 +38,8 @@
 }
 .email_field{
 	width: 250px;
+    border: none;
+    border-bottom: 1px solid #666666;
 }
 .password-box{
 	margin-top: 40px;
@@ -44,6 +47,8 @@
 }
 .pass_field{
 	width: 250px;
+	border: none;
+	border-bottom: 1px solid #666666
 }
 .remem-field{
 	margin-top: 40px;
@@ -59,14 +64,15 @@
 	border: solid black;
 	border-radius: 3px;
 }
-.link-up-field{
+.link-in-field-text{
+	color: #666666;
+	margin-bottom: 20px;
+}
+
+.link-in-field{
 	color: black;
 	margin-bottom: 30px;
 }
-.link-up-field-text{
-	color: #666666;
-}
-
 /*sign-up from here*/
 
 .up-box{
@@ -75,10 +81,11 @@
 	margin-top: 50px;
 	padding-bottom: 50px;
 	width: 400px;
-	height: 600px;
+	height: auto;
 	background-color: white;
     box-shadow:0px 0px 10px;
 	border-radius:10px;
+	margin-bottom: 50px;
 }
 .logo-up{
 	background-image: url(LOGO/logo2.png);
@@ -92,12 +99,14 @@
 	text-align:center;
 	width: 50%;
 	color: #666666;
+	margin-top: 20px;
 }
 .first_name_field{
 	width: 50%;
 	float: right;
 	text-align:center;
 	color: #666666;
+	margin-top: 20px;
 }
 
 
@@ -106,4 +115,71 @@
 	width: 50%;
 	text-align: center;
 	color: #666666;
+
+	margin-top: 20px;
 }
+
+.first_kana_field{
+	width: 50%;
+	float: right;
+	text-align: center;
+	color: #666666;
+	margin-top: 20px;
+}
+
+.post_code_field{
+	margin-left: 24px;
+	color: #666666;
+	margin-top: 20px;
+}
+
+.address_field{
+	margin-left: 24px;
+	width: 352px;
+	margin-top: 20px;
+}
+.phone_field{
+	margin-left: 24px;
+	width: 352px;
+	margin-top: 20px;
+}
+.email_up_field{
+	margin-left: 24px;
+	width: 352px;
+	margin-top: 20px;
+}
+.password_up_field{
+	margin-left: 24px;
+	width: 352px;
+	margin-top: 20px;
+}
+.password_c_up_field{
+	margin-left: 24px;
+	width: 352px;
+	margin-top: 20px;
+}
+.actions_up{
+	text-align:center;
+	margin-top: 20px;
+}
+.btn-orig-up{
+	margin-top: 20px;
+	background: black;
+	color: white;
+	width: 200px;
+	border: solid black;
+	border-radius: 3px;
+	margin-bottom: 40px;
+}
+.link-up-field-text{
+	text-align: center;
+	color: #666666;
+	margin-bottom: 20px;
+}
+.link-up-field{
+	text-align: center;
+	color: black;
+	margin-left: 178.6px;
+	margin-bottom: 40px;
+}
+

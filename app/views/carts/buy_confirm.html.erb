@@ -1,5 +1,13 @@
+<%= render 'admins/header' %>
+
 <div class="container">
 	<div class="row">
+
+<% if flash[:destroy] %>
+	<div class = "shortage-item">
+		<%= flash[:destroy] %>
+	</div>
+<% end %>
 
 <table class = "table table_bordered table">
 
@@ -112,3 +120,5 @@
 
 </div>
 </div>
+
+<%= render 'admins/fotter' %>
