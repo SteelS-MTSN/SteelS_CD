@@ -1,64 +1,71 @@
-<h1>受注詳細</h1>
+<div class="container">
+	<div class="col-md-2">
+		<%= render 'admins/side' %>
+	</div>
+	<div class="col-md-8">
+		<h1>受注詳細</h1>
 
-<%= link_to "戻る", admins_orders_path %>
-<table class="table table-striped">
-	<tr>
-		<th class="list-title">受注番号</th>
-		<th><%= @order_option.id %></th>
-	</tr>
-	<tr>
-		<th class="list-title">受注日時</th>
-		<th><%= @order_option.created_at %></th>
-	</tr>
-	<tr>
-		<th class="list-title">決済方法</th>
-		<th><%= @order_option.payment %></th>
-	</tr>
-	<tr>
-		<th class="list-title">ユーザー名</th>
-		<th><%= @user.family_name + @user.first_name %></th>
-	</tr>
-	<tr>
-		<th class="list-title">ユーザー電話番号</th>
-		<th><%= @user.phone %></th>
-	</tr>
-	<tr>
-		<th class="list-title">ユーザーEmail</th>
-		<th><%= @user.email %></th>
-	</tr>
-	<tr>
-		<th class="list-title">宛名</th>
-		<th><%= @order_option.to_name %></th>
-	</tr>
-	<tr>
-		<th class="list-title">お届け先郵便番号</th>
-		<th><%= @order_option.to_post_code %></th>
-	</tr>
-	<tr>
-		<th class="list-title">お届け先住所</th>
-		<th><%= @order_option.to_address %></th>
-	</tr>
-	<tr>
-		<th class="list-title">配達ステータス</th>
-		<%= form_for(@order_option, url: {controller: "admins_orders", action: "update"}) do |f| %>
-		<th><%= f.select :delivery_status, [['発送準備中', '発送準備中'], ['発送済み', '発送済み']] %></th>
-		<%= f.submit "更新" %>
-		<% end %>
-	</tr>
-	<% @items.each do |f| %>
-		<tr>
-			<th class="list-title">商品名</th>
-			<th>
-				<%= f.item.item_name %>
-			</th>
-			<th class="list-title">価格</th>
-			<th>
-				<%= f.past_price %>
-			</th>
-			<th class="list-title">個数</th>
-			<th>
-				<%= f.buy_quantity %>
-			</th>
-		</tr>
-	<% end %>
-</table>
+		<%= link_to "戻る", admins_orders_path %>
+		<table class="table table-striped">
+			<tr>
+				<th class="list-title">受注番号</th>
+				<th><%= @order_option.id %></th>
+			</tr>
+			<tr>
+				<th class="list-title">受注日時</th>
+				<th><%= @order_option.created_at %></th>
+			</tr>
+			<tr>
+				<th class="list-title">決済方法</th>
+				<th><%= @order_option.payment %></th>
+			</tr>
+			<tr>
+				<th class="list-title">ユーザー名</th>
+				<th><%= @user.family_name + @user.first_name %></th>
+			</tr>
+			<tr>
+				<th class="list-title">ユーザー電話番号</th>
+				<th><%= @user.phone %></th>
+			</tr>
+			<tr>
+				<th class="list-title">ユーザーEmail</th>
+				<th><%= @user.email %></th>
+			</tr>
+			<tr>
+				<th class="list-title">宛名</th>
+				<th><%= @order_option.to_name %></th>
+			</tr>
+			<tr>
+				<th class="list-title">お届け先郵便番号</th>
+				<th><%= @order_option.to_post_code %></th>
+			</tr>
+			<tr>
+				<th class="list-title">お届け先住所</th>
+				<th><%= @order_option.to_address %></th>
+			</tr>
+			<tr>
+				<th class="list-title">配達ステータス</th>
+				<%= form_for(@order_option, url: {controller: "admins_orders", action: "update"}) do |f| %>
+				<th><%= f.select :delivery_status, [['発送準備中', '発送準備中'], ['発送済み', '発送済み']] %></th>
+				<%= f.submit "更新" %>
+				<% end %>
+			</tr>
+			<% @items.each do |f| %>
+				<tr>
+					<th class="list-title">商品名</th>
+					<th>
+						<%= f.item.item_name %>
+					</th>
+					<th class="list-title">価格</th>
+					<th>
+						<%= f.past_price %>
+					</th>
+					<th class="list-title">個数</th>
+					<th>
+						<%= f.buy_quantity %>
+					</th>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
