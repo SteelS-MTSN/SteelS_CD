@@ -9,7 +9,7 @@ devise_for :users, controllers: {
 }
 
 get 'users/:id/cancel' => 'users#cancel'
-get 'admins_users/:id/userorder' => 'admins_orders#userorder'
+get 'admins_users/:id/userorder', to: 'admins_orders#userorder', as: 'user_order'
 
 
   get "/" => "homes#top"

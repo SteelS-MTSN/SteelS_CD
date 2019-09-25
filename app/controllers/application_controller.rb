@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   	if resource.is_a?(User)
   		new_user_session_path
   	else
-  		new_admin_session_path
+  		new_user_session_path
   	end
 	# case resource
 	# when User

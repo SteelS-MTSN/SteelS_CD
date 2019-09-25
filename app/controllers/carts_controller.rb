@@ -22,14 +22,14 @@ class CartsController < ApplicationController
 			cart = current_carts.find_by(item_id: @cart.item_id)
 			# 個数をふやす処理
 			cart.quantity += 1
-			cart.save
+			cart.save!
 			# item.quantity += @cart.item.quantity
 			# item.save
 			redirect_to carts_path
 
 		else
 			@cart.user_id = current_user.id
-			@cart.save
+			@cart.save!
 			redirect_to carts_path
 	    end
 	end
@@ -42,7 +42,7 @@ class CartsController < ApplicationController
 
 	def update
 		@cart = Cart.find(params[:id])
-		@cart.update(carts_params)
+		@cart.update!(carts_params)
 		redirect_to carts_path
     end
 
@@ -81,7 +81,7 @@ class CartsController < ApplicationController
 		end
 
 		def order_option_params
-		params.require(:order_option).permit(:payment, :to_address)
+		params.require(:order_option).permit(:payment, :to_address, :quantity)
 		end
 
 		def check_stock
@@ -95,4 +95,3 @@ class CartsController < ApplicationController
 		end
 
 	end
-

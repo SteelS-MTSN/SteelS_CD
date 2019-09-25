@@ -10,6 +10,9 @@ class OrderOption < ApplicationRecord
 	def self.convert_payment(payment)
 		I18n.t("enums.order_option.payment." << self.payments.keys[payment.to_i])
 	end
+	def self.convert_delivery_status(delivery_status)
+		I18n.t("enums.order_option.delivery_status." << self.delivery_status.keys[delivery_status.to_i])
+	end
 
 end
 

@@ -2,12 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html{
-	background-color: #e8e8e8;
-}
 
 .body-sign{
-	background-color: #e8e8e8;
+	background-color: #f4ffff;
+	padding: 50px;
 }
 
 .in_box{
@@ -21,6 +19,7 @@ html{
 	box-shadow:0px 0px 10px;
 	border-radius:10px;
 }
+
 .in_box_text{
 	text-align: center;
 	margin-bottom: 40px;
@@ -102,14 +101,25 @@ html{
 	text-align:center;
 	width: 50%;
 	color: #666666;
-	margin-top: 20px;
+	margin-top: 25px;
 }
+.family_name_up_field{
+	border:none;
+	border-bottom: solid 1px;
+	border-color:  #666666;
+}
+
 .first_name_field{
 	width: 50%;
 	float: right;
 	text-align:center;
 	color: #666666;
-	margin-top: 20px;
+	margin-top: 25px;
+}
+.first_name_up_field{
+	border:none;
+	border-bottom: solid 1px;
+	border-color:  #666666;
 }
 
 
@@ -118,8 +128,12 @@ html{
 	width: 50%;
 	text-align: center;
 	color: #666666;
-
-	margin-top: 20px;
+	margin-top: 25px;
+}
+.family_kana_up_field{
+	border:none;
+	border-bottom: solid 1px;
+	border-color:  #666666;
 }
 
 .first_kana_field{
@@ -127,46 +141,95 @@ html{
 	float: right;
 	text-align: center;
 	color: #666666;
-	margin-top: 20px;
+	margin-top: 25px;
+}
+.first_kana_up_field{
+	border:none;
+	border-bottom: solid 1px;
+	border-color:  #666666;
 }
 
 .post_code_field{
-	margin-left: 24px;
 	color: #666666;
-	margin-top: 20px;
+	margin-top: 25px;
+	text-align:center;
+}
+.post_code_up_field{
+	border:none;
+	border-bottom: solid 1px;
+	width: 250px;
+	border-color:  #666666;
 }
 
 .address_field{
 	margin-left: 24px;
 	width: 352px;
-	margin-top: 20px;
+	margin-top: 25px;
+	text-align:center;
+	color: #666666;
+}
+.address_up_field{
+	border:none;
+	border-bottom: solid 1px;
+	width: 250px;
+	border-color:  #666666;
 }
 .phone_field{
 	margin-left: 24px;
 	width: 352px;
-	margin-top: 20px;
+	margin-top: 25px;
+	text-align:center;
+	color: #666666;
+}
+.phone_up_field{
+	border:none;
+	border-bottom: solid 1px;
+	width: 250px;
+	border-color: #666666;
 }
 .email_up_field{
-	margin-left: 24px;
-	width: 352px;
-	margin-top: 20px;
+	margin-top: 25px;
+	text-align:center;
+	color: #666666;
+}
+.email_sign_up_field{
+	border:none;
+	border-bottom: solid 1px;
+	width: 250px;
+	border-color:  #666666;
 }
 .password_up_field{
 	margin-left: 24px;
 	width: 352px;
-	margin-top: 20px;
+	margin-top: 25px;
+	text-align:center;
+	color: #666666;
+}
+.new_password_sign_up_field{
+	border:none;
+	border-bottom: solid 1px;
+	width: 250px;
+	border-color:  #666666;
 }
 .password_c_up_field{
 	margin-left: 24px;
 	width: 352px;
-	margin-top: 20px;
+	margin-top: 25px;
+	text-align:center;
+	color: #666666;
+}
+.password_c_sign_up_field{
+	border:none;
+	border-bottom: solid 1px;
+	width: 250px;
+	border-color:  #666666;
 }
 .actions_up{
 	text-align:center;
-	margin-top: 20px;
+	margin-top: 25px;
 }
 .btn-orig-up{
-	margin-top: 20px;
+	margin-top: 25px;
 	background: black;
 	color: white;
 	width: 200px;
@@ -186,3 +249,121 @@ html{
 	margin-bottom: 40px;
 }
 
+/*my page from here*/
+
+.my_page_box{
+	border: solid white;
+	width: 400px;
+	height: auto;
+	margin:  auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background-color: white;
+	box-shadow:0px 0px 10px;
+	border-radius:10px;
+}
+.logo_my_page{
+	background-image: url(LOGO/logo_my_page4.png);
+	width: 120px;
+	height: 71px;
+	margin: auto;
+	margin-top: 30px;
+}
+.my_family_name{
+	display: inline-block;
+	text-align:right;
+	width: 50%;
+	color: #666666;
+	margin-top: 25px;
+}
+.my_first_name{
+	width: 50%;
+	float: right;
+	text-align:left;
+	color: #666666;
+	margin-top: 25px;
+}
+.my_family_kana{
+	display: inline-block;
+	text-align:right;
+	width: 50%;
+	color: #666666;
+	margin-top: 25px;
+}
+.my_first_kana{
+	width: 50%;
+	float: right;
+	text-align:left;
+	color: #666666;
+	margin-top: 25px;
+}
+.my_post_code{
+	text-align: center;
+	margin-top: 25px;
+	color: #666666;
+}
+.my_address {
+    text-align: center;
+    margin: 25px auto;
+    color: #666666;
+    width: 300px;
+}
+.my_phone{
+	text-align: center;
+	margin-top: 25px;
+	color: #666666;
+}
+.my_email{
+	text-align: center;
+	margin-top: 25px;
+	color: #666666;
+}
+.my_address_btn {
+    margin-top: 25px;
+    text-align: center;
+    color: white;
+    border-radius: 3px;
+    border: white;
+    background-color: black;
+    margin-left: 100px;
+    width: 200px;
+}
+.my_edit_btn{
+	float: left;
+    margin-top: 25px;
+    text-align: center;
+    color: #666666;
+    border-radius: 3px;
+    border: white;
+    background-color: white;
+    width: 50%;
+}
+.my_order_btn{
+	float: right;
+    margin-top: 25px;
+    text-align: center;
+    color: #666666;
+    border-radius: 3px;
+    border: white;
+    background-color: white;
+    width: 50%;
+}
+.my_logout_btn{
+    margin-top: 25px;
+    text-align: center;
+    color: white;
+    border-radius: 3px;
+    border: white;
+    background-color: black;
+    margin-left: 100px;
+    width: 200px;
+    margin-bottom: 50px;
+}
+
+/*退会画面from here*/
+
+.user_is_quit{
+	margin: center;
+	width: 300px;
+
+}
