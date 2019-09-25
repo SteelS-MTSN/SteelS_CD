@@ -1,6 +1,9 @@
+
+
 <%= render 'admins/header' %>
+
 <div class="container">
-	
+
 	<div class="row">
 
 		<%= search_form_for @search, url: items_path do |f| %>
@@ -14,19 +17,20 @@
 
 	</div>
 	<div class="row">
-		
+
 		<div class="col-md-offset-1 col-md-8">
 				<% @item.each do |item| %>
 					<div class="col-md-4">
 						<%= attachment_image_tag item, :image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px" %><br>
 						<%= item.item_name %><br>
-				        いいね<%= item.favorites.count %><br> 
+				        いいね<%= item.favorites.count %><br>
 						<%= item.artist.name %><br>
 					</div>
 				<% end %>
 			    <%= paginate @item %>
 		</div>
 		<div class="col-md-2">
+
 			<h3>ランキング</h3>
 			<% @item_side.each_with_index do |item, i| %>
 					<div class="col-md-12">
@@ -41,6 +45,7 @@
 		</div>
 		<div class="col-lg-1"></div>
 	</div>
+
 </div>
 
 
