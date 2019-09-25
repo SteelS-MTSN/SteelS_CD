@@ -10,18 +10,15 @@
 <div class="row">
 
 		<div class="col-lg-3">
-			<h1>STEELS CD</h1>
+			<h1 class="item-detail">STEELS CD</h1>
 			  <p class="tagline">
 			    <span class="tagline-skill"><span class="tagline-skill_inner">STEELS_CD</span></span>
 			    <span class="tagline-skill"><span class="tagline-skill_inner">PRODUCT DETAIL</span></span>
 			  </p>
 
-			  <div class="steels-logo">logo</div>
-
 		</div>
 
 		<div class="col-lg-9">
-
 
 			<div class="first-container-item">
 				<%= attachment_image_tag @item, :image, fallback: "Unknown.png", size: "300x300" %>
@@ -32,6 +29,7 @@
 				<h1><%= @item.item_name %></h1>
 				<h3 class="name-box"><%= @item.artist.name %></h3>
 
+				<% if user_signed_in? %>
 				<% if @item.favorited_by?(current_user) %>
 
 				    <%= link_to "/items/#{@item.id}/favorites", method: :delete do %>
@@ -46,6 +44,9 @@
 				      <%= @item.favorites.count %>いいね
 				    <% end %>
 
+				<% end %>
+				<% else %>
+				<%= @item.favorites.count %>いいね
 				<% end %>
 
 
@@ -68,8 +69,12 @@
 		    </div>
 
 			<div class="info-container-item">
-					<table class="table">
-					<caption align="top">商品情報</caption>
+					<table class="table item-table">
+						<thead>
+							<tr>
+								<th style= "font-size: 11pt; color:white" bgcolor="#222222"colspan="6">商品情報</th>
+							</tr>
+					    </thead>
 
 						<tr>
 							<td>アーティスト</td>
@@ -92,17 +97,23 @@
 						<% end %>
 			</div>
 
-
+			<% if user_signed_in? %>
 			<% session[:review] = @item.id %>
-			<br><%= link_to "レビューを書く", new_review_path, class: "btn-black" %>
+			<br><%= link_to "レビューを書く", new_review_path, class: "btn-review" %>
+			<% end %>
 			<br><br>
 
 
-			<table class="table">
-			<caption align="top">レビュー一覧</caption>
+			<table class="table item-table">
+				<thead>
+						<tr>
+							<th style= "font-size: 11pt; color:white" bgcolor="#222222"colspan="4">レビュー一覧</th>
+						</tr>
+			   </thead>
 
 				<% @reviews.each do |f| %>
 				<tr>
+					<% if user_signed_in? %>
 					<td><%= f.user_id %></td>
 					<td><%= f.review_text %></td>
 					<% if f.user_id == current_user.id %>
@@ -116,6 +127,7 @@
 								<button type="button" class="btn-white btn-xs">削除</button>
 							<% end %>
 						</td>
+						<% end %>
 					<% end %>
 				</tr>
 				<% end %>
