@@ -29,7 +29,21 @@
 				</section>
 			</div>
 		</div>
-		<br>
+        <div class="col-lg-4">
+			<section class="artist_seach">
+			<%= search_form_for @search, url: admins_artists_path do |f| %>
+			 <div class="form-group">
+			   <%= f.label :name, "Name" %>
+
+			   <%= f.search_field :name_cont, class: "form-control" %>
+			 </div>
+			 <div class="actions"><%= f.submit "Search" %></div>
+			<% end %>
+			</section>
+		</div>
+	</div>
+</div>
+
 
 		<table class="table table-striped">
 			<thead>

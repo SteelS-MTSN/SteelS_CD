@@ -1,5 +1,11 @@
-<div class="container">
-	<div class="row">
+<%= render 'admins/header' %>
+
+<head>
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+</head>
+
 
 <% if flash[:destroy] %>
 	<div class = "shortage-item">
@@ -7,34 +13,59 @@
 	</div>
 <% end %>
 
-<table class = "table table_bordered">
-	<thead>
-		<tr>
-			<th colspan="4">カート内商品</th>
-		</tr>
-    </thead>
 
-	    <% @carts.each do |cart| %>
-				<tr>
-		   			 <%= form_for(cart, url: cart_path(cart.id), method: :patch ) do |f| %>
+<div class="container">
+<div class="row">
 
-							<td><%= cart.item.item_name %></td>
-							<td>画像</td>
-				    		<td><%= f.number_field "quantity", min:1,  max:cart.item.stock_count %></td>
-				    		<td><%= f.submit "数量変更" %></td>
+
+
+	<div class="col-lg-3">
+			<h1>STEELS CD</h1>
+			  <p class="tagline">
+			    <span class="tagline-skill"><span class="tagline-skill_inner">STEELS_CD</span></span>
+			    <span class="tagline-skill"><span class="tagline-skill_inner">SHOPPING_CART</span></span>
+			  </p>
+
+			 <marquee width="200" height="500"
+				scrollamount="5" scrolldelay="80" direction="up" behavior="alternate">
+				<i class="fas fa-shopping-cart fa-10x"></i>
+			</marquee>
+
+	</div>
+
+
+
+	<div class ="col-lg-9">
+
+			<br><table class = "table table_bordered">
+				<thead>
+					<tr>
+						<th style= "font-size: 15pt; color:white" bgcolor="#222222"colspan="5">カート内商品  <i class="fas fa-shopping-cart" style="color:white;"></th>
+					</tr>
+			    </thead>
+
+				    <% @carts.each do |cart| %>
+							<tr>
+					   			 <%= form_for(cart, url: cart_path(cart.id), method: :patch ) do |f| %>
+
+										<td style= "font-size: 15pt;"><%= cart.item.item_name %></td>
+										<td><%= attachment_image_tag cart.item,:image,  fallback: "Unknown.png", size: "40x40" %></td>
+							    		<td><%= f.number_field "quantity", min:1,  max:cart.item.stock_count %></td>
+							    		<td><%= f.submit "数量変更", class: 'btn-white' %></td>
+							    		<td><%= link_to "削除", cart_path(cart.id), method: :delete, class: "btn-black" %></td>
+								<% end %>
+							</tr>
+
 					<% end %>
-				</tr>
+				</table>
 
-		<% end %>
-	</table>
+			<div class="button">
+				<%= link_to "購入", carts_chose_path, class:"btn-black" %>
+				<%= link_to "戻る", items_path, class:"btn-white" %>
+			</div>
 
-
-</table>
-
-<div class="button">
-<%= link_to "購入", carts_chose_path, class:"btn btn-primary" %>
-<%= link_to "戻る", items_path, class:"btn btn-danger" %>
-</div>
+	</div>
 
 </div>
 </div>
+
