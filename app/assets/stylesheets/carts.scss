@@ -4,32 +4,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.body-cart{
+  background-color: #f4ffff;
+}
 
-item-detail h1,
 .tagline,
 .tagline-skill {
-  width: 200px;
+  width: 230px;
   display: block;
   font-weight: 400;
-}
-
-item-detail h1 {
-  font-family: "Fira Sans", sans-serif;
-  font-size: 1.75em;
-  height: 150px;
-  padding: .5em;
-  background-color: #808080;
-}
-
-.tagline,
-.tagline-skill {
-  height: 200px;
+  height: 500px;
 }
 
 .tagline {
-  font-family: "Fira Mono", monospace;
+  font-family: "arial black";
   overflow: hidden;
-  background-color: #2a2a28;
   color: white;
 }
 
@@ -80,6 +69,19 @@ item-detail h1 {
   }
 }
 
+.item-detail1 {
+  font-family: 'Londrina Shadow', cursive;
+  font-size: 150px;
+  margin:0;
+}
+
+
+.item-detail2 {
+  font-family: 'Londrina Shadow', cursive;
+  font-size: 80px;
+  margin:0;
+}
+
 
 .cart-table {
 	border:1px solid black;
@@ -100,29 +102,32 @@ item-detail h1 {
 
 .address-content {
 	float: left;
-	width: 250px; height: 300px;
+	width: 250px; height: 320px;
 	border: 1px solid black;
 	padding: 10px;
 	margin: 10px;
 }
 
-.section {
-	border: 1px solid #C0C0C0;
-	padding: 0 5px;
-  margin: 2px;
+.address-content2 {
+  float: left;
+  width: 250px; height: 320px;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
 }
 
-.section-name {
-	width: 150px;
+.section {
 	border: 1px solid #C0C0C0;
-	padding: 0 5px;
+  padding: 5 5px;
+  margin: 3%;
 }
 
 .section-address {
   height: 60px;
   border: 1px solid #C0C0C0;
-  padding: 0 5px;
+  padding: 5 5px;
   font-size: 13px;
+  margin: 3%;
 }
 
 .link-button {
@@ -130,9 +135,6 @@ item-detail h1 {
 	margin: 20px;
 }
 
-.payment-title {
-	clear: both;
-}
 
 .payment-title-box {
   clear: both;
@@ -144,7 +146,14 @@ item-detail h1 {
 	width: 200px; height: 80px;
 	padding: 10px;
 	margin: 10px;
+}
 
+.payment2 {
+  clear: both;
+  border: 1px solid black;
+  width: 250px; height: 80px;
+  padding: 10px;
+  margin: 10px;
 }
 
 .cart-button {
@@ -223,3 +232,20 @@ item-detail h1 {
   border-bottom: none;
 }
 
+.cart-blank-top {
+  height: 300px;
+  margin: 0 auto;
+}
+
+.cart-blank {
+  font-family: "M PLUS Rounded 1c";
+  font-size: 50px;
+}
+
+.side-logo{
+  background-image: url(LOGO/logo2.png);
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 80px;
+  margin: 80px auto;
+}

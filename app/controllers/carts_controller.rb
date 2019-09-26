@@ -60,8 +60,12 @@ class CartsController < ApplicationController
 	def buy_chose
 		@user = current_user
 		@carts = @user.carts
-		@addresses = Address.where(user_id: @user.id)
-	    @order_option = OrderOption.new
+		if @carts.present?
+			@addresses = Address.where(user_id: @user.id)
+	    	@order_option = OrderOption.new
+		else
+			redirect_to items_path
+		end
 	end
 
 	def buy_confirm
