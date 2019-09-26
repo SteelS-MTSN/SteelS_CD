@@ -4,36 +4,37 @@
 	</div>
 	<div class="col-md-8">
 	<h1>ユーザー一覧</h1>
-			<div class="col-lg-4">
-				<section class="artist_seach">
-					<%= search_form_for @search, url: admins_users_path do |f| %>
-						<div class="form-group">
-							<%= f.label :family_name, "ユーザー名" %>
-							<%= f.search_field :family_name_cont, class: "form-control" %>
-						</div>
-						<div class="actions"><%= f.submit "Search" %></div>
-					<% end %>
-				</section>
-			</div>
-        <table class="table table-striped">
+		<div class="col-lg-4">
+			<section class="artist_seach">
+				<%= search_form_for @search, url: admins_users_path do |f| %>
+					<div class="form-group">
+						<%= f.label :family_name, "ユーザー名(苗字)" %>
+						<%= f.search_field :family_name_cont, class: "form-control" %>
+					</div>
+					<div class="actions"><%= f.submit "Search" %></div>
+					<br>
+				<% end %>
+			</section>
+		</div>
+	    <table class="table table-striped">
 			<thead>
 				<tr>
 					<th>ID</th>
 					<th>詳細</th>
 					<th>名前（姓）</th>
-				    <th>名前（名）</th>
-				    <th>ナマエ（姓）</th>
-				    <th>ナマエ（名）</th>
-				    <th>郵便番号</th>
-				    <th>住所</th>
-				    <th>電話番号</th>
-				    <th>メールアドレス</th>
+					<th>名前（名）</th>
+					<th>ナマエ（姓）</th>
+					<th>ナマエ（名）</th>
+					<th>郵便番号</th>
+					<th>住所</th>
+					<th>電話番号</th>
+					<th>メールアドレス</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				<% @users.each do |user| %>
-					<tr> 
+					<tr>
 						<td>
 							<%= user.id %>
 						</td>
@@ -64,9 +65,14 @@
 						<td>
 							<%= user.email %>
 						</td>
-				    </tr>
+					</tr>
 				<% end %>
 			</tbody>
+			<tr>
+				<th></th>
+				<th></th>
+				<th><h3><%= link_to "戻る", admins_path(current_user) %></h3></th>
+			</tr>
 		</table>
 	</div>
 	<%= paginate @users %>
