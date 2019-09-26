@@ -21,7 +21,11 @@ class CartsController < ApplicationController
 		if is_exist
 			cart = current_carts.find_by(item_id: @cart.item_id)
 			# 個数をふやす処理
-			cart.quantity += 1
+			#binding.pry
+			#cart.quantity.to_i
+			quantity = cart.quantity.to_i
+			quantity = quantity += 1
+			cart.quantity = quantity
 			cart.save!
 			# item.quantity += @cart.item.quantity
 			# item.save
@@ -69,7 +73,7 @@ class CartsController < ApplicationController
 			@address = Address.find(@to_address.to_i)
 		end
 
-		@payment = OrderOption.conv点ert_payment(order_option_params[:payment])
+		@payment = OrderOption.convert_payment(order_option_params[:payment])
 		@order_option = OrderOption.new
 		render :buy_confirm
 	end
