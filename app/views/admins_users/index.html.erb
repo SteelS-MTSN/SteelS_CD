@@ -4,6 +4,17 @@
 	</div>
 	<div class="col-md-8">
 	<h1>ユーザー一覧</h1>
+			<div class="col-lg-4">
+				<section class="artist_seach">
+					<%= search_form_for @search, url: admins_users_path do |f| %>
+						<div class="form-group">
+							<%= f.label :family_name, "ユーザー名" %>
+							<%= f.search_field :family_name_cont, class: "form-control" %>
+						</div>
+						<div class="actions"><%= f.submit "Search" %></div>
+					<% end %>
+				</section>
+			</div>
         <table class="table table-striped">
 			<thead>
 				<tr>

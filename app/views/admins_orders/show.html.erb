@@ -17,7 +17,7 @@
 			</tr>
 			<tr>
 				<th class="list-title">決済方法</th>
-				<th><%= @order_option.payment %></th>
+				<th><%= @order_option.payment_i18n %></th>
 			</tr>
 			<tr>
 				<th class="list-title">ユーザー名</th>
@@ -45,10 +45,11 @@
 			</tr>
 			<tr>
 				<th class="list-title">配達ステータス</th>
-				<%= form_for(@order_option, url: {controller: "admins_orders", action: "update"}) do |f| %>
-				<th><%= f.select :delivery_status, [['発送準備中', '発送準備中'], ['発送済み', '発送済み']] %></th>
+				<th><%= form_for(@order_option, url: {controller: "admins_orders", action: "update"}) do |f| %>
+				<%= f.select :delivery_status, [['発送準備中', :prepare], ['発送済み', :finish]] %>
 				<%= f.submit "更新" %>
 				<% end %>
+				</th>
 			</tr>
 			<% @items.each do |f| %>
 				<tr>
