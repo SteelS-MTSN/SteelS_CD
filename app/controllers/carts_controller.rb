@@ -21,7 +21,11 @@ class CartsController < ApplicationController
 		if is_exist
 			cart = current_carts.find_by(item_id: @cart.item_id)
 			# 個数をふやす処理
-			cart.quantity += 1
+			#binding.pry
+			#cart.quantity.to_i
+			quantity = cart.quantity.to_i
+			quantity = quantity += 1
+			cart.quantity = quantity
 			cart.save!
 			# item.quantity += @cart.item.quantity
 			# item.save
@@ -56,8 +60,12 @@ class CartsController < ApplicationController
 	def buy_chose
 		@user = current_user
 		@carts = @user.carts
-		@addresses = Address.where(user_id: @user.id)
-	    @order_option = OrderOption.new
+		if @carts.present?
+			@addresses = Address.where(user_id: @user.id)
+	    	@order_option = OrderOption.new
+		else
+			redirect_to items_path
+		end
 	end
 
 	def buy_confirm

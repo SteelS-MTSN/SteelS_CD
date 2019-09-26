@@ -13,7 +13,6 @@ class OrderOption < ApplicationRecord
 	def self.convert_delivery_status(delivery_status)
 		I18n.t("enums.order_option.delivery_status." << self.delivery_status.keys[delivery_status.to_i])
 	end
-
 end
 
 

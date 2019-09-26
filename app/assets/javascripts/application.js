@@ -15,7 +15,7 @@
 //= require autocomplete-rails
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+
 
 //= require cocoon
 //= require bootstrap-sprockets

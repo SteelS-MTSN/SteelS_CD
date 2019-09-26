@@ -16,7 +16,7 @@
 		<div class="col-md-offset-1 col-md-8">
 				<% @item.each do |item| %>
 					<div class="col-md-4">
-						<%= attachment_image_tag item, :image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px" %><br>
+						<%= link_to attachment_image_tag(item, :image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px"), item_path(item) %><br>
 						<%= item.item_name %><br>
 				        いいね<%= item.favorites.count %><br>
 						<%= item.artist.name %><br>
@@ -30,7 +30,7 @@
 			<% @item_side.each_with_index do |item, i| %>
 					<div class="col-md-12">
 						<p><%= "#{i+1}" %>位</p>
-					    <%= attachment_image_tag item, :image,  fallback: "no_image.jpg", :width => "75px",:height =>"75px" %><br>
+					    <%= link_to attachment_image_tag(item, :image,  fallback: "no_image.jpg", :width => "75px",:height =>"75px"), item_path(item) %><br>
 						<%= item.item_name %><br>
 						<%= item.artist.name %><br>
 						<br>

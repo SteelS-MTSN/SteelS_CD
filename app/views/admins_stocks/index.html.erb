@@ -4,7 +4,6 @@
 	</div>
 	<div class="col-md-8">
 		<h1>入荷一覧</h1>
-		<%= link_to "戻る", admins_path(current_user) %>
 		<table class="table table-striped">
 			<tr>
 			</tr>
@@ -55,6 +54,9 @@
 				</tr>
 			<% end %>
 			<%= paginate @stocks %>
+			<tr>
+				<th><h3><%= link_to "戻る", admins_path(current_user) %></h3></th>
+			</tr>
 		</table>
 	</div>
 </div>

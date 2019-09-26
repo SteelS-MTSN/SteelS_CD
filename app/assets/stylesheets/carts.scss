@@ -4,6 +4,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.body-cart{
+  background-color: #f4ffff;
+}
+
 .tagline,
 .tagline-skill {
   width: 230px;
@@ -236,4 +240,12 @@
 .cart-blank {
   font-family: "M PLUS Rounded 1c";
   font-size: 50px;
+}
+
+.side-logo{
+  background-image: url(LOGO/logo2.png);
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 80px;
+  margin: 80px auto;
 }
