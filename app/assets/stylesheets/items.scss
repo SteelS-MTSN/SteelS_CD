@@ -44,6 +44,10 @@
 }
 
 
+.body-item{
+  background-color: #f4ffff;
+}
+
 .first-container-item {
 	float:left;
 	margin: 2%;
@@ -121,6 +125,7 @@
   box-sizing: inherit;
 }
 
+
 .item-table {
   border:1px solid black;
 }
@@ -192,3 +197,10 @@ Resources
   transition: .4s;
 }
 
+.side-logo{
+  background-image: url(LOGO/logo2.png);
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 80px;
+  margin: 80px auto;
+}
