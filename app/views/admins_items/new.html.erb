@@ -12,7 +12,7 @@
 				<%= f.text_field :item_name %>
 			</div>
 			<div class="form-group">
-				<%= f.label "アーティスト" %>
+				<%= f.label "アーティスト(2文字以上で検索してください)" %>
 				<br>
 				<%= f.autocomplete_field :artist_id, autocomplete_artist_name_admins_items_path %>
 			</div>
