@@ -1,33 +1,36 @@
-<nav class="navbar navbar-inverse">
+
+
+
+
+
+<nav class="navbar nav-head">
 			<div class="navbar-header">
-				<ul class="nav navbar-nav">
-					<li>
-						<%= link_to image_tag('LOGO/logo2.png', :size => '120x40'), items_path %>
-					</li>
+				<ul class="nav">
+					<h2 class="logo-title">SteelS CD</h2>
+
 				</ul>
 			</div>
 			<div class="navbar-right">
 				<div class="collapse navbar-collapse" id="nav-menu">
 					<ul class="nav navbar-nav navbar-right">
+						
+
 						<% if user_signed_in? %>
 							<li>
-								<%= link_to "マイページ", user_path(current_user) %>
+								<%= link_to "マイページ", user_path(current_user),class: "head-link"  %>
 							</li>
 							<li>
-								<%= link_to  items_path do %>
-								<p> 商品一覧</p>
-								<% end %>
+								<%= link_to "商品一覧",  items_path,class: "head-link" %>
 							</li>
 							<li>
-								<%= link_to  carts_path do %>
-								<p> カートに移動</p>
-								<% end %>
+								<%= link_to "カートに移動", carts_path,class: "head-link" %>
 							</li>
 							<li>
-								<%= link_to  destroy_user_session_path, method: :delete do %>
-								<p> ログアウト</p>
-								<% end %>
+								<%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: "head-link" %>
 							</li>
+
+
+
 						<% else %>
 							<li>
 								<a href="/items"><span></span> 商品一覧</a>

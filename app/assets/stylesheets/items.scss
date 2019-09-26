@@ -196,3 +196,30 @@ Resources
   transition: .4s;
 }
 
+
+
+
+/*index from here*/
+
+
+.main-visual{
+  background-image: url(top.jpg);
+  background-size: cover; 
+  width: 100%;
+  height: 300px;
+  margin-top: -20px;
+ /* overflow-y: hidden;*/
+}
+
+.item-index-box{
+  text-align:center;
+  border:solid 1px #666666;
+  margin-bottom: 2px;
+}
+
+.title-font{
+  font-size: 20px;
+}
+.item-image-index{
+  padding-top: 3px;
+}
