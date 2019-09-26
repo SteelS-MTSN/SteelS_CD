@@ -4,6 +4,7 @@
 <head>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+	<link href="https://fonts.googleapis.com/css?family=Londrina+Shadow "rel="stylesheet">
 
 </head>
 
@@ -11,11 +12,15 @@
 <div class="row">
 
 		<div class="col-lg-3">
-			<h1 class="item-detail">STEELS CD</h1>
-			  <p class="tagline">
-			    <span class="tagline-skill"><span class="tagline-skill_inner">STEELS_CD</span></span>
-			    <span class="tagline-skill"><span class="tagline-skill_inner">PRODUCT DETAIL</span></span>
-			  </p>
+			<ruby>
+			<rb class="item-detail1">CD</rb>
+			<rt class="item-detail2">STEELS</rt>
+			</ruby>
+
+			<p class="tagline">
+			<span class="tagline-skill"><span class="tagline-skill_inner">STEELS_CD</span></span>
+			<span class="tagline-skill"><span class="tagline-skill_inner">PRODUCT DETAIL</span></span>
+			</p>
 
 		</div>
 
@@ -133,6 +138,8 @@
 				</tr>
 				<% end %>
 			</table>
+
+			<%= link_to "商品一覧に戻る", items_path, class:"btn-black" %><br>
 
 		</div>
 

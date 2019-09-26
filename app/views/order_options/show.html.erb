@@ -1,12 +1,43 @@
+
+
+<head>
+
+	<link href="https://fonts.googleapis.com/css?family=Londrina+Shadow "rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
+
+</head>
+
 <div class="container">
 	<div class="row">
 
-		<h2>購入が完了しました。</h2><br><br>
+		<div class="col-lg-3">
+			<ruby>
+			<rb class="item-detail1">CD</rb>
+			<rt class="item-detail2">STEELS</rt>
+			</ruby>
 
-		<h4>お買い上げありがとうございました。商品の到着まで今暫くお待ちください。</h4><br><br>
+			  <p class="tagline">
+			    <span class="tagline-skill"><span class="tagline-skill_inner">STEELS_CD</span></span>
+			    <span class="tagline-skill"><span class="tagline-skill_inner">PURCHASE</span></span>
+			  </p>
+		</div>
+
+		<div class ="col-lg-9">
+
+			<div class="finish-message">
+
+				<p style= "font-size: 40pt;">購入が完了しました。</p><br><br>
+
+				<h3>お買い上げありがとうございました。</h3>
+				<h3>商品の到着まで今暫くお待ちください。</h3><br><br>
+
+			</div>
 
 
-		<%= link_to "商品一覧ページへ", items_path, class:"btn btn-primary" %>
+			<%= link_to "商品一覧ページへ", items_path, class:"btn-black" %>
+
+		</div>
 
 	</div>
 </div>
