@@ -1,21 +1,14 @@
 <%= render 'admins/header' %>
 
-<div class="main-visual">
-<!-- 	<video id="video" src="/video/vide.mp4" controls autoplay loop style="width: 100%;height: auto">
-	</video> -->
-	<p >
-		このご時世、音楽配信も盛んで便利な世の中になっているだろう？<br>僕もたまにダウンロードして音楽を楽しむことがあるよ。<br><br>
-		でも、CDにはCDの良さがあるし、これからも売り続けたいんだ。まず、CDはデータが圧縮されていないから音質が最高なんだよ。それに、CDならコレクションして楽しむこともできる。盤面のアートワークや歌詞カードの紙質なんかにも、アーティストのこだわりが随所に感じられて嬉しいんだ。<br><br>
-	    手に入れて、封を開けて、プレイヤーに入れるまでのワクワク感は、CDならではだし、若い子たちにも知ってほしいなあ。</p>
-    <h4>  Owner</h4>
+<div class="item-serch-form">
+	<%= search_form_for @search, url: items_path do |f| %>
+		<div class="form-group">
+			<%= f.label :item_name, "商品検索",class: "item-serch-text" %>
+			<%= f.search_field :item_name_cont, class: "form-control" %>
+		</div>
+		<div class="actions"><%= f.submit "Search" %></div>
+	<% end %>
 </div>
-		<%= search_form_for @search, url: items_path do |f| %>
-			<div class="form-group">
-				<%= f.label :item_name, "商品検索" %>
-				<%= f.search_field :item_name_cont, class: "form-control" %>
-			</div>
-			<div class="actions"><%= f.submit "Search" %></div>
-			<% end %>
 
 <div class="container">
 
@@ -23,20 +16,19 @@
 				<% @item.each do |item| %>
 					<div class="col-md-4 item-index-box">
 						<%= link_to attachment_image_tag(item, :image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px",class: "item-image-index"), item_path(item)  %><br>
-						<p class="title-font"><%= item.item_name %></p><br>
-				        いいね<%= item.favorites.count %><br>
+						<p class="title-font"><%= item.item_name %>  <%= item.favorites.count %></p>
 						<%= item.artist.name %><br>
 					</div>
 				<% end %>
 			    <%= paginate  @item %>
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-2 ranking-font">
 
-			<h3>ランキング</h3>
+			<h4>ランキング</h4>
 			<% @item_side.each_with_index do |item, i| %>
 					<div class="col-md-12">
 						<p><%= "#{i+1}" %>位</p>
-					    <%= link_to attachment_image_tag(item, :image,  fallback: "no_image.jpg", :width => "75px",:height =>"75px"), item_path(item) %><br>
+					    <%= link_to attachment_image_tag(item, :image,  fallback: "no_image.jpg", :width => "125px",:height =>"125px"), item_path(item) %><br>
 						<%= item.item_name %><br>
 						<%= item.artist.name %><br>
 						<br>
