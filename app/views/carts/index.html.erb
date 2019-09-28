@@ -76,7 +76,7 @@
 										<td style= "font-size: 13pt;"><%= cart.item.item_name %></td>
 										<td><%= attachment_image_tag cart.item,:image,  fallback: "Unknown.png", size: "40x40" %></td>
 							    		<td><%= f.number_field "quantity", min:1,  max:cart.item.stock_count %></td>
-							    		<td><%= f.submit "数量変更", class: 'btn-white' %></td>
+							    		<td><%= f.submit "数量変更", class:'btn-white' %></td>
 							    		<td><%= link_to "削除", cart_path(cart.id), method: :delete, class: "btn-black" %></td>
 								<% end %>
 							</tr>

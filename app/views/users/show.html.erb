@@ -21,8 +21,12 @@
 		<div>
 			<%= link_to "購入履歴", orders_path,class: "my_order_btn" %>
 		</div>
+		<div>
+			<%= link_to "商品一覧へ戻る", items_path, class: "back-to-index" %>
+		</div>
         <div>
 			<%= button_to "ログアウト", destroy_user_session_path, method: :delete,class: "my_logout_btn" %>
 		</div>
+
 	</div>
 </body>
