@@ -1,8 +1,13 @@
 
 <header class="header-main">
 	<div class="headline">
-
 	</div>
+
+	<% if user_signed_in? %>
+	<div class="message-top">こんにちは　<%= current_user.family_name %> さん</div>
+	<% else %>
+	<div class="message-top">こんにちは　ゲスト　さん</div>
+	<% end %>
 </header>
 
 <nav>

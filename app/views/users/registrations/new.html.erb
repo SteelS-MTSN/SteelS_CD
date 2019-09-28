@@ -1,7 +1,7 @@
 
 <div class="body-sign">
   <div class="up-box">
-    <div class="logo-up"></div>
+    <a href=<%= items_path %>><div class="logo-up"></div></a>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
