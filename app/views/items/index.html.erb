@@ -39,14 +39,16 @@
 		<div class="col-md-2 ranking-font">
 
 			<h4>ランキング</h4>
-			<% @item_side.each_with_index do |item, i| %>
+			<% @item_favorites_ids.each_with_index do |lank, i| %>
+				<% @lank = Item.find(lank) %>
 					<div class="col-md-12">
 						<p><%= "#{i+1}" %>位</p>
-					    <%= link_to attachment_image_tag(item, :image,  fallback: "no_image.jpg", :width => "125px",:height =>"125px"), item_path(item) %><br>
-						<%= item.item_name %><br>
-						<%= item.artist.name %><br>
+					    <%= link_to attachment_image_tag(@lank, :image,  fallback: "no_image.jpg", :width => "125px",:height =>"125px"), item_path(@lank) %><br>
+						<%= @lank.item_name %><br>
+						<%= @lank.artist.name %><br>
 						<br>
 					</div>
+					<% break if i == 4 %>
 			<% end %>
 
 		</div>
