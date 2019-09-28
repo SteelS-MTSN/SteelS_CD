@@ -27,7 +27,6 @@
 			</div>
 		</div>
 		<br>
-
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -50,17 +49,12 @@
 						</td>
 					</tr>
 				<% end %>
-
 				<% if !@genres.any? %>
-
 					<p>見つかりませんでした。</p>
-
 				<% end %>
 			</tbody>
 		</table>
-
 		<%= paginate @genres %>
-
-		<%= link_to 'TOP', admins_path %>
+		<h3><%= link_to '戻る', admins_path %></h3>
 	</div>
 </div>

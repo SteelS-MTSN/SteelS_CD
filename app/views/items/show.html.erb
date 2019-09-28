@@ -1,27 +1,34 @@
 <%= render 'admins/header' %>
 
+
 <head>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
+	<link href="https://fonts.googleapis.com/css?family=Londrina+Shadow "rel="stylesheet">
 
 </head>
+
+
+<body class="body-item">
+
 
 <div class="container">
 <div class="row">
 
 		<div class="col-lg-3">
-			<h1>STEELS CD</h1>
-			  <p class="tagline">
-			    <span class="tagline-skill"><span class="tagline-skill_inner">STEELS_CD</span></span>
-			    <span class="tagline-skill"><span class="tagline-skill_inner">PRODUCT DETAIL</span></span>
-			  </p>
+			<ruby>
+			<rb class="item-detail1">CD</rb>
+			<rt class="item-detail2">STEELS</rt>
+			</ruby>
 
-			  <div class="steels-logo">logo</div>
+			<p class="tagline">
+			<span class="tagline-skill"><span class="tagline-skill_inner">STEELS_CD</span></span>
+			<span class="tagline-skill"><span class="tagline-skill_inner">PRODUCT DETAIL</span></span>
+			</p>
 
 		</div>
 
 		<div class="col-lg-9">
-
 
 			<div class="first-container-item">
 				<%= attachment_image_tag @item, :image, fallback: "Unknown.png", size: "300x300" %>
@@ -31,9 +38,8 @@
 			<div class="first-container-item">
 				<h1><%= @item.item_name %></h1>
 				<h3 class="name-box"><%= @item.artist.name %></h3>
-				
-			<% if user_signed_in? %>
 
+				<% if user_signed_in? %>
 				<% if @item.favorited_by?(current_user) %>
 
 				    <%= link_to "/items/#{@item.id}/favorites", method: :delete do %>
@@ -49,10 +55,9 @@
 				    <% end %>
 
 				<% end %>
-				
-			<% else %>
-				<%= @item.favorites.count %> いいね
-			<% end %>
+				<% else %>
+				<%= @item.favorites.count %>いいね
+				<% end %>
 
 
 				<h3>価格：<%= @item.price %>円(税込み)</h3>
@@ -64,7 +69,7 @@
 
 					<% if @item.stock_count >= 1 %>
 
-						<%= f.submit "カートの追加", class: "btn-black btn-block" %>
+						<%= f.submit "カートの追加", class:"btn btn-default" %>
 					<% else %>
 
 						<h4>※この商品は売り切れました</h4>
@@ -74,8 +79,12 @@
 		    </div>
 
 			<div class="info-container-item">
-					<table class="table">
-					<caption align="top">商品情報</caption>
+					<table class="table item-table">
+						<thead>
+							<tr>
+								<th style= "font-size: 11pt; color:white" bgcolor="#222222"colspan="6">商品情報</th>
+							</tr>
+					    </thead>
 
 						<tr>
 							<td>アーティスト</td>
@@ -98,39 +107,44 @@
 						<% end %>
 			</div>
 
-
 			<% if user_signed_in? %>
 			<% session[:review] = @item.id %>
-			<br><%= link_to "レビューを書く", new_review_path, class: "btn-black" %>
-			<br><br>
+			<br><%= link_to "レビューを書く", new_review_path, class: "btn-review" %>
 			<% end %>
-			
+			<br><br>
 
 
-			<table class="table">
-			<caption align="top">レビュー一覧</caption>
+			<table class="table item-table">
+				<thead>
+						<tr>
+							<th style= "font-size: 11pt; color:white" bgcolor="#222222"colspan="4">レビュー一覧</th>
+						</tr>
+			   </thead>
 
 				<% @reviews.each do |f| %>
 				<tr>
+					<% if user_signed_in? %>
 					<td><%= f.user_id %></td>
 					<td><%= f.review_text %></td>
-					<% if user_signed_in? %>
-						<% if f.user_id == current_user.id %>
-							<td class="list-edit">
-								<%= link_to edit_review_path(f.id) do %>
-									<button type="button" class="btn-black btn-xs">編集</button>
-								<% end %>
-							</td>
-							<td class="list-destroy">
-								<%= link_to review_path(f), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
-									<button type="button" class="btn-white btn-xs">削除</button>
-								<% end %>
-							</td>
+					<% if f.user_id == current_user.id %>
+						<td class="list-edit">
+							<%= link_to edit_review_path(f.id) do %>
+								<button type="button" class="btn-black btn-xs">編集</button>
+							<% end %>
+						</td>
+						<td class="list-destroy">
+							<%= link_to review_path(f), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+								<button type="button" class="btn-white btn-xs">削除</button>
+							<% end %>
+						</td>
 						<% end %>
 					<% end %>
 				</tr>
 				<% end %>
 			</table>
+
+			<%= link_to "商品一覧に戻る", items_path, class:"btn-black" %><br>
+			<br>
 
 		</div>
 
@@ -139,4 +153,6 @@
 </div>
 
 <%= render 'admins/fotter' %>
+
+</body>
 

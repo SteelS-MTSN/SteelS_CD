@@ -12,11 +12,6 @@
 				<%= f.text_field :item_name %>
 			</div>
 			<div class="form-group">
-				<%= f.label "アーティスト" %>
-				<br>
-				<%= f.autocomplete_field :artist_id, autocomplete_artist_name_admins_items_path %>
-			</div>
-			<div class="form-group">
 				<%= f.label "レーベル" %>
 				<br>
 				<%= f.collection_select(:label_id, Label.all, :id, :label_name) %>
@@ -35,6 +30,11 @@
 				<%= f.label "ジャケット画像" %>
 				<br>
 				<%= f.attachment_field :image %>
+			</div>
+			<div class="form-group">
+				<%= f.label "アーティスト(2文字以上で検索してください)" %>
+				<br>
+				<%= f.autocomplete_field :artist_id, autocomplete_artist_name_admins_items_path %>
 			</div>
 			<div class="form-group">
 				<%= f.submit "確定" %>

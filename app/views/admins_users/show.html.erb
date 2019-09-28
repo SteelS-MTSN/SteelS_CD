@@ -2,19 +2,42 @@
 	<div class="col-md-2">
 		<%= render 'admins/side' %>
 	</div>
-	<div class="col-md-8">
-		<h1>ユーザー詳細</h1>
-		<p>ID : <%= @user.id %></p>
-		<p>姓 : <%= @user.family_name %></p>
-		<p>名 : <%= @user.first_name %></p>
-		<p>セイ : <%= @user.family_kana %></p>
-		<p>メイ : <%= @user.first_kana %></p>
-		<p>郵便番号 : <%= @user.post_code %></p>
-		<p>住所 : <%= @user.address %></p>
-		<p>電話番号 : <%= @user.phone %></p>
-		<p>email : <%= @user.email %></p>
+	<div class="col-md-6">
+		<table class="table table-striped">
+			<thead>
+				<h1>ユーザー詳細</h1>
+				<tr>
+					<th>ID : <%= @user.id %></th>
+				</tr>
+				<tr>
+					<th>姓 : <%= @user.family_name %></th>
+					<th>名 : <%= @user.first_name %></th>
+				</tr>
+				<tr>
+					<th>セイ : <%= @user.family_kana %></th>
+					<th>メイ : <%= @user.first_kana %></th>
+				</tr>
+				<tr>
+					<th>郵便番号 : <%= @user.post_code %></th>
+				</tr>
+				<tr>
+					<th>住所 : <%= @user.address %></th>
+				</tr>
+				<tr>
+					<th>電話番号 : <%= @user.phone %></th>
+				</tr>
+				<tr>
+					<th>email : <%= @user.email %></th>
+				</tr>
+			</thead>
+		</table>
 
 		<%= link_to "ユーザー情報編集" , edit_admins_user_path %>
-		<%= link_to "購入履歴" , "/admins_users/:id/userorder" %>
+		<br>
+		<br>
+		<%= link_to "購入履歴" , user_order_path(@user.id) %>
+		<br>
+		<br>
+		<%= link_to "戻る", admins_items_path %>
 	</div>
 </div>

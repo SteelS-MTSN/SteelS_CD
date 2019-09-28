@@ -65,6 +65,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+# gem 'nokogiri'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'kaminari','~> 1.1.1'
@@ -77,3 +78,7 @@ gem 'ransack'
 
 gem 'rails4-autocomplete'
 gem 'pry-byebug'
+
+gem 'rails-i18n'
+gem 'enum_help'
+

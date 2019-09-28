@@ -1,22 +1,33 @@
-<h1>マイページ</h1>
+<body class="body-sign">
+	<div class="my_page_box">
+		<div class="logo_my_page"></div>
 
 
 
-<p>性 : <%= @user.family_name %></p>
-<p>名 :<%= @user.first_name %></p>
-<p>セイ :<%= @user.family_kana %></p>
-<p>メイ :<%= @user.first_kana %></p>
-<p>郵便番号 :<%= @user.post_code %></p>
-<p>住所 :<%= @user.address %></p>
-<p>住所一覧へ</p>
-<p>電話番号 :<%= @user.phone %></p>
-<p>メールアドレス : <%= @user.email %></p>
+		<p class="my_family_name"><%= @user.family_name %></p>
+		<p class="my_first_name"><%= @user.first_name %></p>
+		<p class="my_family_kana"><%= @user.family_kana %></p>
+		<p class="my_first_kana"><%= @user.first_kana %></p>
+		<p class="my_post_code"><%= @user.post_code %></p>
+		<p class="my_address"><%= @user.address %></p>
+		<div>
+			<%= button_to "住所一覧", addresses_path,class: "my_address_btn", method: :get %>
+		</div>
+		<p class="my_phone">電話番号 :<%= @user.phone %></p>
+		<p class="my_email">メールアドレス : <%= @user.email %></p>
+		<div>
+			<%= link_to "編集", edit_user_path, class: "my_edit_btn" %>
+		</div>
+		<div>
+			<%= link_to "購入履歴", orders_path,class: "my_order_btn" %>
+		</div>
+		<div>
+			<%= link_to "商品一覧へ戻る", items_path, class: "back-to-index" %>
+		</div>
+        <div>
+			<%= button_to "ログアウト", destroy_user_session_path, method: :delete,class: "my_logout_btn" %>
+		</div>
 
+	</div>
+</body>
 
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          </li>
-
-<%= link_to "編集", edit_user_path %>
-
-<%= link_to "宛先一覧", addresses_path %>
-<h3>購入履歴へ</h3>

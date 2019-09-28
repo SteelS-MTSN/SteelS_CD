@@ -1,37 +1,48 @@
 <%= render 'admins/header' %>
+
+<head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Londrina+Shadow "rel="stylesheet">
+
+</head>
 <div class="container">
 	<div class="row">
-		<%= search_form_for @search, url: items_path do |f| %>
-			<div class="form-group">
-				<%= f.label :item_name, "ジャンル名" %>
-				<%= f.search_field :item_name_cont, class: "form-control" %>
-			</div>
-			<div class="actions"><%= f.submit "Search" %></div>
-			<% end %>
 
+<div class="item-serch-form">
+	<%= search_form_for @search, url: items_path do |f| %>
+		<div class="form-group">
+			<%= f.label :item_name, "商品検索",class: "item-serch-text" %>
+			<%= f.search_field :item_name_cont, class: "form-control" %>
+		</div>
+		<div class="actions"><%= f.submit "Search" %></div>
+	<% end %>
+</div>
 
 <div class="container">
-	<div class="row">
 
 		<div class="col-md-offset-1 col-md-8">
 				<% @item.each do |item| %>
-					<div class="col-md-4">
-						<%= attachment_image_tag item, :image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px" %><br>
-						<%= item.item_name %><br>
-				        いいね<%= item.favorites.count %><br>
+					<div class="col-md-4 item-index-box">
+						<%= link_to attachment_image_tag(item, :image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px",class: "item-image-index"), item_path(item)  %><br>
+						<p class="title-font"><%= item.item_name %>
+							<i class="fa fa-heart" aria-hidden="true" style="color: black;"></i><%= item.favorites.count %></p>
 						<%= item.artist.name %><br>
+						<% if item.stock_count >= 1 %>
+						<p>在庫○</p>
+						<% else %>
+						<p>在庫×</p>
+						<% end %>
 					</div>
 				<% end %>
-			    <%= paginate @item %>
-			 </table>
+			    <%= paginate  @item %>
 		</div>
-		<div class="col-md-2">
+		<div class="col-md-2 ranking-font">
 
-			<h3>ランキング</h3>
+			<h4>ランキング</h4>
 			<% @item_side.each_with_index do |item, i| %>
 					<div class="col-md-12">
 						<p><%= "#{i+1}" %>位</p>
-					    <%= attachment_image_tag item, :image,  fallback: "no_image.jpg", :width => "75px",:height =>"75px" %><br>
+					    <%= link_to attachment_image_tag(item, :image,  fallback: "no_image.jpg", :width => "125px",:height =>"125px"), item_path(item) %><br>
 						<%= item.item_name %><br>
 						<%= item.artist.name %><br>
 						<br>
@@ -46,7 +57,16 @@
 
 <%= render 'admins/fotter' %>
 
+<!-- <script>
+	$(function(){
+		var video = $('#video').get(0);
+		video.addEventListener("loadeddata", function(){
+    		video.play();
+  		}, false);
+	});
 
+</script>
+ -->
 
 
 

@@ -1,35 +1,86 @@
-<nav class="navbar navbar-inverse">
+
+<header class="header-main">
+	<div class="headline">
+	</div>
+
+	<% if user_signed_in? %>
+	<div class="message-top">こんにちは　<%= current_user.family_name %> さん</div>
+	<% else %>
+	<div class="message-top">こんにちは　ゲスト　さん</div>
+	<% end %>
+</header>
+
+<nav>
+	<ul class="nav-list">
+		<% if user_signed_in? %>
+			<li class="nav-list-item-in1">
+				<%= link_to "マイページ", user_path(current_user),class: "head-link"  %>
+			</li>
+			<li class="nav-list-item-in2">
+				<%= link_to "商品一覧",  items_path,class: "head-link" %>
+			</li>
+			<li class="nav-list-item-in3">
+				<%= link_to "カートに移動", carts_path,class: "head-link" %>
+			</li>
+			<li class="nav-list-item-in4">
+				<%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: "head-link" %>
+			</li>
+
+
+			<% else %>
+
+			<li class="nav-list-item-out">
+				<%= link_to "商品一覧",  items_path,class: "head-link" %>
+			</li>
+			<li class="nav-list-item-out">
+				<%= link_to "新規登録" ,  new_user_registration_path,class: "head-link" %>
+			</li>
+			<li class="nav-list-item-out">
+				<%= link_to "ログイン" ,  new_user_session_path,class: "head-link" %>
+			</li>
+		<% end %>
+	</ul>
+</nav>
+
+
+<!-- /header -->
+<!-- 
+
+<nav class="navbar nav-head">
 			<div class="navbar-header">
-				<ul class="nav navbar-nav">
-					<li>
-						<%= link_to  items_path do %>
-							<h4>SteelS CD</h4>
-						<% end %>
-					</li>
+				<ul class="nav">
+					<h2 class="logo-title">SteelS CD</h2>
+
 				</ul>
 			</div>
 			<div class="navbar-right">
 				<div class="collapse navbar-collapse" id="nav-menu">
 					<ul class="nav navbar-nav navbar-right">
+						
+
 						<% if user_signed_in? %>
 							<li>
+<<<<<<< HEAD
+								<a><p>ようこそ<%= current_user.family_name %><%= current_user.first_name %>様</p></a>
+							</li>
+							<li>
 								<%= link_to "マイページ", user_path(current_user) %>
+=======
+								<%= link_to "マイページ", user_path(current_user),class: "head-link"  %>
+>>>>>>> ff42af90bd9ddbbe1fe11c72c67e8fdb0158dd62
 							</li>
 							<li>
-								<%= link_to  items_path do %>
-								<p> 商品一覧</p>
-								<% end %>
+								<%= link_to "商品一覧",  items_path,class: "head-link" %>
 							</li>
 							<li>
-								<%= link_to  carts_path do %>
-								<p> カートに移動</p>
-								<% end %>
+								<%= link_to "カートに移動", carts_path,class: "head-link" %>
 							</li>
 							<li>
-								<%= link_to  destroy_user_session_path, method: :delete do %>
-								<p> ログアウト</p>
-								<% end %>
+								<%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: "head-link" %>
 							</li>
+
+
+
 						<% else %>
 							<li>
 								<a href="/items"><span></span> 商品一覧</a>
@@ -44,4 +95,4 @@
 					</ul>
 				</div>
 			</div>
-</nav>
+</nav> -->

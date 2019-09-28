@@ -4,27 +4,35 @@
      </div>
      <div class="col-md-8">
           <h1>ユーザー編集</h1>
-
-          <%= form_for(@user, url: admins_user_path) do |f| %>
-
-               <h4>姓</h4>
-               <%= f.text_field :family_name %>
-               <h4>名</h4>
-               <%= f.text_field :first_name %>
-               <h4>セイ</h4>
-               <%= f.text_field :family_kana %>
-               <h4>メイ</h4>
-               <%= f.text_field :first_kana %>
-               <h4>郵便番号</h4>
-               <%= f.text_field :post_code %>
-               <h4>住所</h4>
-               <%= f.text_field :address %>
-               <h4>電話番号</h4>
-               <%= f.text_field :phone %>
-               <h4>メールアドレス</h4>
-               <%= f.text_field :email %>
-
-               <%= f.submit 'Update AdminUser' %>
-          <% end %>
+          <table class="table table-striped">
+               <thead>
+                    <%= form_for(@user, url: admins_user_path) do |f| %>
+                         <tr>
+                              <th><h4>姓</h4><%= f.text_field :family_name %></th>
+                              <th><h4>名</h4><%= f.text_field :first_name %></th>
+                         </tr>
+                         <tr>
+                              <th><h4>セイ</h4><%= f.text_field :family_kana %></th>
+                              <th><h4>メイ</h4><%= f.text_field :first_kana %></th>
+                         </tr>
+                         <tr>
+                              <th><h4>郵便番号</h4><%= f.text_field :post_code %></th>
+                         </tr>
+                         <tr>
+                              <th><h4>住所</h4><%= f.text_field :address %></th>
+                         </tr>
+                         <tr>
+                              <th><h4>電話番号</h4><%= f.text_field :phone %></th>
+                         </tr>
+                         <tr>
+                              <th><h4>メールアドレス</h4><%= f.text_field :email %></th>
+                         </tr>
+                         <tr>
+                              <th><h4><%= f.submit '確定' %></h4></th>
+                         </tr>
+                    <% end %>
+               </thead>
+          </table>
+          <%= link_to "戻る", admins_user_path(@user) %>
      </div>
 </div>
