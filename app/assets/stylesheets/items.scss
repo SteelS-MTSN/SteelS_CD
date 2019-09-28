@@ -56,8 +56,8 @@
 }
 
 .name-box{
-	border-bottom: 2px solid black;
-	border-top: 2px solid black;
+	border-bottom: 1px solid #666666;
+	border-top: 1px solid #666666;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
@@ -256,11 +256,10 @@ input[type="search"] {
     margin: 0 auto;
     border: none;
     border-bottom: solid 1px #666666;
+    /*box-shadow: rgba(0, 0, 0, 0)*/
 }
 
 button, html input[type="button"], input[type="reset"], input[type="submit"] {
-    /* -webkit-appearance: button; */
-    /* cursor: pointer; */
     background-color: white;
     color: black;
     width: 200px;
@@ -276,4 +275,10 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 
 .ranking-font{
   color: #666666;
+}
+
+.fa-heart:before {
+    content: "\f004";
+    font-size: 17px;
+    color: #e69898;
 }
