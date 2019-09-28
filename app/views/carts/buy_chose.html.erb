@@ -50,7 +50,7 @@
 		    		<tr>
 						<td style= "font-size: 13pt;"><%= cart.item.item_name %></td>
 						<td><%= attachment_image_tag cart.item,:image,  fallback: "Unknown.png", size: "30x30" %></td>
-		    			<td style= "font-size: 13pt;"><%= cart.quantity %></td>
+		    			<td style= "font-size: 13pt;"><%= cart.quantity %>点</td>
 		    			<td style= "font-size: 13pt;"><%= cart.item.price.to_i * cart.quantity.to_i %>円（税込）</td>
 					</tr>
 				<% end %>
@@ -75,6 +75,13 @@
 				    		<% sum2 += cart.item.price.to_i * cart.quantity.to_i  %>
 						<% end %>
 						<td style= "font-size: 13pt;"><%= sum2 %>円(税込）</td>
+					</tr>
+
+					<tr>
+						<td></td>
+						<td></td>
+						<td style= "font-size: 13pt;">送料(一律)</td>
+						<td style= "font-size: 13pt;">500円</td>
 					</tr>
 			</tbody>
 		</table>
@@ -138,7 +145,7 @@
 		</div>
 
 		<div class = 'cart-button'>
-			<%= f.submit '確認画面へ', class:"btn-black btn-block" %>
+			<%= f.submit '確認画面へ', class:"btn-white btn-block" %>
 			<%= link_to '戻る', carts_path, class:"btn-white btn-block" %><br>
 		</div>
 
