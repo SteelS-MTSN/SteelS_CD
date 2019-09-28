@@ -4,9 +4,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.item_show_body{
+/*.item_show_body{
   background-color: #f4ffff;
-}
+}*/
 
 .Profile{
 
@@ -48,9 +48,7 @@
 }
 
 
-.body-item{
-  background-color: #f4ffff;
-}
+
 
 .first-container-item {
 	float:left;
@@ -207,7 +205,7 @@ Resources
   width: 200px;
   height: 80px;
   margin: 80px auto;
-
+}
 
 
 
@@ -225,15 +223,57 @@ Resources
 
 .item-index-box{
   text-align:center;
-  border:solid 1px #666666;
-  margin-bottom: 2px;
+  margin-bottom: 30px;
+  color: #666666;
+
+
 }
 
 .title-font{
   font-size: 20px;
+  border-bottom: solid 1px #666666;
 }
 .item-image-index{
   padding-top: 3px;
 }
 
+.item-serch-form{
+  text-align: center;
+}
 
+.item-serch-text{
+  color: #666666;
+}
+
+.form-control{
+  width:200px;
+  text-shadow: none;
+}
+
+input[type="search"] {
+    -webkit-appearance: none;
+    width: 200px;
+    margin: 0 auto;
+    border: none;
+    border-bottom: solid 1px #666666;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    /* -webkit-appearance: button; */
+    /* cursor: pointer; */
+    background-color: white;
+    color: black;
+    width: 200px;
+    border: none;
+    border-radius: 4px;
+}
+
+
+.container {
+    width: 1170px;
+    margin-top: 30px;
+}
+
+.ranking-font{
+  color: #666666;
+}

@@ -2,7 +2,70 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.admins-box{
+
+.header-main {
+    width: 100%;
+    height: 10px;
+    text-align: center;
+}
+.headline{
+
+	background-image: url(LOGO/logo3);
+	width: 265px;
+	height:65px;
+	margin: auto;
+	margin-top: 49px;
+}
+.nav-list {
+  text-align: center;
+  padding: 80px 0;
+}
+.nav-list-item-in1 {
+  list-style: none;   
+  display: inline-block;
+  width: 25%;
+  float: left;
+}
+.nav-list-item-in2{
+  list-style: none;   
+  display: inline-block;
+  width: 25%;
+  float: left;
+}
+.nav-list-item-in3{
+  list-style: none;   
+  display: inline-block;
+  width: 25%;
+  float: left;
+}
+.nav-list-item-in4{
+  list-style: none;   
+  display: inline-block;
+  width: 25%;
+  float: left;
+}
+
+.head-link{
+	color: #666666;
+    font-size: 16px;
+    border-bottom: solid 1px #666666;
+    padding: 7px 23px;
+}
+.nav-list-item-out{
+  list-style: none;   
+  display: inline-block;
+  width: 33%;
+  float: left;
+}
+
+
+.foote-main{
+	background-color: white;
+	color: black;
+}
+
+/*設定前*/
+/*.admins-box{
 	background-color: #f4ffff;
 }
 
@@ -27,4 +90,4 @@
 .navbar-right{
 	width:550px;
 }
-
+*/

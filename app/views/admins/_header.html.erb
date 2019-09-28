@@ -1,7 +1,45 @@
 
+<header class="header-main">
+	<div class="headline">
+
+	</div>
+</header>
+
+<nav>
+	<ul class="nav-list">
+		<% if user_signed_in? %>
+			<li class="nav-list-item-in1">
+				<%= link_to "マイページ", user_path(current_user),class: "head-link"  %>
+			</li>
+			<li class="nav-list-item-in2">
+				<%= link_to "商品一覧",  items_path,class: "head-link" %>
+			</li>
+			<li class="nav-list-item-in3">
+				<%= link_to "カートに移動", carts_path,class: "head-link" %>
+			</li>
+			<li class="nav-list-item-in4">
+				<%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: "head-link" %>
+			</li>
 
 
+			<% else %>
 
+			<li class="nav-list-item-out">
+				<%= link_to "商品一覧",  items_path,class: "head-link" %>
+			</li>
+			<li class="nav-list-item-out">
+				<%= link_to "新規登録" ,  new_user_registration_path,class: "head-link" %>
+			</li>
+			<li class="nav-list-item-out">
+				<%= link_to "ログイン" ,  new_user_session_path,class: "head-link" %>
+			</li>
+		<% end %>
+	</ul>
+</nav>
+
+
+<!-- /header -->
+<!-- 
 
 <nav class="navbar nav-head">
 			<div class="navbar-header">
@@ -45,4 +83,4 @@
 					</ul>
 				</div>
 			</div>
-</nav>
+</nav> -->
