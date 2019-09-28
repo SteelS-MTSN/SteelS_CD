@@ -1,28 +1,34 @@
 <%= render 'admins/header' %>
-<div class="container">
-	<div class="row">
+
+<div class="main-visual">
+<!-- 	<video id="video" src="/video/vide.mp4" controls autoplay loop style="width: 100%;height: auto">
+	</video> -->
+	<p >
+		このご時世、音楽配信も盛んで便利な世の中になっているだろう？<br>僕もたまにダウンロードして音楽を楽しむことがあるよ。<br><br>
+		でも、CDにはCDの良さがあるし、これからも売り続けたいんだ。まず、CDはデータが圧縮されていないから音質が最高なんだよ。それに、CDならコレクションして楽しむこともできる。盤面のアートワークや歌詞カードの紙質なんかにも、アーティストのこだわりが随所に感じられて嬉しいんだ。<br><br>
+	    手に入れて、封を開けて、プレイヤーに入れるまでのワクワク感は、CDならではだし、若い子たちにも知ってほしいなあ。</p>
+    <h4>  Owner</h4>
+</div>
 		<%= search_form_for @search, url: items_path do |f| %>
 			<div class="form-group">
-				<%= f.label :item_name, "ジャンル名" %>
+				<%= f.label :item_name, "商品検索" %>
 				<%= f.search_field :item_name_cont, class: "form-control" %>
 			</div>
 			<div class="actions"><%= f.submit "Search" %></div>
 			<% end %>
 
-
-	</div>
-	<div class="row">
+<div class="container">
 
 		<div class="col-md-offset-1 col-md-8">
 				<% @item.each do |item| %>
-					<div class="col-md-4">
-						<%= link_to attachment_image_tag(item, :image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px"), item_path(item) %><br>
-						<%= item.item_name %><br>
+					<div class="col-md-4 item-index-box">
+						<%= link_to attachment_image_tag(item, :image,  fallback: "no_image.jpg", :width => "200px",:height =>"200px",class: "item-image-index"), item_path(item)  %><br>
+						<p class="title-font"><%= item.item_name %></p><br>
 				        いいね<%= item.favorites.count %><br>
 						<%= item.artist.name %><br>
 					</div>
 				<% end %>
-			    <%= paginate @item %>
+			    <%= paginate  @item %>
 		</div>
 		<div class="col-md-2">
 
@@ -46,7 +52,16 @@
 
 <%= render 'admins/fotter' %>
 
+<!-- <script>
+	$(function(){
+		var video = $('#video').get(0);
+		video.addEventListener("loadeddata", function(){
+    		video.play();
+  		}, false);
+	});
 
+</script>
+ -->
 
 
 

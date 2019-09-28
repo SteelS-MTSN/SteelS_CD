@@ -16,7 +16,7 @@
 		<p class="my_phone">電話番号 :<%= @user.phone %></p>
 		<p class="my_email">メールアドレス : <%= @user.email %></p>
 		<div>
-			<%= button_to "編集", edit_user_path,class: "my_edit_btn" %>
+			<%= link_to "編集", edit_user_path, class: "my_edit_btn" %>
 		</div>
 		<div>
 			<%= link_to "購入履歴", orders_path,class: "my_order_btn" %>
