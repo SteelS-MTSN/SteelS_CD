@@ -1,31 +1,37 @@
-<table class="table table-striped">
-				<tr>
-					<th class="list-title">購入日</th>
-					<th class="list-title">配送状況</th>
-					<th class="list-title">合計(税込み)</th>
-					<th class="list-title">支払金額(送料込)</th>
-				</tr>
-				<% @order_options.each do |order| %>
-					<tr>
-						<th class="order-list">
-							<%= link_to  order_path(order) do %>
-								<%= order.created_at %>
-							<% end %>
-						</th>
-						<th class="order-list">
-							<%= order.delivery_status_i18n %>
-						</th>
-						<th class="order-list">
-							<p><%= order.total_price %>円</p>
-						</th>
-						<th class="order-list">
-							<% pay_price = order.total_price + 500 %>
-							<p><%= pay_price %>円</p>
-						</th>
-					</tr>
-				<% end %>
-				<%= paginate @order_options %>
-			</table>
+<div class= "container">
+	<div class= "col-lg-3"></div>
+		<div class= "col-lg-6">
+			<div class="center-block"></div>
+				<table class="table table-striped">
+						<tr>
+							<th class="list-title">購入日</th>
+							<th class="list-title">配送状況</th>
+							<th class="list-title">合計(税込み)</th>
+							<th class="list-title">支払金額(送料込)</th>
+						</tr>
+						<% @order_options.each do |order| %>
+							<tr>
+								<th class="order-list">
+									<%= link_to  order_path(order) do %>
+										<%= order.created_at %>
+									<% end %>
+								</th>
+								<th class="order-list">
+									<%= order.delivery_status %>
+								</th>
+								<th class="order-list">
+									<p><%= order.total_price %>円</p>
+								</th>
+								<th class="order-list">
+									<% pay_price = order.total_price + 500 %>
+									<p><%= pay_price %>円</p>
+								</th>
+							</tr>
+						<% end %>
+						<%= paginate @order_options %>
+				</table>
 
-			<%= link_to "戻る", user_path(current_user) %>
+					<%= link_to "戻る", user_path(current_user) %>
+		</div>
+</div>
 
