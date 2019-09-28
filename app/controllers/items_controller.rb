@@ -11,12 +11,13 @@ class ItemsController < ApplicationController
 
 			# @all_ranks = Item.find(1).artist.artist_name
 			# binding.pry
-			@allitems = Item.limit(5).order('id DESC')
+			# @allitems = Item.limit(5).order('id DESC')
 
-			@allitems = Item.limit(5).order('id DESC')
+			# @allitems = Item.limit(5).order('id DESC')
 	 		@item_favorites_count = Item.joins(:favorites).group(:id).count
 	 		@item_favorites_ids = Hash[@item_favorites_count.sort_by{|_, v| -v }].keys
-	 		@item_side = Item.where(id: @item_favorites_ids)
+	 		# binding.pry
+	 		# @item_side = Item.limit(5).where(id: @item_favorites_ids)
 
 
 	 	# #違うテーブルで検索
