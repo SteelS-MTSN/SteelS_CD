@@ -5,8 +5,6 @@
 	<div class="col-md-8">
 		<h1>曲一覧</h1>
 
-		<%= link_to "戻る", admins_items_path %>
-
 		<table class="table table-striped">
 			<tr>
 				<th class="list-title">曲名</th>
@@ -30,8 +28,8 @@
 				</th>
 			</tr>
 			<% end %>
+			<h3><%= link_to "曲追加", new_admins_song_path %></h3>
 		</table>
-
-		<%= link_to "曲追加", new_admins_song_path %>
+		<h3><%= link_to "戻る", admins_items_path %></h3>
 	</div>
 </div>

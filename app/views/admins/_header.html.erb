@@ -60,7 +60,14 @@
 
 						<% if user_signed_in? %>
 							<li>
+<<<<<<< HEAD
+								<a><p>ようこそ<%= current_user.family_name %><%= current_user.first_name %>様</p></a>
+							</li>
+							<li>
+								<%= link_to "マイページ", user_path(current_user) %>
+=======
 								<%= link_to "マイページ", user_path(current_user),class: "head-link"  %>
+>>>>>>> ff42af90bd9ddbbe1fe11c72c67e8fdb0158dd62
 							</li>
 							<li>
 								<%= link_to "商品一覧",  items_path,class: "head-link" %>

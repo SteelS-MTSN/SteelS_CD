@@ -82,5 +82,3 @@ gem 'pry-byebug'
 gem 'rails-i18n'
 gem 'enum_help'
 
-source 'https://rails-assets.org'
-gem 'rails-assets-typehead.js'

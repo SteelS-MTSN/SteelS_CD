@@ -1,9 +1,10 @@
 class OrderOptionsController < ApplicationController
 
 	def create
-		@order_option = OrderOption.new(payment:params[:order_option][:payment].to_i,to_post_code: params[:order_option][:to_post_code],to_address: params[:order_option][:to_address],to_name: params[:order_option][:to_name],to_kana: params[:order_option][:to_kana])
+		@order_option = OrderOption.new(payment:params[:order_option][:payment],to_post_code: params[:order_option][:to_post_code],to_address: params[:order_option][:to_address],to_name: params[:order_option][:to_name],to_kana: params[:order_option][:to_kana])
 		@order_option.total_price = cart_total_price(current_user)
 		@order_option.user_id = current_user.id
+		@order_option.purchase_date = DateTime.now
 
 		@order_option.save
 

@@ -11,7 +11,7 @@ class CreateOrderOptions < ActiveRecord::Migration[5.2]
     	t.string :to_kana, null: false
     	t.integer :item_id, null: false
     	t.integer :user_id, null: false
-        t.datetime :purchase_date, null: false, default: DateTime.now
+        t.datetime :purchase_date
 
       t.timestamps
     end

@@ -11,7 +11,7 @@
 		<p class="my_post_code"><%= @user.post_code %></p>
 		<p class="my_address"><%= @user.address %></p>
 		<div>
-			<%=button_to "住所一覧", addresses_path,class: "my_address_btn" %>
+			<%= button_to "住所一覧", addresses_path,class: "my_address_btn", method: :get %>
 		</div>
 		<p class="my_phone">電話番号 :<%= @user.phone %></p>
 		<p class="my_email">メールアドレス : <%= @user.email %></p>
@@ -30,3 +30,4 @@
 
 	</div>
 </body>
+

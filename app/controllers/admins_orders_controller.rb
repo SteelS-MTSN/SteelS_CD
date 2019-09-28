@@ -15,7 +15,11 @@ class AdminsOrdersController < ApplicationController
 
 	def update
 		@order_option = OrderOption.find(params[:id])
-		@order_option.delivery_day = Date.current
+		if @order_option.delivery_status == 'prepare'
+			@order_option.delivery_day = Date.current
+		else
+			@order_option.delivery_day = nil
+		end
 		@order_option.update(order_option_params)
 		redirect_to admins_order_path
 	end

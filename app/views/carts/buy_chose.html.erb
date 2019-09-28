@@ -136,9 +136,9 @@
 			<p class="payment-title-box"></p><h5 class = "payment-title" style= "font-size: 15pt;">支払い方法 <i class="fas fa-coins"></i></h5>
 			<div class = "payment">
 
-				<%= f.radio_button :payment ,0 , :checked => true %> 代引き(手数料250円)<br>
+				<%= f.radio_button :payment ,:cash , :checked => true %> 代引き(手数料250円)<br>
 				<br>
-				<%= f.radio_button :payment ,1 %> 振込
+				<%= f.radio_button :payment ,:bank %> 振込
 		    </div>
 		</div>
 
