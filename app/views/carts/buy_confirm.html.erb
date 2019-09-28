@@ -95,7 +95,7 @@
 		<h5 style= "font-size: 15pt;">送付先 <i class="far fa-address-book"></i></h5>
 
 		<div class = "address-content2">
-			<% if @to_address == "current_address" %>
+			<% if @order_option.to_address == "current_address" %>
 				<%= f.hidden_field :to_post_code, :value => @user.post_code %>
 				　　	<p>郵便番号</p>
 				<div class="section">
@@ -144,8 +144,8 @@
 				<p class="payment-title-box"></p><h5 class = "payment-title" style= "font-size: 15pt;">支払い方法 <i class="fas fa-coins"></i></h5>
 
 				<div class = "payment2">
-					<%= f.hidden_field :payment, :value => @payment %>
-					<%= @payment %>
+					<%= f.hidden_field :payment, :value => @order_option.payment %>
+					<%= @order_option.payment_i18n %>
 				</div>
 
 		    	<div class = "cart-button">
