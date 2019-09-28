@@ -3,7 +3,7 @@
 <body class="body-sign">
   <div class="in_box">
     <div class="in_box_text">
-      <div class="logo"></div>
+      <a href=<%= items_path %>><div class="logo"></div></a>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="email-box">
           <div class="field">
