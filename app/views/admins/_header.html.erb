@@ -11,6 +11,9 @@
 					<ul class="nav navbar-nav navbar-right">
 						<% if user_signed_in? %>
 							<li>
+								<a><p>ようこそ<%= current_user.family_name %><%= current_user.first_name %>様</p></a>
+							</li>
+							<li>
 								<%= link_to "マイページ", user_path(current_user) %>
 							</li>
 							<li>

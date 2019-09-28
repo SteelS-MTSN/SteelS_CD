@@ -71,14 +71,13 @@ class CartsController < ApplicationController
 	def buy_confirm
 		@user = current_user
 		@carts = @user.carts
-		@to_address = order_option_params[:to_address]
-
-		if @to_address != "current_address"
-			@address = Address.find(@to_address.to_i)
+		@order_option = OrderOption.new
+		@order_option.to_address = order_option_params[:to_address]
+		if @order_option.to_address != "current_address"
+			@address = Address.find(@order_option.to_address.to_i)
 		end
 
-		@payment = OrderOption.convert_payment(order_option_params[:payment])
-		@order_option = OrderOption.new
+		@order_option.payment = order_option_params[:payment]
 		render :buy_confirm
 	end
 
