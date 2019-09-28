@@ -4,7 +4,6 @@
 
 
 .body-sign{
-	background-color: #f4ffff;
 	padding: 50px;
 }
 
@@ -26,9 +25,9 @@
 }
 
 .logo{
-	background-image: url(LOGO/logo2.png);
-	width: 160px;
-	height: 73px;
+	background-image: url(LOGO/logo3.png);
+	width: 275px;
+	height: 63px;
 	margin: auto;
 	margin-top: 50px;
 }
@@ -90,9 +89,9 @@
 	margin-bottom: 50px;
 }
 .logo-up{
-	background-image: url(LOGO/logo2.png);
-	width: 160px;
-	height: 73px;
+	background-image: url(LOGO/logo3.png);
+	width: 275px;
+	height: 63px;
 	margin: auto;
 }
 
@@ -359,11 +358,42 @@
     width: 200px;
     margin-bottom: 50px;
 }
-
+.back-to-index{
+	color: #666666;
+	margin-left: 150px;
+}
 /*退会画面from here*/
 
-.user_is_quit{
-	margin: center;
-	width: 300px;
+/*編集画面from here*/
+.logo-edit{
+	background-image: url(LOGO/logo_edit.png);
+	width: 140px;
+	height: 72px;
+	margin: auto;
+}
 
+.btn-orig-edit{
+	margin-left: 100px;
+	margin-top: 25px;
+	background: black;
+	color: white;
+	width: 200px;
+	border: solid black;
+	border-radius: 3px;
+	margin-bottom: 40px;
+}
+
+.btn-link-edit{
+	color: black;
+	margin-left: 186px;
+
+}
+.btn-cancel-edit{
+	padding-top: 25px;
+	color: black;
+	margin-left: 186px;
+	margin-bottom: 40px;
+}
+.cancel-btn-box{
+	margin-top: 30px;
 }

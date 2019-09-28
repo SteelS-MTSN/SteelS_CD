@@ -16,13 +16,17 @@
 		<p class="my_phone">電話番号 :<%= @user.phone %></p>
 		<p class="my_email">メールアドレス : <%= @user.email %></p>
 		<div>
-			<%= link_to "編集", edit_user_path,class: "my_edit_btn" %>
+			<%= link_to "編集", edit_user_path, class: "my_edit_btn" %>
 		</div>
 		<div>
 			<%= link_to "購入履歴", orders_path,class: "my_order_btn" %>
 		</div>
+		<div>
+			<%= link_to "商品一覧へ戻る", items_path, class: "back-to-index" %>
+		</div>
         <div>
 			<%= button_to "ログアウト", destroy_user_session_path, method: :delete,class: "my_logout_btn" %>
 		</div>
+
 	</div>
 </body>
